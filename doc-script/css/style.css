@@ -1,0 +1,115 @@
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {
+	display: block
+}
+mark, rp, rt, ruby, summary, time {
+	display: inline
+}
+
+body{
+	margin:0;
+	padding:4px;
+	background-color:#000;
+	color:#c8c8c8
+}
+
+	body header a{
+		color:#55f;
+	}
+
+nav a{
+	color:#ddd;
+	text-decoration:none
+}
+
+.ref-function{
+	color:#aac;
+	text-decoration:none;
+}
+
+.action-key{
+	font-size:.9em;
+	color:#b8b8b8;
+}
+
+.action-key span{
+	font-size:1.1em;
+	color:#584;
+}
+
+.back-menu{
+	font-size:.8em;
+	text-align:right;
+	margin:0;
+	padding:0;
+}
+
+	.back-menu a{
+		color:#777;
+		text-decoration:none;
+		display:inline-block;
+		padding:0 .5em;
+	}
+
+.var-param-begin, .var-param-end{
+	color:#afcaaf
+}
+
+.var-name{
+	color:#894;
+}
+
+.var-type{
+	font-weight:bold;
+	color:#8f8
+}
+
+.function-name{
+	color:#88f;
+	text-decoration:underline
+}
+
+.function{
+	margin:1em;
+	padding:0.4em 1em;
+	border:1px #982 solid
+}
+
+	.function h1{
+		display:run-in;
+		margin-right:0.5em;
+		margin-left:1em;
+		color:#c55;
+	}
+
+	.function > div{
+		border:1px #871 solid;
+		margin:1em;
+		padding:0.4em 1em;
+		border-radius: 1em;
+		-moz-border-radius: 1em;
+	}
+
+.example{
+	border-bottom:1px #871 solid
+}
+.example:last-child{
+	border-bottom:none
+}
+	.example .command{
+		margin:0;
+	}
+		.example .command:before{
+			color:purple;
+			content:"$ "
+		}
+
+	.example .resume, .example .result{
+		padding:0;
+		display:inline-block;
+		border:1px #191919 solid
+	}
+
+.function div[role="return"] p:before{
+	color:purple;
+	content:"return "
+}
