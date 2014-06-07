@@ -1,10 +1,11 @@
 katepart-script
 ===============
 
+KatePart additional command line 
+
 Install
 -------
 
-KatePart additional command line 
 KDE 4.10 and more:
 
 ```sh
