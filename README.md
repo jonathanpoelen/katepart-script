@@ -1,7 +1,7 @@
 katepart-script
 ===============
 
-KatePart additional command line 
+KTextEditor additional command line. Compatible with Kate, KWrite, KDevelop, etc.
 
 Documentation
 -------------
