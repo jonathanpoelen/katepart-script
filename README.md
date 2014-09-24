@@ -3,10 +3,19 @@ katepart-script
 
 KatePart additional command line 
 
+Documentation
+-------------
+
+See `./doc-script/doc.html` (fr with examples)
+
 Install
 -------
 
 KDE 4.10 and more:
+
+Copy the files inside `libraries/` in `$KDEHOME/.kde/share/app/katepart/script/libraries` and `commands/` in `$KDEHOME/.kde/share/app/katepart/script/commands`
+
+Or merge commands into one file with `build.sh`:
 
 ```sh
 cd commands

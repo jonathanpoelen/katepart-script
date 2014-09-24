@@ -8,12 +8,12 @@ mark, rp, rt, ruby, summary, time {
 body{
 	margin:0;
 	padding:4px;
-	background-color:#000;
+	background-color:#222;
 	color:#c8c8c8
 }
 
 	body header a{
-		color:#55f;
+		color:#88c;
 	}
 
 nav a{

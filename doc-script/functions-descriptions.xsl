@@ -206,7 +206,6 @@
 					<dd>Jonathan Poelen</dd>
 					<dt>E-mail</dt>
 					<dd><a href="mailto:jonathan.poelen@gmail.com">jonathan.poelen@gmail.com</a></dd>
-					<dd><a href="mailto:jo.link.noir@gmail.com">jo.link.noir@gmail.com</a></dd>
 				</dl>
 				<nav>
 					<ul>
