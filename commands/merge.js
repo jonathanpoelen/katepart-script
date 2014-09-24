@@ -7,6 +7,7 @@
  * functions: merge, mergeText, mergeTextMultiLine
  */
 
+require("interpretStr.js")
 require("string-utils.js")
 require("array-utils.js")
 require("selectionOrLine.js")
