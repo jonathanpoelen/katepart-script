@@ -119,9 +119,13 @@ function mergeTextMultiLine(n/*, pattern, …*/)
     return;
   var selection = selectionOrLine(null);
   var lines = selection.text.split("\n");
-  var str = "", i = 0, len = lines.length;
-  while (i < len){
-    str += pattern.replace("$1", lines.slice(i, i += n).join("\n"));
+  var str = "", len = lines.length;
+  for (var i = 0; i < len; ){
+    var s = pattern.replace("$1", lines[i]);
+    for (var idx = 2, e = Math.min(i+n, len); ++i < e; ) {
+      s = s.replace("$"+idx, lines[i]);
+    }
+    str += s;
     if (i < len)
       str += "\n";
   }
