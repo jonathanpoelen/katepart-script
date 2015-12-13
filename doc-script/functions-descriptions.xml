@@ -2483,24 +2483,6 @@ plop</result>
 			</params>
 			<return>Array</return>
 		</function>
-		<function name="String.prototype.trim">
-			<resume>
-				Elimine les espace en début et fin de chaîne.
-			</resume>
-			<return>String</return>
-		</function>
-		<function name="String.prototype.ltrim">
-			<resume>
-				Elimine les espace en début de chaîne.
-			</resume>
-			<return>String</return>
-		</function>
-		<function name="String.prototype.rtrim">
-			<resume>
-				Elimine les espace en fin de chaîne.
-			</resume>
-			<return>String</return>
-		</function>
 		<function name="String.prototype.reverse">
 			<resume>
 				Retourne la chaîne avec ces caractères inversés.
