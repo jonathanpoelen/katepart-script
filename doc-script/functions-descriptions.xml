@@ -59,7 +59,7 @@
 			</resume>
 			<params>
 				<param name="pattern" type="String">
-					$1 correspond à la ligne.
+					$1 correspond à la première ligne.
 				</param>
 				<param name="…"/>
 			</params>
@@ -73,6 +73,20 @@
 				<param name="pattern" ref-function="mergeText"/>
 				<param name="…"/>
 			</params>
+                        <examples>
+                                <example>
+                                        <resume>A
+1
+B
+2
+C
+3</resume>
+                                        <code>mergeTextMultiLine 2 '$1-$2'</code>
+                                        <result>A-1
+B-2
+C-3</result>
+                                </example>
+                        </examples>
 		</function>
 		<function name="set-string-or-regex">
 			<resume>
@@ -167,7 +181,7 @@ example</result>
 					Si true le texte représenté par begin et end ne sera pas sélectionné.
 				</param>
 				<param name="continueIsNotFind" type="Boolean" default="false">
-					Si begin ou end n'est pas trouvé et que continueIsNotFind est à faut, alors rien ne se passe.
+					Si begin ou end n'est pas trouvé et que continueIsNotFind est à faux, alors rien ne se passe.
 				</param>
 			</params>
 		</function>
@@ -1174,9 +1188,9 @@ a[] = s3;</result>
 				<example>
 					<code>rgxintervalx "si" i 1 3 5 7 replacex "a[x] = i;\n" 2 x i b c</code>
 					<result>a[b] = c;
-a[1] = 5;
-a[2] = 6;
-a[3] = 7;</result>
+a[s1] = s5;
+a[s2] = s6;
+a[s3] = s7;</result>
 				</example>
 			</examples>
 		</function>
@@ -1424,6 +1438,11 @@ simple</resume>
 					<code>cursor b,0 e,*</code>
 					<result>Fait une sélection en bloc à la manière de selectBlock.</result>
 				</example>
+                                <example>
+                                        <code>cursor -w 2w</code>
+                                        <result>Sélectionne 2 mots en partant du début du mot précédent.</result>
+                                </example>
+
 			</examples>
 		</function>
 		<function name="replace">

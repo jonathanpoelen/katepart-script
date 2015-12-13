@@ -23,9 +23,9 @@ actions="$(sed -E '/^function action/,/^}/!d;
 /^\{/d;
 /return \{|icon: ""/d;
 s/if \("(.*)".*/{ "function": "\1",/g;
-s/category: ""/"category":"Editing"/g;
+s/category: ""/"category": "Editing"/g;
 s/interactive: (.*),/"interactive": "\1",/g;
-s/text: i18n\("(.*)"\)/"name: "\1"/g;
+s/text: i18n\("(.*)"\)/"name": "\1"/g;
 s/shortcut: /"shortcut": /g;
 s/};/},/g' "$@")"
 
@@ -38,7 +38,7 @@ echo $(( ++revision )) > "$p"/revision.txt
     "revision": '$revision',
     "kate-version": "5.1",
     "functions": ["'${functions//,/\", \"}'"]'
- [ ! -z "$actions" ] && echo "    \"actions\": [${actions:0:-1}]"
+ [ ! -z "$actions" ] && echo "    ,\"actions\": [${actions:0:-1}]"
 echo '};
 
 require("range.js")
