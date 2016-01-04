@@ -22,8 +22,9 @@ actions="$(sed -E '/^function action/,/^}/!d;
 /^function/d;/^}/d;
 /^\{/d;
 /return \{|icon: ""/d;
-s/if \("(.*)".*/{ "function": "\1",/g;
+s/if \(["'\''](.*)["'\''].*/{ "function": "\1",/g;
 s/category: ""/"category": "Editing"/g;
+s/category: "(.*)"/"category": "\1"/g;
 s/interactive: (.*),/"interactive": "\1",/g;
 s/text: i18n\("(.*)"\)/"name": "\1"/g;
 s/shortcut: /"shortcut": /g;
@@ -32,23 +33,24 @@ s/};/},/g' "$@")"
 typeset -i revision=$(cat "$p"/revision.txt 2> /dev/null)
 echo $(( ++revision )) > "$p"/revision.txt
 
-{ echo 'var katescript = {
+echo 'var katescript = {
     "author": "Jonathan Poelen <jonathan.poelen+katescript@gmail.com>",
     "license": "LGPL",
     "revision": '$revision',
     "kate-version": "5.1",
     "functions": ["'${functions//,/\", \"}'"]'
- [ ! -z "$actions" ] && echo "    ,\"actions\": [${actions:0:-1}]"
+    [ ! -z "$actions" ] && echo "    ,\"actions\": [${actions:0:-1}]"
 echo '};
 
 require("range.js")
 
-' ;\
- cd "$p"/libraries ;\
- grep -vh '^require' $libs ;\
- cd - > /dev/null ;\
- sed '/^\/\*/d;/^ \*/d;/^require/d;/^function action/,/^}/d;/^function help/,/^}/d' "$@" ;\
- echo 'function help(cmd){' ;\
- sed '/^function help/,/^}/!d;/^function/d;/^}/d;/^{/d' "$@" ;\
- echo '}' ;\
-} > "$p"/pwaipwai-utils-ks5.js
+' ;
+if [ ! -z "$libs" ] ; then
+  cd "$p"/libraries ;
+  grep -vh '^require' $libs ;
+  cd - > /dev/null ;
+fi
+sed '/^\/\*/d;/^ \*/d;/^require/d;/^function action/,/^}/d;/^function help/,/^}/d' "$@" ;
+echo 'function help(cmd){' ;
+sed '/^function help/,/^}/!d;/^function/d;/^}/d;/^{/d' "$@" ;
+echo '}' ;

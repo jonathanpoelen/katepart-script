@@ -24,7 +24,7 @@
          <nav>
             <ul>
                <li>
-                  <a href="#function-type-function">function (125)</a>
+                  <a href="#function-type-function">function (127)</a>
                </li>
                <li>
                   <a href="#function-type-util">util (54)</a>
@@ -506,6 +506,18 @@
                      <span>(<span class="var-name">delimiter</span>
 		: <span class="var-type">String</span>
 		= <span class="var-default">''</span>, <span class="var-name">…</span>)</span>
+                  </a>
+               </li>
+               <li id="menu-function-jumpParagraphDown">
+                  <a href="#function-jumpParagraphDown">
+                     <span class="function-name">jumpParagraphDown</span>
+                     <span>()</span>
+                  </a>
+               </li>
+               <li id="menu-function-jumpParagraphUp">
+                  <a href="#function-jumpParagraphUp">
+                     <span class="function-name">jumpParagraphUp</span>
+                     <span>()</span>
                   </a>
                </li>
                <li id="menu-function-kill">
@@ -2374,7 +2386,7 @@ plop</pre>
                <p class="resume">
 				Duplique la ligne ou la sélection n fois.
 			</p>
-               <p class="action-key">Cette commande est disponible par le racourci: <span>Ctrl+Alt+D</span>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Ctrl+Alt+D</span>
                </p>
                <p class="back-menu">
                   <a href="#menu-function-duplicate">←</a>
@@ -2906,6 +2918,26 @@ simple</pre>
                   <a href="#top">↑</a>
                </p>
             </article>
+            <article class="function" id="function-jumpParagraphDown">
+               <h1>jumpParagraphDown</h1>
+               <p class="resume">Déplace le curseur sur le prochain paragraphe de texte.</p>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Alt+Shift+PgDown</span>
+               </p>
+               <p class="back-menu">
+                  <a href="#menu-function-jumpParagraphDown">←</a>
+                  <a href="#top">↑</a>
+               </p>
+            </article>
+            <article class="function" id="function-jumpParagraphUp">
+               <h1>jumpParagraphUp</h1>
+               <p class="resume">Déplace le curseur sur le précédent paragraphe de texte.</p>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Alt+Shift+PgUp</span>
+               </p>
+               <p class="back-menu">
+                  <a href="#menu-function-jumpParagraphUp">←</a>
+                  <a href="#top">↑</a>
+               </p>
+            </article>
             <article class="function" id="function-kill">
                <h1>kill</h1>
                <p class="resume">
@@ -2937,7 +2969,7 @@ simple</pre>
                <p class="resume">
 				Supprime les caractères à gauche du curseur jusqu'au début de la ligne.
 			</p>
-               <p class="action-key">Cette commande est disponible par le racourci: <span>Ctrl+L</span>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Ctrl+L</span>
                </p>
                <p class="back-menu">
                   <a href="#menu-function-killLeft">←</a>
@@ -2949,7 +2981,7 @@ simple</pre>
                <p class="resume">
 				Supprime les caractères à droite du curseur jusqu'à la fin de la ligne.
 			</p>
-               <p class="action-key">Cette commande est disponible par le racourci: <span>Ctrl+M</span>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Ctrl+M</span>
                </p>
                <p class="back-menu">
                   <a href="#menu-function-killRight">←</a>
@@ -3234,7 +3266,7 @@ C-3</pre>
                <p class="resume">
 				Va à la ligne en y ajoutant le nombre d'espace blanc de la ligne de départ.
 			</p>
-               <p class="action-key">Cette commande est disponible par le racourci: <span>Ctrl+Return</span>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Ctrl+Return</span>
                </p>
                <p class="back-menu">
                   <a href="#menu-function-newline">←</a>
@@ -3267,7 +3299,7 @@ C-3</pre>
                <p class="resume">
 				Ajoute un point virgule en fin de ligne puis utilise <a class="ref-function" href="#function-newline">newline</a>.
 			</p>
-               <p class="action-key">Cette commande est disponible par le racourci: <span>Ctrl+Shift+Return</span>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Ctrl+Shift+Return</span>
                </p>
                <p class="back-menu">
                   <a href="#menu-function-newlineOfCCode">←</a>
@@ -3434,7 +3466,7 @@ C-3</pre>
                <p class="resume">
 				Le curseur est déplacé vers la gauche puis <a class="ref-function" href="#function-swapCharacter">swapCharacter</a> est utilisé.
 			</p>
-               <p class="action-key">Cette commande est disponible par le racourci: <span>Ctrl+Shift+Alt+T</span>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Ctrl+Shift+Alt+T</span>
                </p>
                <p class="back-menu">
                   <a href="#menu-function-preventSwapCharacter">←</a>
@@ -4744,7 +4776,7 @@ example</pre>
                <p class="resume">
 				Va à la ligne en y ajoutant les caractères non alpanumérique de la ligne de départ.
 			</p>
-               <p class="action-key">Cette commande est disponible par le racourci: <span>Ctrl+Alt+Return</span>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Ctrl+Alt+Return</span>
                </p>
                <p class="back-menu">
                   <a href="#menu-function-smartNewline">←</a>
@@ -4756,7 +4788,7 @@ example</pre>
                <p class="resume">
 				Ajoute un point virgule en fin de ligne puis utilise <a class="ref-function" href="#function-smartNewline">smartNewline</a>.
 			</p>
-               <p class="action-key">Cette commande est disponible par le racourci: <span>Ctrl+Shift+Alt+Return</span>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Ctrl+Shift+Alt+Return</span>
                </p>
                <p class="back-menu">
                   <a href="#menu-function-smartNewlineOfCCode">←</a>
@@ -4952,7 +4984,7 @@ example</pre>
                <p class="resume">
 				Ceci est une amélioration de la transposition de caractères présent par défaut. Si le curseur ce trouve en fin de ligne il intervertit les 2 derniers caractères de cette ligne. S'il ce trouve au début d'une ligne, la première lettre monte à la fin de la précédente. Et enfin, si le curseur est au début du document les 2 premiers caractère sont intervertits.
 			</p>
-               <p class="action-key">Cette commande est disponible par le racourci: <span>Ctrl+Alt+T</span>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Ctrl+Alt+T</span>
                </p>
                <p class="back-menu">
                   <a href="#menu-function-swapCharacter">←</a>
@@ -4992,7 +5024,7 @@ example</pre>
                <p class="resume">
 				Si aucun paramètre n'est passé transforme la sélection ou le texte en tag.
 			</p>
-               <p class="action-key">Cette commande est disponible par le racourci: <span>Ctrl+Alt+N</span>
+               <p class="action-key">Cette commande est disponible par le raccourci: <span>Ctrl+Alt+N</span>
                </p>
                <p class="back-menu">
                   <a href="#menu-function-tag">←</a>

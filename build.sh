@@ -20,7 +20,7 @@ fi
 typeset -i revision=$(cat "$p"/revision.txt 2> /dev/null)
 echo $(( ++revision )) > "$p"/revision.txt
 
-{ echo '/* kate-script
+echo '/* kate-script
  * author: Jonathan Poelen <jonathan.poelen@gmail.com>
  * license: LGPL
  * revision: '$revision'
@@ -30,14 +30,17 @@ echo $(( ++revision )) > "$p"/revision.txt
  */
 require("range.js")
 
-' ;\
- cd "$p"/libraries ;\
- grep -vh '^require' $libs ;\
- cd - > /dev/null ;\
- sed '/^\/\*/d;/^ \*/d;/^require/d;/^function action/,/^}/d;/^function help/,/^}/d' "$@" ;\
- echo 'function help(cmd){' ;\
- sed '/^function help/,/^}/!d;/^function/d;/^}/d;/^{/d' "$@" ;\
- echo '} function action(cmd){' ;\
- sed '/^function action/,/^}/!d;/^function/d;/^}/d;/^{/d' "$@" ;\
- echo '}' ;\
-} > "$p"/pwaipwai-utils.js
+' ;
+if [ ! -z "$libs" ] ; then
+  cd "$p"/libraries ;
+  grep -vh '^require' $libs ;
+  cd - > /dev/null ;
+fi
+sed '/^\/\*/d;/^ \*/d;/^require/d;/^function action/,/^}/d;/^function help/,/^}/d' "$@" ;
+echo 'function help(cmd){' ;
+sed '/^function help/,/^}/!d;/^function/d;/^}/d;/^{/d' "$@" ;
+echo '}
+
+function action(cmd){' ;
+sed '/^function action/,/^}/!d;/^function/d;/^}/d;/^{/d' "$@" ;
+echo '}' ;

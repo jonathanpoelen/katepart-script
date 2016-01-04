@@ -158,7 +158,7 @@
 		<h1><xsl:value-of select="@name"/></h1>
 		<p class="resume"><xsl:apply-templates select="resume"/></p>
 		<xsl:if test="@action-key">
-			<p class="action-key">Cette commande est disponible par le racourci: <span><xsl:value-of select="@action-key"/></span></p>
+			<p class="action-key">Cette commande est disponible par le raccourci: <span><xsl:value-of select="@action-key"/></span></p>
 		</xsl:if>
 		<p class="back-menu"><a href="#menu-function-{@name}">←</a><a href="#top">↑</a></p>
 		<xsl:if test="params">

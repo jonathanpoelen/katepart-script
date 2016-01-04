@@ -2,6 +2,12 @@
 <?xml-stylesheet type="text/xsl" href="functions-descriptions.xsl"?>
 <root>
 	<functions type="function">
+		<function name="jumpParagraphDown" action-key="Alt+Shift+PgDown">
+			<resume>Déplace le curseur sur le prochain paragraphe de texte.</resume>
+		</function>
+		<function name="jumpParagraphUp" action-key="Alt+Shift+PgUp">
+			<resume>Déplace le curseur sur le précédent paragraphe de texte.</resume>
+		</function>
 		<!--<function name="left">
 			<resume>
 				Utilise un algorithme qui modifie le traitement du curseur de façon à ce qu'il y est toujours le même nombre de caractère à droite. Ne fonctionne qu'avec ceertainne commande comme : detach, insert, insertx, rmNCharacter, nreplace

@@ -22,8 +22,7 @@ Or merge commands into one file with `build5.sh`:
 
 ```sh
 cd commands
-../build5.sh *.js
-cp ../pwaipwai-utils-ks5.js $XDG_DATA_HOME/katepart5/script/commands/
+../build5.sh *.js > "$XDG_DATA_HOME"/katepart5/script/commands/katepartscript.kfs5.js
 ```
 
 ## KDE 4:
@@ -34,11 +33,5 @@ Or merge commands into one file with `build.sh`:
 
 ```sh
 cd commands
-../build.sh *.js
-cp ../pwaipwai-utils.js $KDEHOME/.kde/share/app/katepart/script/commands
+../build.sh *.js > "$KDEHOME"/.kde/share/app/katepart/script/commands/katepartscript.kfs4.js
 ```
-
-Old version
-----------
-
-https://code.google.com/p/katepart-script/source/browse/#svn%2Ftrunk%2Ftag-1.0
