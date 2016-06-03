@@ -27,7 +27,7 @@ cd commands
 
 ## KDE 4:
 
-Copy the files inside `libraries/` in `$KDEHOME/.kde/share/app/katepart/script/libraries` and `commands/` in `$KDEHOME/.kde/share/app/katepart/script/commands`
+Copy the files inside `libraries/` in `$KDEHOME/.kde/share/apps/katepart/script/libraries` and `commands/` in `$KDEHOME/.kde/share/apps/katepart/script/commands`
 
 Or merge commands into one file with `build.sh`:
 
