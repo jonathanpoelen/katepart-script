@@ -8,7 +8,7 @@
  */
 
 /**
- * Move cursor to next/previous text or blank paragraph
+ * Move cursor to next/previous text paragraph
  */
 
 require ("range.js");
@@ -18,16 +18,15 @@ function jumpParagraphDown() {
   var line = cursor.line;
   var lines = document.lines();
 
-  if (!document.firstChar(line)) {
-    line = document.nextNonEmptyLine(line);
-  }
-  else if (line < lines) {
-    ++line;
-    while (line < lines && document.firstChar(line)) {
-      ++line;
+  if (document.firstChar(line) && line < lines) {
+    while (++line < lines && document.firstChar(line)) {
     }
   }
 
+  var new_line = document.nextNonEmptyLine(line);
+  if (new_line !== -1) {
+    line = new_line;
+  }
   view.setCursorPosition(line, cursor.column);
 }
 
@@ -35,25 +34,24 @@ function jumpParagraphUp() {
   var cursor = view.cursorPosition();
   var line = cursor.line;
 
-  if (!document.firstChar(line)) {
-    line = document.prevNonEmptyLine(line);
-  }
-  else if (line > 0) {
-    --line;
-    while (line > 0 && document.firstChar(line)) {
-      --line;
+  if (document.firstChar(line) && line > 0) {
+    while (--line > 0 && document.firstChar(line)) {
     }
   }
 
+  var new_line = document.prevNonEmptyLine(line);
+  if (new_line !== -1) {
+    line = new_line;
+  }
   view.setCursorPosition(line, cursor.column);
 }
 
 function help(cmd) {
   if (cmd === 'jumpParagraphtUp') {
-    return i18n("Move cursor to previous text or blank paragraph");
+    return i18n("Move cursor to previous text paragraph");
   }
   if (cmd === 'jumpParagraphDown') {
-    return i18n("Move cursor to next text or blank paragraph");
+    return i18n("Move cursor to next text paragraph");
   }
 }
 
@@ -64,7 +62,7 @@ function action(cmd)
       icon: "",
       category: "Navigation",
       interactive: false,
-      text: i18n("Move cursor to next text or blank paragraph"),
+      text: i18n("Move cursor to next text paragraph"),
       shortcut: "Alt+Shift+PgDown"
     };
   if ('jumpParagraphUp' === cmd)
@@ -72,7 +70,7 @@ function action(cmd)
       icon: "",
       category: "Navigation",
       interactive: false,
-      text: i18n("Move cursor to previous text or blank paragraph"),
+      text: i18n("Move cursor to previous text paragraph"),
       shortcut: "Alt+Shift+PgUp"
     };
 }
