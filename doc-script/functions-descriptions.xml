@@ -1,1300 +1,1212 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <?xml-stylesheet type="text/xsl" href="functions-descriptions.xsl"?>
 <root>
-	<functions type="function">
-		<function name="jumpParagraphDown" action-key="Alt+Shift+PgDown">
-			<resume>Déplace le curseur sur le prochain paragraphe de texte.</resume>
-		</function>
-		<function name="jumpParagraphUp" action-key="Alt+Shift+PgUp">
-			<resume>Déplace le curseur sur le précédent paragraphe de texte.</resume>
-		</function>
-		<!--<function name="left">
-			<resume>
-				Utilise un algorithme qui modifie le traitement du curseur de façon à ce qu'il y est toujours le même nombre de caractère à droite. Ne fonctionne qu'avec ceertainne commande comme : detach, insert, insertx, rmNCharacter, nreplace
-			</resume>
-			<params>
-				<param name="command" type="String"/>
-				<param name="[param]" type="mixed">
-			</params>
-		</function>-->
-		<function name="line">
-			<resume>
-				Sélectionne la ligne à la position du curseur puis appel command en donnant en premier paramètre et si elle existe, la sélection de l'utilsateur.
-			</resume>
-			<params>
-				<param name="command" type="String"/>
-				<param name="[param]" type="mixed"/>
-			</params>
-		</function>
-		<function name="organizerLine">
-			<resume>
-				Ordonne les lignes dans l'ordre spécifiée.
-			</resume>
-			<params>
-				<param name="uniq" type="String" default="undefined">
-					Si uniq ce trouve dans <ref>String.yesWords</ref> alors les lignes double seront supprimer.
-				</param>
-				<param name="cols" type="String|Number">
-					Chaque colonne est séparée par une virgule. Si la colonne est de la forme "-n" alors les colonnes de 0 à n sont récupérées. Si c'est de la forme "n-" alors les colonnes de n à la dernière sont récupérées. Si c'est "-" alors toutes les colonnes sont recupérées.
-				</param>
-				<param name="…"/>
-			</params>
-		</function>
-		<function name="merge">
-			<resume>
-				Assemble 2 blocs de text.
-			</resume>
-			<params>
-				<param name="pattern" type="String" default="$1$2">
-					$1 correspond au premier bloc de texte et $2 au second.
-				</param>
-				<param name="line1" type="Number" default="pattern">
-					Si une sélection existe ce paramètre est ignoré.
-				</param>
-				<param name="line2" type="Number" default="line1">
-					Si une sélection existe ce paramètre est ignoré.
-				</param>
-				<param name="height" type="Number" default="line2|line1">
-					Si une sélection existe ce paramètre est ignoré.
-				</param>
-			</params>
-		</function>
-		<function name="mergeText">
-			<resume>
-				Modifie la ligne ou les lignes de la selection selon un pattern.
-			</resume>
-			<params>
-				<param name="pattern" type="String">
-					$1 correspond à la première ligne.
-				</param>
-				<param name="…"/>
-			</params>
-		</function>
-		<function name="mergeTextMultiLine">
-			<resume>
-				Modifie la ligne ou n lignes de la selection selon un pattern.
-			</resume>
-			<params>
-				<param name="numberLine" type="Number"/>
-				<param name="pattern" ref-function="mergeText"/>
-				<param name="…"/>
-			</params>
-                        <examples>
-                                <example>
-                                        <resume>A
+  <functions type="function">
+    <function name="jumpParagraphDown" action-key="Alt+Shift+PgDown">
+      <resume>Déplace le curseur sur le prochain paragraphe de texte.</resume>
+    </function>
+    <function name="jumpParagraphUp" action-key="Alt+Shift+PgUp">
+      <resume>Déplace le curseur sur le précédent paragraphe de texte.</resume>
+    </function>
+    <function name="line">
+      <resume>
+        Sélectionne la ligne à la position du curseur puis appel command en donnant en premier paramètre et si elle existe, la sélection de l'utilsateur.
+      </resume>
+      <params>
+        <param name="command" type="String"/>
+        <param name="[param]" type="mixed"/>
+      </params>
+    </function>
+    <function name="organizerLine">
+      <resume>
+        Ordonne les lignes dans l'ordre spécifiée.
+      </resume>
+      <params>
+        <param name="uniq" type="String" default="undefined">
+          Si uniq ce trouve dans <ref>String.yesWords</ref> alors les lignes double seront supprimer.
+        </param>
+        <param name="cols" type="String|Number">
+          Chaque colonne est séparée par une virgule. Si la colonne est de la forme "-n" alors les colonnes de 0 à n sont récupérées. Si c'est de la forme "n-" alors les colonnes de n à la dernière sont récupérées. Si c'est "-" alors toutes les colonnes sont recupérées.
+        </param>
+        <param name="…"/>
+      </params>
+    </function>
+    <function name="merge">
+      <resume>
+        Assemble 2 blocs de text.
+      </resume>
+      <params>
+        <param name="pattern" type="String" default="$1$2">
+          $1 correspond au premier bloc de texte et $2 au second.
+        </param>
+        <param name="line1" type="Number" default="pattern">
+          Si une sélection existe ce paramètre est ignoré.
+        </param>
+        <param name="line2" type="Number" default="line1">
+          Si une sélection existe ce paramètre est ignoré.
+        </param>
+        <param name="height" type="Number" default="line2|line1">
+          Si une sélection existe ce paramètre est ignoré.
+        </param>
+      </params>
+    </function>
+    <function name="mergeText">
+      <resume>
+        Modifie la ligne ou les lignes de la selection selon un pattern.
+      </resume>
+      <params>
+        <param name="pattern" type="String">
+          $1 correspond à la première ligne.
+        </param>
+        <param name="…"/>
+      </params>
+    </function>
+    <function name="mergeTextMultiLine">
+      <resume>
+        Modifie la ligne ou n lignes de la selection selon un pattern.
+      </resume>
+      <params>
+        <param name="numberLine" type="Number"/>
+        <param name="pattern" ref-function="mergeText"/>
+        <param name="…"/>
+      </params>
+      <examples>
+        <example>
+          <resume>A
 1
 B
 2
 C
 3</resume>
-                                        <code>mergeTextMultiLine 2 '$1-$2'</code>
-                                        <result>A-1
+          <code>mergeTextMultiLine 2 '$1-$2'</code>
+          <result>A-1
 B-2
 C-3</result>
-                                </example>
-                        </examples>
-		</function>
-		<function name="set-string-or-regex">
-			<resume>
-				Définit le type des paramètres de type String|RegExp. Par défaut String.
-			</resume>
-			<params>
-				<param name="c" type="char" default="undefined">
-					Si c = 's' alors définit des String, sinon si c = 'r' définit des RegExp sinon définit une fonction qui transforme en RegExp si la chaîne est valide.
-				</param>
-			</params>
-		</function>
-		<function name="set-regex-or-string">
-			<resume>
-				Définit le type des paramètres de type String|RegExp. Par défaut RegExp.
-			</resume>
-			<params ref-function="set-string-or-regex" />
-		</function>
-		<function name="newline" action-key="Ctrl+Return">
-			<resume>
-				Va à la ligne en y ajoutant le nombre d'espace blanc de la ligne de départ.
-			</resume>
-			<params>
-				<param name="up" type="Boolean" default="0">Si vrai, crée la ligne au-dessus de celle courante.</param>
-				<param name="noKeepBlank" type="Boolean" default="0">Si vrai, crée une ligne vide.
+        </example>
+      </examples>
+    </function>
+    <function name="set-string-or-regex">
+      <resume>
+        Définit le type des paramètres de type String|RegExp. Par défaut String.
+      </resume>
+      <params>
+        <param name="c" type="char" default="undefined">
+          Si c = 's' alors définit des String, sinon si c = 'r' définit des RegExp sinon définit une fonction qui transforme en RegExp si la chaîne est valide.
         </param>
-			</params>
-		</function>
-		<function name="newlineOfCCode" action-key="Ctrl+Shift+Return">
-			<resume>
-				Ajoute un point virgule en fin de ligne puis utilise <ref>newline</ref>.
-			</resume>
-		</function>
-		<function name="smartNewline" action-key="Ctrl+Alt+Return">
-			<resume>
-				Va à la ligne en y ajoutant les caractères non alpanumérique de la ligne de départ.
-			</resume>
-		</function>
-		<function name="smartNewlineOfCCode" action-key="Ctrl+Shift+Alt+Return">
-			<resume>
-				Ajoute un point virgule en fin de ligne puis utilise <ref>smartNewline</ref>.
-			</resume>
-		</function>
-		<function name="random">
-			<resume>
-				Affiche au hasart un chiffre comprit entre min et max.
-			</resume>
-			<params>
-				<param name="min" type="Number" default="0"/>
-				<param name="max" type="Number" default="99"/>
-				<param name="fixed" type="Number" default="0">
-					Nombre de signe significatif après la virgule
-				</param>
-			</params>
-		</function>
-		<function name="set-call-interpret-string">
-			<resume>
-				Définit si les chaînes de caractères passées en paramètres dans les fonctions doivent être interprétées.
-			</resume>
-			<params>
-				<param type="Boolean"/>
-			</params>
-			<examples>
-				<example>
-					<code>insertText 'un\nexemple'</code>
-					<result>un
+      </params>
+    </function>
+    <function name="set-regex-or-string">
+      <resume>
+        Définit le type des paramètres de type String|RegExp. Par défaut RegExp.
+      </resume>
+      <params ref-function="set-string-or-regex" />
+    </function>
+    <function name="newline" action-key="Ctrl+Return">
+      <resume>
+        Va à la ligne en y ajoutant le nombre d'espace blanc de la ligne de départ.
+      </resume>
+      <params>
+        <param name="up" type="Boolean" default="0">Si vrai, crée la ligne au-dessus de celle courante.</param>
+        <param name="noKeepBlank" type="Boolean" default="0">Si vrai, crée une ligne vide.
+        </param>
+      </params>
+    </function>
+    <function name="newlineOfCCode" action-key="Ctrl+Shift+Return">
+      <resume>
+        Ajoute un point virgule en fin de ligne puis utilise <ref>newline</ref>.
+      </resume>
+    </function>
+    <function name="smartNewline" action-key="Ctrl+Alt+Return">
+      <resume>
+        Va à la ligne en y ajoutant les caractères non alpanumérique de la ligne de départ.
+      </resume>
+    </function>
+    <function name="smartNewlineOfCCode" action-key="Ctrl+Shift+Alt+Return">
+      <resume>
+        Ajoute un point virgule en fin de ligne puis utilise <ref>smartNewline</ref>.
+      </resume>
+    </function>
+    <function name="random">
+      <resume>
+        Affiche au hasart un chiffre comprit entre min et max.
+      </resume>
+      <params>
+        <param name="min" type="Number" default="0"/>
+        <param name="max" type="Number" default="99"/>
+        <param name="fixed" type="Number" default="0">
+          Nombre de signe significatif après la virgule
+        </param>
+      </params>
+    </function>
+    <function name="set-call-interpret-string">
+      <resume>
+        Définit si les chaînes de caractères passées en paramètres dans les fonctions doivent être interprétées.
+      </resume>
+      <params>
+        <param type="Boolean"/>
+      </params>
+      <examples>
+        <example>
+          <code>insertText 'un\nexemple'</code>
+          <result>un
 example</result>
-				</example>
-				<example>
-					<code>insertText "un\nexemple"</code>
-					<result>un
+        </example>
+        <example>
+          <code>insertText "un\nexemple"</code>
+          <result>un
 example</result>
-				</example>
-				<example>
-					<code>insertText un\nexemple</code>
-					<result>unexample</result>
-				</example>
-				<example>
-					<code>insertText un\\nexemple</code>
-					<result>un
+        </example>
+        <example>
+          <code>insertText un\nexemple</code>
+          <result>unexample</result>
+        </example>
+        <example>
+          <code>insertText un\\nexemple</code>
+          <result>un
 example</result>
-				</example>
-			</examples>
-		</function>
-		<function name="select">
-			<resume>
-				Sélectionne le texte entre begin et end compris.
-			</resume>
-			<params>
-				<param name="begin" type="String"/>
-				<param name="end" type="String"/>
-				<param name="exclude" type="Boolean" default="false">
-					Si true le texte représenté par begin et end ne sera pas sélectionné.
-				</param>
-				<param name="continueIsNotFind" type="Boolean" default="false">
-					Si begin ou end n'est pas trouvé et que continueIsNotFind est à faux, alors rien ne se passe.
-				</param>
-			</params>
-		</function>
-		<function name="between">
-			<resume>
-				Sélectionne le texte se situant entre 2 chaînes.
-			</resume>
-			<params>
-				<param name="s" type="String"/>
-				<param name="exclude" type="Boolean" default="true">
-					Si false le texte entre s sera sélectionné.
-				</param>
-				<param name="continueIsNotFind" ref-function="select"/>
-			</params>
-		</function>
-		<function name="betweenWrap">
-			<resume>
-				Sélectionne le texte se situant entre 2 chaînes en remplaçant les caractères [](){}&lt;> de la seconde chaîne par ][)(}{>&lt;.
-			</resume>
-			<params ref-function="between"/>
-		</function>
-		<function name="rewindSelection">
-			<resume>
-				Met le curseur au début de la sélection et annule celle-ci.
-			</resume>
-		</function>
-		<function name="rmLinesWithOnly">
-			<resume>
-				Supprime les lignes de la sélection ou de l'ensemble du document qui comporte tous les caractères d'un des arguments
-			</resume>
-			<params>
-				<param name="toFind" type="String" default="''">
-					Si une chaîne vide alors supprime les lignes vides.
-				</param>
-				<param name="…"/>
-			</params>
-		</function>
-		<function name="rmText">
-			<resume>
-				Supprime des fragments de chaîne soit de la sélection soit directement autour du curseur.
-			</resume>
-			<params>
-				<param name="text" type="String" default="' '"/>
-				<param name="…"/>
-			</params>
-		</function>
-		<function name="rmTextOf">
-			<resume>
-				Identique à <ref>rmText</ref> mais les fragments de texte sont les caractères.
-			</resume>
-			<params>
-				<param name="text" type="String" default="' \t\v'"/>
-				<param name="…">
-					Si plusieurs paramètres sont présents, le caractère espace est ajouté.
-				</param>
-			</params>
-		</function>
-		<function name="rmNCharacter">
-			<resume>
-				Supprime n caractères à gauche si négatif ou n caractères à droite si positif.
-			</resume>
-			<params>
-				<param name="n" type="Number"/>
-				<param name="stepper" type="Stepper" default="'1'">
-					L'option f permet de forcer la suppression sur les lignes suivantes.
-				</param>
-				<param name="…">
-					Si le nX ne possède pas de stepper alors ce dernier est égal à argument[argument.length-2] || '1'.
-				</param>
-			</params>
-		</function>
-		<function name="rmNCharacterLeft">
-			<resume>
-				Identique à <ref>rmNCharacter</ref> mais le nombre de caractères à droite reste identique.
-			</resume>
-			<params ref-function="rmNCharacter"/>
-		</function>
-		<!--<function name="rmNCharacterForLine">
-			<resume>
-				Utilise <ref>rmNCharacter</ref> en indiquant la taille de sélection comme nombre de ligne.
-			</resume>
-			<params>
-				<param name="n" type="Number"/>
-				<param name="…"/>
-			</params>
-		</function>
-		<function name="rmNCharacterLeftForLine">
-			<resume>
-				Utilise <ref>rmNCharacterLeft</ref> en indiquant la taille de sélection comme nombre de ligne.
-			</resume>
-			<params ref-function="rmNCharacterForLine"/>
-		</function>-->
-		<function name="nreplace">
-			<resume>
-				Utilise <ref>rmNCharacter</ref> puis <ref>insert</ref>.
-			</resume>
-			<params>
-				<param name="n" ref-function="rmNCharacter">
-					Paramètre passé à <ref>rmNCharacter</ref>.
-				</param>
-				<param name="str" ref-function="insert">
-					Paramètre passé à <ref>insert</ref>.
-				</param>
-				<param name="line" type="Stepper">
-					Paramètre passé à <ref>rmNCharacter</ref> puis <ref>insert</ref>.
-				</param>
-				<param name="…"/>
-			</params>
-		</function>
-		<function name="nreplaceLeft">
-			<resume>
-				Identique à <ref>nreplace</ref> mais le nombre de caractères à droite reste identique.
-			</resume>
-			<params ref-function="nreplace"/>
-		</function>
-		<function name="uniq2">
-			<resume>
-				Supprime les lignes identiques de la sélection ou de l'ensemble du document
-			</resume>
-			<params>
-				<param name="last" type="Boolean" default="false">
-					Si vrai alors la recherhe commence à la ligne de fin.
-				</param>
-			</params>
-		</function>
-		<function name="swapCharacter" action-key="Ctrl+Alt+T">
-			<resume>
-				Ceci est une amélioration de la transposition de caractères présent par défaut. Si le curseur ce trouve en fin de ligne il intervertit les 2 derniers caractères de cette ligne. S'il ce trouve au début d'une ligne, la première lettre monte à la fin de la précédente. Et enfin, si le curseur est au début du document les 2 premiers caractère sont intervertits.
-			</resume>
-		</function>
-		<function name="preventSwapCharacter" action-key="Ctrl+Shift+Alt+T">
-			<resume>
-				Le curseur est déplacé vers la gauche puis <ref>swapCharacter</ref> est utilisé.
-			</resume>
-		</function>
-		<function name="set-default-delimiter-swap">
-			<resume>
-				Délimiteur par défaut de <ref>swap</ref> si aucun n'est passé en paramètre.
-			</resume>
-			<params>
-				<param name="delimiter" type="String" default="''"/>
-			</params>
-		</function>
-		<function name="set-pattern-smart-swap">
-			<resume>
-				Pattern par défaut de <ref>smartSwap</ref> si aucun n'est passé en paramètre.
-			</resume>
-			<params>
-				<param name="pattern" type="String" default="''"/>
-			</params>
-		</function>
-		<function name="swap">
-			<resume>
-				Intervertit les 2 fragments de chaînes recupérés dans le texte sélectionné ou dans la ligne.
-			</resume>
-			<params>
-				<param name="delimiter" type="String" default="''">
-					Définit la césure de la chaîne. Si la chaîne est vide la césure se fait au niveau du curseur.
-				</param>
-				<param name="ignoreBackslash" type="0|1|2" default="1">
-					Si 1, les espaces au bord de la chaîne sont ignorés. Si 2 les espaces au bord des fragments de chaînes sont ignorés.
-				</param>
-				<param name="position" type="Number" default="1">
-					Si la chaîne n'est pas vide, correspond à la position du délimiteur.
-				</param>
-			</params>
-			<examples>
-				<example>
-					<resume>a = b</resume>
-					<code>swap ' = '</code>
-					<result>b = a</result>
-				</example>
-				<example>
-					<resume>a = b = c</resume>
-					<code>swap = 2</code>
-					<result>b = c = a</result>
-				</example>
-				<example>
-					<resume>a = b = c</resume>
-					<code>swap = 2 -1</code>
-					<result>c = a = b</result>
-				</example>
-			</examples>
-		</function>
-		<function name="smartSwap">
-			<resume>
-				Intervertit 2 fragments de chaînes recupérés via un pattern.
-			</resume>
-			<params>
-				<param name="pattern" type="String" default=""/>
-			</params>
-		</function>
-		<function name="swapLine">
-			<resume>
-				Intervertit 2 lignes.
-			</resume>
-			<params>
-				<param name="l1" type="cursor" default="view.cursorPosition().line"/>
-				<param name="l2" type="cursor" default="l1"/>
-			</params>
-		</function>
-		<function name="count">
-			<resume>
-				Compte le nombre de caractères, de lignes, de mots ou de mots longs et l'écrit au niveau du curseur.
-			</resume>
-			<params>
-				<param name="opt" type="String" default="'c'">
-					c pour caractère ; l pour ligne ; w pour mot ; W pout mot long ; i pour interpréter text.
-				</param>
-				<param name="text" type="undefined|String">
-					Le texte où executer le compteur. Si non spécifiée la sélection ou la ligne sera prise.
-				</param>
-			</params>
-		</function>
-		<function name="countChar">
-			<resume>
-				Compte le nombre de caractères et l'écrit à la position du curseur.
-			</resume>
-			<params>
-				<param name="text" type="String"/>
-				<param name="opt" type="String" default="text">
-					Si opt n'est pas défini alors opt égal text et text égal le texte de la sélection ou de la ligne. Si opt comporte un i alors le texte sera interprété.
-				</param>
-			</params>
-		</function>
-		<function name="countLine">
-			<resume>
-				Compte le nombre de lignes et l'écrit à la position du curseur. Voir <ref>countChar</ref>.
-			</resume>
-			<params ref-function="countChar"/>
-		</function>
-		<function name="countWord">
-			<resume>
-				Compte le nombre de mots et l'écrit à la position du curseur. Un mot est défini par ce qui n'est pas une lettre, un chiffre et un _. Voir <ref>countChar</ref>.
-			</resume>
-			<params ref-function="countChar"/>
-		</function>
-		<function name="countLongWord">
-			<resume>
-				Compte le nombre de mots longs et l'écrit à la position du curseur. Un mot long est défini par ce qui n'est pas une lettre, un chiffre, _, - et :. Voir <ref>countChar</ref>.
-			</resume>
-			<params ref-function="countChar"/>
-		</function>
-		<function name="countRgx">
-			<resume>
-				Compte le nombre de fragments après avoir couper la chaîne avec la regex.
-			</resume>
-			<params>
-				<param name="text" type="String"/>
-				<param name="rgx" type="RegExp"/>
-				<param name="opt" type="undefined|String">
-					Si un i est dans opt, alors le texte sera interprété. Si opt est undefined alors text égal la sélection ou la ligne.
-				</param>
-			</params>
-		</function>
-		<function name="explode">
-			<resume>
-				Coupe le texte sélectionné ou la ligne en fragments et les affiche dans un ordre donné.
-			</resume>
-			<params>
-				<param name="rgx" type="String|RegExp">
-					Le texte de la sélection ou de la ligne sera coupé avec la regex.
-				</param>
-				<param name="cols" type="String|Number">
-					Voir <ref>parseColumns</ref>
-				</param>
-				<param name="…"/>
-			</params>
-			<examples>
-				<example>
-					<resume>je suis une phrase </resume>
-					<code>explode '( )' 4- 0-4</code>
-					<result>une phrase je suis </result>
-				</example>
-			</examples>
-		</function>
-		<function name="cut">
-			<resume>
-				Idem que <ref>explode</ref> mais les colonnes déjà utilisées sont ignorées.
-			</resume>
-			<params ref-function="explode"/>
-			<examples>
-				<example>
-					<resume>je suis une phrase </resume>
-					<code>cut '( )' 4- 0-4 1 2</code>
-					<result>une phrase je suis </result>
-				</example>
-			</examples>
-		</function>
-		<function name="surround">
-			<resume>
-				Entoure le texte de la sélection ou de la ligne avec les chaînes passées en paramètres en remplaçant les caractères [](){}&lt;> par ][)(}{>&lt;.
-			</resume>
-			<params>
-				<param name="text" type="String"/>
-				<param name="…"/>
-			</params>
-			<examples>
-				<example>
-					<resume>plop</resume>
-					<code>surround a</code>
-					<result>aplopa</result>
-				</example>
-				<example>
-					<resume>plop</resume>
-					<code>surround a b c</code>
-					<result>a b cplopa b c</result>
-				</example>
-			</examples>
-		</function>
-		<!--<function name="wrapLine">
-			<resume>
-				Effectue <ref>wrap</ref> sur chaque ligne de la sélection.
-			</resume>
-			<params ref-function="wrap"/>
-			<examples>
-				<example>
-					<resume>plop
+        </example>
+      </examples>
+    </function>
+    <function name="select">
+      <resume>
+        Sélectionne le texte entre begin et end compris.
+      </resume>
+      <params>
+        <param name="begin" type="String"/>
+        <param name="end" type="String"/>
+        <param name="exclude" type="Boolean" default="false">
+          Si true le texte représenté par begin et end ne sera pas sélectionné.
+        </param>
+        <param name="continueIsNotFind" type="Boolean" default="false">
+          Si begin ou end n'est pas trouvé et que continueIsNotFind est à faux, alors rien ne se passe.
+        </param>
+      </params>
+    </function>
+    <function name="between">
+      <resume>
+        Sélectionne le texte se situant entre 2 chaînes.
+      </resume>
+      <params>
+        <param name="s" type="String"/>
+        <param name="exclude" type="Boolean" default="true">
+          Si false le texte entre s sera sélectionné.
+        </param>
+        <param name="continueIsNotFind" ref-function="select"/>
+      </params>
+    </function>
+    <function name="betweenWrap">
+      <resume>
+        Sélectionne le texte se situant entre 2 chaînes en remplaçant les caractères [](){}&lt;> de la seconde chaîne par ][)(}{>&lt;.
+      </resume>
+      <params ref-function="between"/>
+    </function>
+    <function name="rewindSelection">
+      <resume>
+        Met le curseur au début de la sélection et annule celle-ci.
+      </resume>
+    </function>
+    <function name="rmLinesWithOnly">
+      <resume>
+        Supprime les lignes de la sélection ou de l'ensemble du document qui comporte tous les caractères d'un des arguments
+      </resume>
+      <params>
+        <param name="toFind" type="String" default="''">
+          Si une chaîne vide alors supprime les lignes vides.
+        </param>
+        <param name="…"/>
+      </params>
+    </function>
+    <function name="rmText">
+      <resume>
+        Supprime des fragments de chaîne soit de la sélection soit directement autour du curseur.
+      </resume>
+      <params>
+        <param name="text" type="String" default="' '"/>
+        <param name="…"/>
+      </params>
+    </function>
+    <function name="rmTextOf">
+      <resume>
+        Identique à <ref>rmText</ref> mais les fragments de texte sont les caractères.
+      </resume>
+      <params>
+        <param name="text" type="String" default="' \t\v'"/>
+        <param name="…">
+          Si plusieurs paramètres sont présents, le caractère espace est ajouté.
+        </param>
+      </params>
+    </function>
+    <function name="rmNCharacter">
+      <resume>
+        Supprime n caractères à gauche si négatif ou n caractères à droite si positif.
+      </resume>
+      <params>
+        <param name="n" type="Number"/>
+        <param name="stepper" type="Stepper" default="'1'">
+          L'option f permet de forcer la suppression sur les lignes suivantes.
+        </param>
+        <param name="…">
+          Si le nX ne possède pas de stepper alors ce dernier est égal à argument[argument.length-2] || '1'.
+        </param>
+      </params>
+    </function>
+    <function name="rmNCharacterLeft">
+      <resume>
+        Identique à <ref>rmNCharacter</ref> mais le nombre de caractères à droite reste identique.
+      </resume>
+      <params ref-function="rmNCharacter"/>
+    </function>
+    <function name="nreplace">
+      <resume>
+        Utilise <ref>rmNCharacter</ref> puis <ref>insert</ref>.
+      </resume>
+      <params>
+        <param name="n" ref-function="rmNCharacter">
+          Paramètre passé à <ref>rmNCharacter</ref>.
+        </param>
+        <param name="str" ref-function="insert">
+          Paramètre passé à <ref>insert</ref>.
+        </param>
+        <param name="line" type="Stepper">
+          Paramètre passé à <ref>rmNCharacter</ref> puis <ref>insert</ref>.
+        </param>
+        <param name="…"/>
+      </params>
+    </function>
+    <function name="nreplaceLeft">
+      <resume>
+        Identique à <ref>nreplace</ref> mais le nombre de caractères à droite reste identique.
+      </resume>
+      <params ref-function="nreplace"/>
+    </function>
+    <function name="uniq2">
+      <resume>
+        Supprime les lignes identiques de la sélection ou de l'ensemble du document
+      </resume>
+      <params>
+        <param name="last" type="Boolean" default="false">
+          Si vrai alors la recherhe commence à la ligne de fin.
+        </param>
+      </params>
+    </function>
+    <function name="swapCharacter" action-key="Ctrl+Alt+T">
+      <resume>
+        Ceci est une amélioration de la transposition de caractères présent par défaut. Si le curseur ce trouve en fin de ligne il intervertit les 2 derniers caractères de cette ligne. S'il ce trouve au début d'une ligne, la première lettre monte à la fin de la précédente. Et enfin, si le curseur est au début du document les 2 premiers caractère sont intervertits.
+      </resume>
+    </function>
+    <function name="preventSwapCharacter" action-key="Ctrl+Shift+Alt+T">
+      <resume>
+        Le curseur est déplacé vers la gauche puis <ref>swapCharacter</ref> est utilisé.
+      </resume>
+    </function>
+    <function name="set-default-delimiter-swap">
+      <resume>
+        Délimiteur par défaut de <ref>swap</ref> si aucun n'est passé en paramètre.
+      </resume>
+      <params>
+        <param name="delimiter" type="String" default="''"/>
+      </params>
+    </function>
+    <function name="set-pattern-smart-swap">
+      <resume>
+        Pattern par défaut de <ref>smartSwap</ref> si aucun n'est passé en paramètre.
+      </resume>
+      <params>
+        <param name="pattern" type="String" default="''"/>
+      </params>
+    </function>
+    <function name="swap">
+      <resume>
+        Intervertit les 2 fragments de chaînes recupérés dans le texte sélectionné ou dans la ligne.
+      </resume>
+      <params>
+        <param name="delimiter" type="String" default="''">
+          Définit la césure de la chaîne. Si la chaîne est vide la césure se fait au niveau du curseur.
+        </param>
+        <param name="ignoreBackslash" type="0|1|2" default="1">
+          Si 1, les espaces au bord de la chaîne sont ignorés. Si 2 les espaces au bord des fragments de chaînes sont ignorés.
+        </param>
+        <param name="position" type="Number" default="1">
+          Si la chaîne n'est pas vide, correspond à la position du délimiteur.
+        </param>
+      </params>
+      <examples>
+        <example>
+          <resume>a = b</resume>
+          <code>swap ' = '</code>
+          <result>b = a</result>
+        </example>
+        <example>
+          <resume>a = b = c</resume>
+          <code>swap = 2</code>
+          <result>b = c = a</result>
+        </example>
+        <example>
+          <resume>a = b = c</resume>
+          <code>swap = 2 -1</code>
+          <result>c = a = b</result>
+        </example>
+      </examples>
+    </function>
+    <function name="smartSwap">
+      <resume>
+        Intervertit 2 fragments de chaînes recupérés via un pattern.
+      </resume>
+      <params>
+        <param name="pattern" type="String" default=""/>
+      </params>
+    </function>
+    <function name="swapLine">
+      <resume>
+        Intervertit 2 lignes.
+      </resume>
+      <params>
+        <param name="l1" type="cursor" default="view.cursorPosition().line"/>
+        <param name="l2" type="cursor" default="l1"/>
+      </params>
+    </function>
+    <function name="count">
+      <resume>
+        Compte le nombre de caractères, de lignes, de mots ou de mots longs et l'écrit au niveau du curseur.
+      </resume>
+      <params>
+        <param name="opt" type="String" default="'c'">
+          c pour caractère ; l pour ligne ; w pour mot ; W pout mot long ; i pour interpréter text.
+        </param>
+        <param name="text" type="undefined|String">
+          Le texte où executer le compteur. Si non spécifiée la sélection ou la ligne sera prise.
+        </param>
+      </params>
+    </function>
+    <function name="countChar">
+      <resume>
+        Compte le nombre de caractères et l'écrit à la position du curseur.
+      </resume>
+      <params>
+        <param name="text" type="String"/>
+        <param name="opt" type="String" default="text">
+          Si opt n'est pas défini alors opt égal text et text égal le texte de la sélection ou de la ligne. Si opt comporte un i alors le texte sera interprété.
+        </param>
+      </params>
+    </function>
+    <function name="countLine">
+      <resume>
+        Compte le nombre de lignes et l'écrit à la position du curseur. Voir <ref>countChar</ref>.
+      </resume>
+      <params ref-function="countChar"/>
+    </function>
+    <function name="countWord">
+      <resume>
+        Compte le nombre de mots et l'écrit à la position du curseur. Un mot est défini par ce qui n'est pas une lettre, un chiffre et un _. Voir <ref>countChar</ref>.
+      </resume>
+      <params ref-function="countChar"/>
+    </function>
+    <function name="countLongWord">
+      <resume>
+        Compte le nombre de mots longs et l'écrit à la position du curseur. Un mot long est défini par ce qui n'est pas une lettre, un chiffre, _, - et :. Voir <ref>countChar</ref>.
+      </resume>
+      <params ref-function="countChar"/>
+    </function>
+    <function name="countRgx">
+      <resume>
+        Compte le nombre de fragments après avoir couper la chaîne avec la regex.
+      </resume>
+      <params>
+        <param name="text" type="String"/>
+        <param name="rgx" type="RegExp"/>
+        <param name="opt" type="undefined|String">
+          Si un i est dans opt, alors le texte sera interprété. Si opt est undefined alors text égal la sélection ou la ligne.
+        </param>
+      </params>
+    </function>
+    <function name="explode">
+      <resume>
+        Coupe le texte sélectionné ou la ligne en fragments et les affiche dans un ordre donné.
+      </resume>
+      <params>
+        <param name="rgx" type="String|RegExp">
+          Le texte de la sélection ou de la ligne sera coupé avec la regex.
+        </param>
+        <param name="cols" type="String|Number">
+          Voir <ref>parseColumns</ref>
+        </param>
+        <param name="…"/>
+      </params>
+      <examples>
+        <example>
+          <resume>je suis une phrase </resume>
+          <code>explode '( )' 4- 0-4</code>
+          <result>une phrase je suis </result>
+        </example>
+      </examples>
+    </function>
+    <function name="cut">
+      <resume>
+        Idem que <ref>explode</ref> mais les colonnes déjà utilisées sont ignorées.
+      </resume>
+      <params ref-function="explode"/>
+      <examples>
+        <example>
+          <resume>je suis une phrase </resume>
+          <code>cut '( )' 4- 0-4 1 2</code>
+          <result>une phrase je suis </result>
+        </example>
+      </examples>
+    </function>
+    <function name="surround">
+      <resume>
+        Entoure le texte de la sélection ou de la ligne avec les chaînes passées en paramètres en remplaçant les caractères [](){}&lt;> par ][)(}{>&lt;.
+      </resume>
+      <params>
+        <param name="text" type="String"/>
+        <param name="…"/>
+      </params>
+      <examples>
+        <example>
+          <resume>plop</resume>
+          <code>surround a</code>
+          <result>aplopa</result>
+        </example>
+        <example>
+          <resume>plop</resume>
+          <code>surround a b c</code>
+          <result>a b cplopa b c</result>
+        </example>
+      </examples>
+    </function>
+    <function name="unsurround">
+      <resume>
+        Supprime le texte qui entoure la sélection ou la ligne qui est identique au chaînes passées en paramètres (inverse de <ref>surround</ref>).
+      </resume>
+      <params ref-function="surround"/>
+    </function>
+    <function name="surround2">
+      <resume>
+        Entoure le texte de la sélection ou de la ligne avec les chaînes passées en paramètres.
+      </resume>
+      <params ref-function="surround"/>
+    </function>
+    <function name="unsurround2">
+      <resume>
+        Supprime le texte qui entoure la sélection ou la ligne qui est identique au chaînes passées en paramètres (inverse de <ref>surround2</ref>).
+      </resume>
+      <params ref-function="surround"/>
+    </function>
+    <function name="rsurround">
+      <resume>
+        Identique à <ref>surround</ref> mais inverse l'ordre des caractères de la seconde chaîne.
+      </resume>
+      <params ref-function="surround"/>
+    </function>
+    <function name="unrsurround">
+      <resume>
+        Supprime le texte qui entoure la sélection ou la ligne qui est identique au chaînes passées en paramètres (inverse de <ref>rsurround</ref>).
+      </resume>
+      <params ref-function="surround"/>
+    </function>
+    <!--<function name="unrwrapLine">
+      <resume>
+        Effectue <ref>unrwrap</ref> sur chaque ligne de la sélection.
+      </resume>
+      <params ref-function="wrap"/>
+    </function>-->
+    <function name="set-surround-ignore-whitespace">
+      <resume>
+        Permet au foncition <ref>outer</ref>, <ref>surround</ref>, <ref>rsurround</ref>, <ref>surround2</ref>, <ref>rsurround2</ref>, <ref>unouter</ref>, <ref>unsurround</ref>, <ref>unrsurround</ref>, <ref>unsurround2</ref> et <ref>unrsurround2</ref> de ne pas prendre en compte les espaces blancs aux extrémité de la ligne lorsqu'il n'y a pas de sélection.
+      </resume>
+      <params>
+        <param name="ignore" type="Boolean"/>
+      </params>
+    </function>
+    <function name="outer">
+      <resume>
+        Met le texte de la ligne ou de la sélection au milieu des chaînes passées en paramètres.
+      </resume>
+      <params ref-function="surround"/>
+      <examples>
+        <example>
+          <resume>plop</resume>
+          <code>outer a</code>
+          <result>aplop</result>
+        </example>
+        <example>
+          <resume>plop</resume>
+          <code>outer [ ]</code>
+          <result>[plop]</result>
+        </example>
+      </examples>
+    </function>
+    <!--<function name="outerLine">
+      <resume>
+        Effectue <ref>outer</ref> sur chaque ligne de la sélection.
+      </resume>
+      <params ref-function="wrap"/>
+      <examples>
+        <example>
+          <resume>plop
 plop</resume>
-					<code>wrapLine :</code>
-					<result>:plop:
-:plop:</result>
-				</example>
-			</examples>
-		</function>-->
-		<function name="unsurround">
-			<resume>
-				Supprime le texte qui entoure la sélection ou la ligne qui est identique au chaînes passées en paramètres (inverse de <ref>surround</ref>).
-			</resume>
-			<params ref-function="surround"/>
-		</function>
-		<function name="surround2">
-			<resume>
-				Entoure le texte de la sélection ou de la ligne avec les chaînes passées en paramètres.
-			</resume>
-			<params ref-function="surround"/>
-		</function>
-		<function name="unsurround2">
-			<resume>
-				Supprime le texte qui entoure la sélection ou la ligne qui est identique au chaînes passées en paramètres (inverse de <ref>surround2</ref>).
-			</resume>
-			<params ref-function="surround"/>
-		</function>
-		<!--<function name="unwrapLine">
-			<resume>
-				Effectue <ref>unwrap2</ref> sur chaque ligne de la sélection.
-			</resume>
-			<params ref-function="unwrap2"/>
-		</function>-->
-		<function name="rsurround">
-			<resume>
-				Identique à <ref>surround</ref> mais inverse l'ordre des caractères de la seconde chaîne.
-			</resume>
-			<params ref-function="surround"/>
-		</function>
-		<!--<function name="rwrapLine">
-			<resume>
-				Effectue <ref>rwrap</ref> sur chaque ligne de la sélection.
-			</resume>
-			<params ref-function="wrap"/>
-		</function>-->
-		<function name="unrsurround">
-			<resume>
-				Supprime le texte qui entoure la sélection ou la ligne qui est identique au chaînes passées en paramètres (inverse de <ref>rsurround</ref>).
-			</resume>
-			<params ref-function="surround"/>
-		</function>
-		<!--<function name="unrwrapLine">
-			<resume>
-				Effectue <ref>unrwrap</ref> sur chaque ligne de la sélection.
-			</resume>
-			<params ref-function="wrap"/>
-		</function>-->
-		<function name="set-surround-ignore-whitespace">
-			<resume>
-				Permet au foncition <ref>outer</ref>, <ref>surround</ref>, <ref>rsurround</ref>, <ref>surround2</ref>, <ref>rsurround2</ref>, <ref>unouter</ref>, <ref>unsurround</ref>, <ref>unrsurround</ref>, <ref>unsurround2</ref> et <ref>unrsurround2</ref> de ne pas prendre en compte les espaces blancs aux extrémité de la ligne lorsqu'il n'y a pas de sélection.
-			</resume>
-			<params>
-				<param name="ignore" type="Boolean"/>
-			</params>
-		</function>
-		<function name="outer">
-			<resume>
-				Met le texte de la ligne ou de la sélection au milieu des chaînes passées en paramètres.
-			</resume>
-			<params ref-function="surround"/>
-			<examples>
-				<example>
-					<resume>plop</resume>
-					<code>outer a</code>
-					<result>aplop</result>
-				</example>
-				<example>
-					<resume>plop</resume>
-					<code>outer [ ]</code>
-					<result>[plop]</result>
-				</example>
-			</examples>
-		</function>
-		<!--<function name="outerLine">
-			<resume>
-				Effectue <ref>outer</ref> sur chaque ligne de la sélection.
-			</resume>
-			<params ref-function="wrap"/>
-			<examples>
-				<example>
-					<resume>plop
-plop</resume>
-					<code>outerLine :</code>
-					<result>:plop
+          <code>outerLine :</code>
+          <result>:plop
 :plop</result>
-				</example>
-				<example>
-					<resume>plop
+        </example>
+        <example>
+          <resume>plop
 plop
 plop</resume>
-					<code>outerLine [ ]</code>
-					<result>[plop]
+          <code>outerLine [ ]</code>
+          <result>[plop]
 [plop]
 [plop]</result>
-				</example>
-			</examples>
-		</function>-->
-		<function name="unouter">
-			<resume>
-				Supprime le texte qui entoure la sélection ou la ligne qui est identique au chaînes passées en paramètres (inverse de <ref>outer</ref>).
-			</resume>
-			<params ref-function="outer"/>
-		</function>
-		<!--<function name="unouterLine">
-			<resume>
-				Effectue unouter sur chaque ligne de la sélection.
-			</resume>
-			<params ref-function="unouter"/>
-		</function>-->
-		<function name="align">
-			<resume>
-				Aligne les lignes du document ou du paragraphe de la sélection.
-			</resume>
-			<params>
-				<param name="split" type="String|RegExp" default="[ \t]">
-					regex pour séparer les colonnes.
-				</param>
-				<param name="delimiter" type="String" default="' '">
-					chaîne pour délimiter les colonnes.
-				</param>
-				<param name="complet" type="String" default="' '">
-					chaîne qui remplace les espaces vides.
-				</param>
-				<param name="completLast" type="Boolean" default="false">
-					Indique si la dernière colonne doit être complétée par complet.
-				</param>
-				<param name="keepSplit" type="Boolean" default="false">
-					Indique si le texte retirer par le split doit être garder. Toutefois c'est le texte du split qui est mis et non le texte véritablement enlever.
-				</param>
-			</params>
-			<examples>
-				<example>
-					<resume>150 4051 54
+        </example>
+      </examples>
+    </function>-->
+    <function name="unouter">
+      <resume>
+        Supprime le texte qui entoure la sélection ou la ligne qui est identique au chaînes passées en paramètres (inverse de <ref>outer</ref>).
+      </resume>
+      <params ref-function="outer"/>
+    </function>
+    <!--<function name="unouterLine">
+      <resume>
+        Effectue unouter sur chaque ligne de la sélection.
+      </resume>
+      <params ref-function="unouter"/>
+    </function>-->
+    <function name="align">
+      <resume>
+        Aligne les lignes du document ou du paragraphe de la sélection.
+      </resume>
+      <params>
+        <param name="split" type="String|RegExp" default="[ \t]">
+          regex pour séparer les colonnes.
+        </param>
+        <param name="delimiter" type="String" default="' '">
+          chaîne pour délimiter les colonnes.
+        </param>
+        <param name="complet" type="String" default="' '">
+          chaîne qui remplace les espaces vides.
+        </param>
+        <param name="completLast" type="Boolean" default="false">
+          Indique si la dernière colonne doit être complétée par complet.
+        </param>
+        <param name="keepSplit" type="Boolean" default="false">
+          Indique si le texte retirer par le split doit être garder. Toutefois c'est le texte du split qui est mis et non le texte véritablement enlever.
+        </param>
+      </params>
+      <examples>
+        <example>
+          <resume>150 4051 54
 15 6 8</resume>
-					<code>align ' ' |</code>
-					<result>150|4051|54
+          <code>align ' ' |</code>
+          <result>150|4051|54
 15 |6   |8 </result>
-				</example>
-			</examples>
-		</function>
-		<function name="slice">
-			<resume>
-				Coupe le texte de la sélection ou de la ligne en morceaux de taille définie par size.
-			</resume>
-			<params>
-				<param name="delimiter" type="String" default="' '">
-					chaîne qui va délimiter les morceaux
-				</param>
-				<param name="size" type="Number" default="1"/>
-				<param name="…"/>
-			</params>
-			<examples>
-				<example>
-					<resume>abcde</resume>
-					<code>slice , 1</code>
-					<result>a,b,c,d,e</result>
-				</example>
-				<example>
-					<resume>abcde</resume>
-					<code>slice "', '" 1</code>
-					<result>a', 'b', 'c', 'd', 'e</result>
-				</example>
-			</examples>
-		</function>
-		<function name="length">
-			<resume>
-				Compte le nombre de caractères passés en paramètres et l'écrit à la position du curseur. Ajoute nombre_paramètre - 1 à la taille.
-			</resume>
-			<params>
-				<param name="…" type="String"/>
-			</params>
-			<examples>
-				<example>
-					<code>length un exemple simple</code>
-					<result>17</result>
-				</example>
-			</examples>
-		</function>
-		<function name="mv">
-			<resume>
-				Bouge le texte de la sélection ou la ligne.
-			</resume>
-			<params>
-				<param name="newPos" type="cursor|Number">
-					S'il n'y a pas de sélection ou que newPos est vide ou est un nombre, alors <ref>mvLines</ref> est appelée.
-				</param>
-			</params>
-		</function>
-		<function name="mvLines">
-			<resume>
-				Bouge les lignes sélectionnées ou celle où ce trouve le curseur.
-			</resume>
-			<params ref-function="mv"/>
-		</function>
-		<function name="tr">
-			<resume>
-				Remplace ou supprime des caractères de la ligne ou de la sélection.
-			</resume>
-			<params>
-				<param name="findTo" type="String"/>
-				<param name="replaceTo" type="String" default="''"/>
-				<param name="empty" type="Boolean" default="false">
-					Si vrai les caractères de findTo n'ayant pas de correspondance dans replaceTo seront effacés. Si faux, il seront remplacés par le dernier caractère de replaceTo.
-				</param>
-			</params>
-			<examples>
-				<example>
-					<resume>20521426563644556673853594</resume>
-					<code>tr 0123456789 abcdefghij</code>
-					<result>cafcbecgfgdgeeffgghdifdfje</result>
-				</example>
-				<example>
-					<resume>a b c d</resume>
-					<code>tr ' ' \\t</code>
-					<result>a	b	c	d</result>
-				</example>
-			</examples>
-		</function>
-		<function name="sort2">
-			<resume>
-				Trie les lignes de la sélection ou l'ensemble du document.
-			</resume>
-			<params>
-				<param name="step" type="stepper|Boolean"/>
-				<param name="caseSensitive" type="Boolean" default="false">
-					Si step n'est pas du type stepper et que caseSensitive est faux, alors caseSensitive&#160;=&#160;false
-				</param>
-			</params>
-		</function>
-		<function name="rsort">
-			<resume>
-				Trie les lignes de la sélection ou l'ensemble du document par ordre inverse.
-			</resume>
-			<params ref-function="sort2"/>
-		</function>
-		<function name="natsort2">
-			<resume>
-				Trie les lignes de la sélection ou l'ensemble du document par ordre naturel.
-			</resume>
-			<params ref-function="sort2"/>
-		</function>
-		<function name="rnatsort">
-			<resume>
-				Trie les lignes de la sélection ou l'ensemble du document par ordre naturel inversé.
-			</resume>
-			<params ref-function="sort2"/>
-		</function>
-		<function name="usort">
-			<resume>
-				Trie les lignes de la sélection ou l'ensemble du document via une fontion.
-			</resume>
-			<params>
-				<param name="body" type="Strting">
-					Correspond au nom d'une fonction ou d'un corps de fonction. Si body est un corps de fonction et que return n'existe pas, il est ajouté au début. 2 paramètrte sont passé à la fonction : a et b.
-				</param>
-				<param name="step" ref-function="sort2"/>
-				<param name="caseSensitive" ref-function="sort2"/>
-			</params>
-			<examples>
-				<example>
-					<resume>d
+        </example>
+      </examples>
+    </function>
+    <function name="slice">
+      <resume>
+        Coupe le texte de la sélection ou de la ligne en morceaux de taille définie par size.
+      </resume>
+      <params>
+        <param name="delimiter" type="String" default="' '">
+          chaîne qui va délimiter les morceaux
+        </param>
+        <param name="size" type="Number" default="1"/>
+        <param name="…"/>
+      </params>
+      <examples>
+        <example>
+          <resume>abcde</resume>
+          <code>slice , 1</code>
+          <result>a,b,c,d,e</result>
+        </example>
+        <example>
+          <resume>abcde</resume>
+          <code>slice "', '" 1</code>
+          <result>a', 'b', 'c', 'd', 'e</result>
+        </example>
+      </examples>
+    </function>
+    <function name="length">
+      <resume>
+        Compte le nombre de caractères passés en paramètres et l'écrit à la position du curseur. Ajoute nombre_paramètre - 1 à la taille.
+      </resume>
+      <params>
+        <param name="…" type="String"/>
+      </params>
+      <examples>
+        <example>
+          <code>length un exemple simple</code>
+          <result>17</result>
+        </example>
+      </examples>
+    </function>
+    <function name="mv">
+      <resume>
+        Bouge le texte de la sélection ou la ligne.
+      </resume>
+      <params>
+        <param name="newPos" type="cursor|Number">
+          S'il n'y a pas de sélection ou que newPos est vide ou est un nombre, alors <ref>mvLines</ref> est appelée.
+        </param>
+      </params>
+    </function>
+    <function name="mvLines">
+      <resume>
+        Bouge les lignes sélectionnées ou celle où ce trouve le curseur.
+      </resume>
+      <params ref-function="mv"/>
+    </function>
+    <function name="tr">
+      <resume>
+        Remplace ou supprime des caractères de la ligne ou de la sélection.
+      </resume>
+      <params>
+        <param name="findTo" type="String"/>
+        <param name="replaceTo" type="String" default="''"/>
+        <param name="empty" type="Boolean" default="false">
+          Si vrai les caractères de findTo n'ayant pas de correspondance dans replaceTo seront effacés. Si faux, il seront remplacés par le dernier caractère de replaceTo.
+        </param>
+      </params>
+      <examples>
+        <example>
+          <resume>20521426563644556673853594</resume>
+          <code>tr 0123456789 abcdefghij</code>
+          <result>cafcbecgfgdgeeffgghdifdfje</result>
+        </example>
+        <example>
+          <resume>a b c d</resume>
+          <code>tr ' ' \\t</code>
+          <result>a  b  c  d</result>
+        </example>
+      </examples>
+    </function>
+    <function name="sort2">
+      <resume>
+        Trie les lignes de la sélection ou l'ensemble du document.
+      </resume>
+      <params>
+        <param name="step" type="stepper|Boolean"/>
+        <param name="caseSensitive" type="Boolean" default="false">
+          Si step n'est pas du type stepper et que caseSensitive est faux, alors caseSensitive&#160;=&#160;false
+        </param>
+      </params>
+    </function>
+    <function name="rsort">
+      <resume>
+        Trie les lignes de la sélection ou l'ensemble du document par ordre inverse.
+      </resume>
+      <params ref-function="sort2"/>
+    </function>
+    <function name="natsort2">
+      <resume>
+        Trie les lignes de la sélection ou l'ensemble du document par ordre naturel.
+      </resume>
+      <params ref-function="sort2"/>
+    </function>
+    <function name="rnatsort">
+      <resume>
+        Trie les lignes de la sélection ou l'ensemble du document par ordre naturel inversé.
+      </resume>
+      <params ref-function="sort2"/>
+    </function>
+    <function name="usort">
+      <resume>
+        Trie les lignes de la sélection ou l'ensemble du document via une fontion.
+      </resume>
+      <params>
+        <param name="body" type="Strting">
+          Correspond au nom d'une fonction ou d'un corps de fonction. Si body est un corps de fonction et que return n'existe pas, il est ajouté au début. 2 paramètrte sont passé à la fonction : a et b.
+        </param>
+        <param name="step" ref-function="sort2"/>
+        <param name="caseSensitive" ref-function="sort2"/>
+      </params>
+      <examples>
+        <example>
+          <resume>d
 b
 a
 c
 e</resume>
-					<code>usort 'compare(a, b)'</code>
-					<result>a
+          <code>usort 'compare(a, b)'</code>
+          <result>a
 b
 c
 d
 e</result>
-				</example>
-			</examples>
-		</function>
-		<function name="rusort">
-			<resume>
-				Trie inverse de <ref>usort</ref>.
-			</resume>
-			<params ref-function="usort"/>
-		</function>
-		<function name="reverseLine">
-			<resume>
-				Inverse la position des lignes de la sélection.
-			</resume>
-			<params>
-				<param name="group" type="Number" default="1">
-					Grouper les lignes de taille de group
-				</param>
-				<param name="step" type="Number" default="0">
-					Ignorer le reverse des lignes toutes les step fois
-				</param>
-				<param name="prepend" type="Boolean" default="false">
-					Si 0, step += jump - lines.length % jump
-				</param>
-			</params>
-			<examples>
-				<example>
-					<resume>un
+        </example>
+      </examples>
+    </function>
+    <function name="rusort">
+      <resume>
+        Trie inverse de <ref>usort</ref>.
+      </resume>
+      <params ref-function="usort"/>
+    </function>
+    <function name="reverseLine">
+      <resume>
+        Inverse la position des lignes de la sélection.
+      </resume>
+      <params>
+        <param name="group" type="Number" default="1">
+          Grouper les lignes de taille de group
+        </param>
+        <param name="step" type="Number" default="0">
+          Ignorer le reverse des lignes toutes les step fois
+        </param>
+        <param name="prepend" type="Boolean" default="false">
+          Si 0, step += jump - lines.length % jump
+        </param>
+      </params>
+      <examples>
+        <example>
+          <resume>un
 exemple
 simple
 de
 reverseLine</resume>
-					<code>reverseLine</code>
-					<result>reverseLine
+          <code>reverseLine</code>
+          <result>reverseLine
 de
 simple
 exemple
 un</result>
-				</example>
-				<example>
-					<resume>un
+        </example>
+        <example>
+          <resume>un
 exemple
 simple
 de
 reverseLine</resume>
-					<code>reverseLine 2</code>
-					<result>de
+          <code>reverseLine 2</code>
+          <result>de
 reverseLine
 exemple
 simple
 un</result>
-				</example>
-				<example>
-					<resume>un
+        </example>
+        <example>
+          <resume>un
 exemple
 simple
 de
 reverseLine</resume>
-					<code>reverseLine 3 2</code>
-					<result>de
+          <code>reverseLine 3 2</code>
+          <result>de
 reverseLine
 un
 exemple
 simple</result>
-				</example>
-				<example>
-					<resume>un
+        </example>
+        <example>
+          <resume>un
 exemple
 simple
 de
 reverseLine</resume>
-					<code>reverseLine 3 2 1</code>
-					<result>reverseLine
+          <code>reverseLine 3 2 1</code>
+          <result>reverseLine
 exemple
 simple
 de
 un</result>
-				</example>
-			</examples>
-		</function>
-		<function name="reverseWord">
-			<resume>
-				Inverse la position des mots de chaque ligne de la sélection ou de la ligne où se trouve le curseur.
-			</resume>
-			<params ref-function="reverseLine">
-				<param name="boundaryBegin" type="Boolean" default="false">
-					Ignorer les espaces de début
-				</param>
-				<param name="boundaryEnd" type="Boolean" default="false">
-					Ignorer les espaces de fin
-				</param>
-			</params>
-			<examples>
-				<example>
-					<resume>je suis un exemple</resume>
-					<code>reverseWord</code>
-					<result>exemple un suis je</result>
-				</example>
-			</examples>
-		</function>
-		<function name="reverse">
-			<resume>
-				Inverse la position des lettres de chaque ligne de sélection ou de la ligne où se trouve le curseur.
-			</resume>
-			<params ref-function="reverseLine"/>
-			<examples>
-				<example>
-					<resume>un exemple</resume>
-					<code>reverse</code>
-					<result>elpmexe nu</result>
-				</example>
-			</examples>
-		</function>
-		<function name="diffSelection">
-			<resume>
-				Sélectionne la différence de la sélection. Si une sélection existe, la différence se fera avec cursor(c1, c2)
-			</resume>
-			<params>
-				<param name="c1" type="cursor"/>
-				<param name="c2" type="cursor"/>
-				<param name="c3" type="cursor"/>
-				<param name="c4" type="cursor"/>
-			</params>
-		</function>
-		<!--<function name="cadd">
-			<resume>
-				Ajoute un curseur pour la copy multiple.
-			</resume>
-			<params>
-				<param name="line" type="Number" default="view.cursorPosition().line"/>
-				<param name="column" type="Number" default="view.cursorPosition().column"/>
-			</params>
-		</function>
-		<function name="cmove">
-			<resume>
-				Se déplace sur le curseur d'index donné.
-			</resume>
-			<params>
-				<param name="index" type="Number" default="0">
-					Si négatif alors recherche en commençant à la fin.
-				</param>
-			</params>
-		</function>
-		<function name="cremove">
-			<resume>
-				Supprime tous les curseurs ou les index passés en paramètres.
-			</resume>
-			<params ref-function="cmove">
-				<param name="…"/>
-			</params>
-		</function>
-		<function name="ccopy">
-			<resume>
-				Écrit le texte dans la sélection ou dans l'intervalle entre le dernier curseur enregistré et la position du curseur dans le document. Dans le 2ème cas le curseur sera supprimé de ceux enregistrés.
-			</resume>
-			<params>
-				<param name="keep" type="Boolean" default="false">
-					Si true, les curseurs sont supprimés.
-				</param>
-			</params>
-		</function>-->
-		<function name="filename">
-			<resume>
-				Affiche le nom du fichier.
-			</resume>
-			<params>
-				<param name="noExt" type="Boolean" default="false">
-					Supprimer l'extension
-				</param>
-			</params>
-		</function>
-		<function name="extension">
-			<resume>
-				Affiche l'extension du fichier.
-			</resume>
-		</function>
-		<function name="url">
-			<resume>
-				Affiche l'url du fichier.
-			</resume>
-			<params>
-				<param name="nDir" type="Number|Boolean">
-					Nombre de dossiers à prendre en compte. Si Boolean, supprime le protocole de l'url.
-				</param>
-				<param name="replace" type="String" default="undefined">
-					Si définit alors chaîne qui remplace les caractères '/'
-				</param>
-				<param name="noExt" ref-function="filename"/>
-			</params>
-			<examples>
-				<example>
-					<resume>file:///home/poelen/Code/KatePart/doc-script/functions-descriptions.xml</resume>
-					<code>url 3 _ 1</code>
-					<result>KatePart_doc-script_functions-descriptions</result>
-				</example>
-			</examples>
-		</function>
-		<function name="mimeType">
-			<resume>
-				Écrit le mimeType du document à la position du curseur.
-			</resume>
-		</function>
-		<function name="encoding">
-			<resume>
-				Écrit l'encodage du document à la position du curseur.
-			</resume>
-		</function>
-		<function name="highlightingMode">
-			<resume>
-				Écrit la couleur synthaxique du document à la position du curseur.
-			</resume>
-		</function>
-		<function name="highlightingModeCursor">
-			<resume>
-				Écrit à la position du curseur la couleur synthaxique d'où il se trouve.
-			</resume>
-		</function>
-		<function name="kill" >
-			<resume>
-				Supprime la ligne ou la sélection représentée par c1 et c2 ou supprime la ligne à la position du curseur ou la sélection.
-			</resume>
-			<params>
-				<param name="c1" type="cursor"/>
-				<param name="c2" type="cursor"/>
-			</params>
-		</function>
-		<function name="killRight" action-key="Ctrl+M">
-			<resume>
-				Supprime les caractères à droite du curseur jusqu'à la fin de la ligne.
-			</resume>
-		</function>
-		<function name="killLeft" action-key="Ctrl+L">
-			<resume>
-				Supprime les caractères à gauche du curseur jusqu'au début de la ligne.
-			</resume>
-		</function>
-		<function name="capitalize">
-			<resume>
-				Met les premières lettre de chaque mot de la ligne ou de la sélection en majuscule.
-			</resume>
-			<params>
-				<param name="rgx" value="RegExp" default="/(^[\x7E-\xFFA-Za-z])|[^\x7E-\xFFA-Za-z\d]([\x7E-\xFFA-Za-z])/g">
-					RegExp pour capturer les lettres à mettre en majuscule.
-				</param>
-				<param name="isMinimal" value="Boolean" default="false">
-					Si true alors rgx = "(^["+rgx+"])|[^"+rgx+"](["+rgx+"])"
-				</param>
-			</params>
-		</function>
-		<function name="dashedCase">
-			<resume>
-				Met les lettre de la ligne ou de la sélection en minuscule précédé d'un tiret.
-			</resume>
-		</function>
-		<function name="underscoreCase">
-			<resume>
-				Met les lettre de la ligne ou de la sélection en minuscule précédé d'un underscore.
-			</resume>
-		</function>
-		<function name="camelCase">
-			<resume>
-				Transforme la ligne ou de la sélection en camelCase, les tirets ou underscore suivit d'un caractère alpanumérique sont remplacé par un ça majuscule.
-			</resume>
-			<params>
-				<param name="ignoreC" type="String" default="undefined">
-					Prend comme valeur - ou _.
-				</param>
-			</params>
-		</function>
-		<function name="reverseCase">
-			<resume>
-				Intervertit majuscule/minuscule.
-			</resume>
-		</function>
-		<function name="createFunction">
-			<resume>
-				Créer une fonction qui pourra être executée avec <ref>execFunction</ref> ou via les commandes demandant des fonctions.
-			</resume>
-			<params>
-				<param ref-function="execFunction"/>
-				<param name="body" type="JSCode"/>
-			</params>
-		</function>
-		<function name="alias">
-			<resume>
-				Créer un alias sur commandReference et ajoute à chaque appel les arguments avant ceux passés à la fonction aliasée.. Si la première lettre de name est ':' alors les arguments sont ajoutés après ceux passés à la fonction aliasée.
-			</resume>
-			<params>
-				<param name="name" type="String"/>
-				<param name="[param]" type="mixed"/>
-				<param name="commandReference" type="String"/>
-			</params>
-		</function>
-		<function name="execFunction">
-			<resume>
-				Exécute une commande créée par <ref>createFunction</ref> ou <ref>alias</ref>.
-			</resume>
-			<params>
-				<param name="name" type="String"/>
-				<param name="[param]" type="mixed"/>
-			</params>
-		</function>
-		<function name="eval">
-			<resume>
-				Exécute la fonction passée en paramètres
-			</resume>
-			<params>
-				<param name="…" type="JSCode"/>
-			</params>
-		</function>
-		<function name="printEval">
-			<resume ref-function="eval">
-				puis affiche le retour à la position courante.
-			</resume>
-			<params>
-				<param name="…" type="JSCode"/>
-			</params>
-		</function>
-		<function name="insertEval">
-			<resume ref-function="printEval"/>
-			<params>
-				<param name="…" type="JSCode">
-					Un "return " est ajouté devant le code.
-				</param>
-			</params>
-		</function>
-		<function name="range">
-			<resume>
-				Affiche un intervalle de nombre à la position du curseur.
-			</resume>
-			<params>
-				<param name="begin" type="Number" default="0"/>
-				<param name="end" type="Number" default="begin|9">
-					Si ce n'est pas un type Number alors tous les paramètres sont décalés (end = begin, …) et begin = 0.
-				</param>
-				<param name="delimiter" type="String" default="' '"/>
-				<param name="step" type="Number" default="1"/>
-				<param name="selected" type="Boolean" default="false"/>
-			</params>
-		</function>
-		<function name="interval">
-			<resume>
-				Exécute la fonction command en envoyant comme paramètre l'interval et après y avoir ajouté les paramètres supplémentaires.
-			</resume>
-			<params>
-				<param name="start" type="Number|String">
-					Si start est de la forme n1-n2 alors end correspond à l'incrémentation utilisé pour aller de start à end et start&#160;=&#160;n1 et end&#160;=&#160;n2. n1 = 0 ; n2 = 1.
-				</param>
-				<param name="end" type="Number"/>
-				<param name="command" type="String" default="log"/>
-				<param name="[param]" type="mixed" default="undefined"/>
-			</params>
-			<examples>
-				<example>
-					<code>interval 0 4 replace "a[i] = " i</code>
-					<result>a[0] = a[1] = a[2] = a[3] = a[4] = </result>
-				</example>
-			</examples>
-		</function>
-		<function name="rgxinterval">
-			<resume>
-				Exécute la fonction command en envoyant comme paramètre l'intervalle et après y avoir ajouté les paramètres supplémentaires. Pour chaque intervalle les morceaux de str qui correspondent à regex sont remplacés par la valeur de l'intervalle.
-			</resume>
-			<params>
-				<param name="str" type="String"/>
-				<param name="rgx" type="RegExp"/>
-				<param ref-function="interval"/>
-			</params>
-			<examples>
-				<example>
-					<code>rgxinterval "si" i 1 3 replace "a[] = i;\n" i b c</code>
-					<result>a[] = b;
+        </example>
+      </examples>
+    </function>
+    <function name="reverseWord">
+      <resume>
+        Inverse la position des mots de chaque ligne de la sélection ou de la ligne où se trouve le curseur.
+      </resume>
+      <params ref-function="reverseLine">
+        <param name="boundaryBegin" type="Boolean" default="false">
+          Ignorer les espaces de début
+        </param>
+        <param name="boundaryEnd" type="Boolean" default="false">
+          Ignorer les espaces de fin
+        </param>
+      </params>
+      <examples>
+        <example>
+          <resume>je suis un exemple</resume>
+          <code>reverseWord</code>
+          <result>exemple un suis je</result>
+        </example>
+      </examples>
+    </function>
+    <function name="reverse">
+      <resume>
+        Inverse la position des lettres de chaque ligne de sélection ou de la ligne où se trouve le curseur.
+      </resume>
+      <params ref-function="reverseLine"/>
+      <examples>
+        <example>
+          <resume>un exemple</resume>
+          <code>reverse</code>
+          <result>elpmexe nu</result>
+        </example>
+      </examples>
+    </function>
+    <function name="diffSelection">
+      <resume>
+        Sélectionne la différence de la sélection. Si une sélection existe, la différence se fera avec cursor(c1, c2)
+      </resume>
+      <params>
+        <param name="c1" type="cursor"/>
+        <param name="c2" type="cursor"/>
+        <param name="c3" type="cursor"/>
+        <param name="c4" type="cursor"/>
+      </params>
+    </function>
+    <function name="filename">
+      <resume>
+        Affiche le nom du fichier.
+      </resume>
+      <params>
+        <param name="noExt" type="Boolean" default="false">
+          Supprimer l'extension
+        </param>
+      </params>
+    </function>
+    <function name="extension">
+      <resume>
+        Affiche l'extension du fichier.
+      </resume>
+    </function>
+    <function name="url">
+      <resume>
+        Affiche l'url du fichier.
+      </resume>
+      <params>
+        <param name="nDir" type="Number|Boolean">
+          Nombre de dossiers à prendre en compte. Si Boolean, supprime le protocole de l'url.
+        </param>
+        <param name="replace" type="String" default="undefined">
+          Si définit alors chaîne qui remplace les caractères '/'
+        </param>
+        <param name="noExt" ref-function="filename"/>
+      </params>
+      <examples>
+        <example>
+          <resume>file:///home/poelen/Code/KatePart/doc-script/functions-descriptions.xml</resume>
+          <code>url 3 _ 1</code>
+          <result>KatePart_doc-script_functions-descriptions</result>
+        </example>
+      </examples>
+    </function>
+    <function name="mimeType">
+      <resume>
+        Écrit le mimeType du document à la position du curseur.
+      </resume>
+    </function>
+    <function name="encoding">
+      <resume>
+        Écrit l'encodage du document à la position du curseur.
+      </resume>
+    </function>
+    <function name="highlightingMode">
+      <resume>
+        Écrit la couleur synthaxique du document à la position du curseur.
+      </resume>
+    </function>
+    <function name="highlightingModeCursor">
+      <resume>
+        Écrit à la position du curseur la couleur synthaxique d'où il se trouve.
+      </resume>
+    </function>
+    <function name="kill" >
+      <resume>
+        Supprime la ligne ou la sélection représentée par c1 et c2 ou supprime la ligne à la position du curseur ou la sélection.
+      </resume>
+      <params>
+        <param name="c1" type="cursor"/>
+        <param name="c2" type="cursor"/>
+      </params>
+    </function>
+    <function name="killRight" action-key="Ctrl+M">
+      <resume>
+        Supprime les caractères à droite du curseur jusqu'à la fin de la ligne.
+      </resume>
+    </function>
+    <function name="killLeft" action-key="Ctrl+L">
+      <resume>
+        Supprime les caractères à gauche du curseur jusqu'au début de la ligne.
+      </resume>
+    </function>
+    <function name="capitalize">
+      <resume>
+        Met les premières lettre de chaque mot de la ligne ou de la sélection en majuscule.
+      </resume>
+      <params>
+        <param name="rgx" value="RegExp" default="/(^[\x7E-\xFFA-Za-z])|[^\x7E-\xFFA-Za-z\d]([\x7E-\xFFA-Za-z])/g">
+          RegExp pour capturer les lettres à mettre en majuscule.
+        </param>
+        <param name="isMinimal" value="Boolean" default="false">
+          Si true alors rgx = "(^["+rgx+"])|[^"+rgx+"](["+rgx+"])"
+        </param>
+      </params>
+    </function>
+    <function name="dashedCase">
+      <resume>
+        Met les lettre de la ligne ou de la sélection en minuscule précédé d'un tiret.
+      </resume>
+    </function>
+    <function name="underscoreCase">
+      <resume>
+        Met les lettre de la ligne ou de la sélection en minuscule précédé d'un underscore.
+      </resume>
+    </function>
+    <function name="camelCase">
+      <resume>
+        Transforme la ligne ou de la sélection en camelCase, les tirets ou underscore suivit d'un caractère alpanumérique sont remplacé par un ça majuscule.
+      </resume>
+      <params>
+        <param name="ignoreC" type="String" default="undefined">
+          Prend comme valeur - ou _.
+        </param>
+      </params>
+    </function>
+    <function name="reverseCase">
+      <resume>
+        Intervertit majuscule/minuscule.
+      </resume>
+    </function>
+    <function name="createFunction">
+      <resume>
+        Créer une fonction qui pourra être executée avec <ref>execFunction</ref> ou via les commandes demandant des fonctions.
+      </resume>
+      <params>
+        <param ref-function="execFunction"/>
+        <param name="body" type="JSCode"/>
+      </params>
+    </function>
+    <function name="alias">
+      <resume>
+        Créer un alias sur commandReference et ajoute à chaque appel les arguments avant ceux passés à la fonction aliasée.. Si la première lettre de name est ':' alors les arguments sont ajoutés après ceux passés à la fonction aliasée.
+      </resume>
+      <params>
+        <param name="name" type="String"/>
+        <param name="[param]" type="mixed"/>
+        <param name="commandReference" type="String"/>
+      </params>
+    </function>
+    <function name="execFunction">
+      <resume>
+        Exécute une commande créée par <ref>createFunction</ref> ou <ref>alias</ref>.
+      </resume>
+      <params>
+        <param name="name" type="String"/>
+        <param name="[param]" type="mixed"/>
+      </params>
+    </function>
+    <function name="eval">
+      <resume>
+        Exécute la fonction passée en paramètres
+      </resume>
+      <params>
+        <param name="…" type="JSCode"/>
+      </params>
+    </function>
+    <function name="printEval">
+      <resume ref-function="eval">
+        puis affiche le retour à la position courante.
+      </resume>
+      <params>
+        <param name="…" type="JSCode"/>
+      </params>
+    </function>
+    <function name="insertEval">
+      <resume ref-function="printEval"/>
+      <params>
+        <param name="…" type="JSCode">
+          Un "return " est ajouté devant le code.
+        </param>
+      </params>
+    </function>
+    <function name="range">
+      <resume>
+        Affiche un intervalle de nombre à la position du curseur.
+      </resume>
+      <params>
+        <param name="begin" type="Number" default="0"/>
+        <param name="end" type="Number" default="begin|9">
+          Si ce n'est pas un type Number alors tous les paramètres sont décalés (end = begin, …) et begin = 0.
+        </param>
+        <param name="delimiter" type="String" default="' '"/>
+        <param name="step" type="Number" default="1"/>
+        <param name="selected" type="Boolean" default="false"/>
+      </params>
+    </function>
+    <function name="interval">
+      <resume>
+        Exécute la fonction command en envoyant comme paramètre l'interval et après y avoir ajouté les paramètres supplémentaires.
+      </resume>
+      <params>
+        <param name="start" type="Number|String">
+          Si start est de la forme n1-n2 alors end correspond à l'incrémentation utilisé pour aller de start à end et start&#160;=&#160;n1 et end&#160;=&#160;n2. n1 = 0 ; n2 = 1.
+        </param>
+        <param name="end" type="Number"/>
+        <param name="command" type="String" default="log"/>
+        <param name="[param]" type="mixed" default="undefined"/>
+      </params>
+      <examples>
+        <example>
+          <code>interval 0 4 replace "a[i] = " i</code>
+          <result>a[0] = a[1] = a[2] = a[3] = a[4] = </result>
+        </example>
+      </examples>
+    </function>
+    <function name="rgxinterval">
+      <resume>
+        Exécute la fonction command en envoyant comme paramètre l'intervalle et après y avoir ajouté les paramètres supplémentaires. Pour chaque intervalle les morceaux de str qui correspondent à regex sont remplacés par la valeur de l'intervalle.
+      </resume>
+      <params>
+        <param name="str" type="String"/>
+        <param name="rgx" type="RegExp"/>
+        <param ref-function="interval"/>
+      </params>
+      <examples>
+        <example>
+          <code>rgxinterval "si" i 1 3 replace "a[] = i;\n" i b c</code>
+          <result>a[] = b;
 a[] = c;
 a[] = s1;
 a[] = s2;
 a[] = s3;</result>
-				</example>
-			</examples>
-		</function>
-		<function name="intervalx">
-			<resume>
-				Exécute la fonction command en envoyant comme paramètre le regroupement d'interval et après y avoir ajouté les paramètres supplémentaires. Le regroupement ce fait en prenant la premièer valeurs des intervalles, puis la seconde, etc.
-			</resume>
-			<params>
-				<param name="[start, end]…" type="Number|String">
-					Si start est de la forme n1-n2 alors end correspond à l'incrémentation utilisé pour aller de start à end et start&#160;=&#160;n1 et end&#160;=&#160;n2. n1 = 0 ; n2 = 1.
-				</param>
-				<param name="command" ref-function="interval"/>
-				<param name="[param]" ref-function="interval"/>
-			</params>
-			<examples>
-				<example>
-					<code>intervalx 1 3 5 7 replacex 'a[x] = y; ' 2 x y</code>
-					<result>a[1] = 5; a[2] = 6; a[3] = 7; </result>
-				</example>
-			</examples>
-		</function>
-		<function name="rgxintervalx">
-			<resume>
-				Exécute la fonction command en envoyant comme paramètre le regroupement d'interval et après y avoir ajouté les paramètres supplémentaires. Pour chaque intervalle les morceaux de str qui correspondent à regex sont remplacés par la valeur de l'intervalle. Le regroupement ce fait en prenant la premièer valeurs des intervalles, puis la seconde, etc.
-			</resume>
-			<params>
-				<param name="str" type="String"/>
-				<param name="rgx" type="RegExp"/>
-				<param ref-function="intervalx"/>
-			</params>
-			<examples>
-				<example>
-					<code>rgxintervalx "si" i 1 3 5 7 replacex "a[x] = i;\n" 2 x i b c</code>
-					<result>a[b] = c;
+        </example>
+      </examples>
+    </function>
+    <function name="intervalx">
+      <resume>
+        Exécute la fonction command en envoyant comme paramètre le regroupement d'interval et après y avoir ajouté les paramètres supplémentaires. Le regroupement ce fait en prenant la premièer valeurs des intervalles, puis la seconde, etc.
+      </resume>
+      <params>
+        <param name="[start, end]…" type="Number|String">
+          Si start est de la forme n1-n2 alors end correspond à l'incrémentation utilisé pour aller de start à end et start&#160;=&#160;n1 et end&#160;=&#160;n2. n1 = 0 ; n2 = 1.
+        </param>
+        <param name="command" ref-function="interval"/>
+        <param name="[param]" ref-function="interval"/>
+      </params>
+      <examples>
+        <example>
+          <code>intervalx 1 3 5 7 replacex 'a[x] = y; ' 2 x y</code>
+          <result>a[1] = 5; a[2] = 6; a[3] = 7; </result>
+        </example>
+      </examples>
+    </function>
+    <function name="rgxintervalx">
+      <resume>
+        Exécute la fonction command en envoyant comme paramètre le regroupement d'interval et après y avoir ajouté les paramètres supplémentaires. Pour chaque intervalle les morceaux de str qui correspondent à regex sont remplacés par la valeur de l'intervalle. Le regroupement ce fait en prenant la premièer valeurs des intervalles, puis la seconde, etc.
+      </resume>
+      <params>
+        <param name="str" type="String"/>
+        <param name="rgx" type="RegExp"/>
+        <param ref-function="intervalx"/>
+      </params>
+      <examples>
+        <example>
+          <code>rgxintervalx "si" i 1 3 5 7 replacex "a[x] = i;\n" 2 x i b c</code>
+          <result>a[b] = c;
 a[s1] = s5;
 a[s2] = s6;
 a[s3] = s7;</result>
-				</example>
-			</examples>
-		</function>
-		<function name="call">
-			<resume>
-				Exécute command avec le texte de la sélection ou de la ligne, couper en fragments séparés par delimiter. Les paramètres suivant le delimiter seront ajoutés aux paramètres de command suivis des fragments.
-			</resume>
-			<params>
-				<param name="delimiter" type="String|RegExp"/>
-				<param name="command" type="String"/>
-				<param name="[param]" type="mixed"/>
-			</params>
-			<examples>
-				<example>
-					<resume>0 1 2 3</resume>
-					<code>call '' replace 'a[i] = 0;\n' i</code>
-					<result>a[0] = 0;
+        </example>
+      </examples>
+    </function>
+    <function name="call">
+      <resume>
+        Exécute command avec le texte de la sélection ou de la ligne, couper en fragments séparés par delimiter. Les paramètres suivant le delimiter seront ajoutés aux paramètres de command suivis des fragments.
+      </resume>
+      <params>
+        <param name="delimiter" type="String|RegExp"/>
+        <param name="command" type="String"/>
+        <param name="[param]" type="mixed"/>
+      </params>
+      <examples>
+        <example>
+          <resume>0 1 2 3</resume>
+          <code>call '' replace 'a[i] = 0;\n' i</code>
+          <result>a[0] = 0;
 a[1] = 0;
 a[2] = 0;
 a[3] = 0;
 </result>
-				</example>
-			</examples>
-		</function>
-		<function name="apply">
-			<resume>
-				Applique command en bougeant le curseur ou la sélection de step lignes vers le bas. Les paramètres supplémentaires seront envoyés à command.
-			</resume>
-			<params>
-				<param name="n" type="Number|String" default="0">
-					Si n est de la forme n1-n2, où '-' représente des caractères non numériques, alors n2 représente le nombre de lignes à descendre sans faire command et n1 le nombre d'appel.
-				</param>
-				<param name="command" type="String"/>
-				<param name="[param]" type="mixed"/>
-			</params>
-			<examples>
-				<example>
-					<resume>bi${cursor}g
+        </example>
+      </examples>
+    </function>
+    <function name="apply">
+      <resume>
+        Applique command en bougeant le curseur ou la sélection de step lignes vers le bas. Les paramètres supplémentaires seront envoyés à command.
+      </resume>
+      <params>
+        <param name="n" type="Number|String" default="0">
+          Si n est de la forme n1-n2, où '-' représente des caractères non numériques, alors n2 représente le nombre de lignes à descendre sans faire command et n1 le nombre d'appel.
+        </param>
+        <param name="command" type="String"/>
+        <param name="[param]" type="mixed"/>
+      </params>
+      <examples>
+        <example>
+          <resume>bi${cursor}g
 bada
 boum</resume>
-					<code>apply 3 duplicate 2</code>
-					<result>big
+          <code>apply 3 duplicate 2</code>
+          <result>big
 big
 bada
 bada
 boum
 boum</result>
-				</example>
-			</examples>
-		</function>
-		<function name="applyLine">
-			<resume>
-				Compte le nombre de ligne de la sélection et le passe en premier paramètre à <ref>apply</ref>. S'il n'y a pas de sélection command est directement appelé.
-			</resume>
-			<params>
-				<param name="command" ref-function="apply"/>
-				<param name="[param]" ref-function="apply"/>
-			</params>
-		</function>
-		<function name="applyLeft">
-			<resume>
-				Identique à <ref>apply</ref> mais lorsque le cursor ou la sélection ce déplace, le nombre de caractères à gauche reste identique.
-			</resume>
-			<params ref-function="apply"/>
-		</function>
-		<function name="applyLineLeft">
-			<resume>
-				Compte le nombre de ligne de la sélection et le passe en premier paramètre à <ref>applyLeft</ref>. S'il n'y a pas de sélection command est directement appelé.
-			</resume>
-			<params ref-function="applyLine"/>
-		</function>
-		<function name="applyForLine">
-			<resume>
-				Compte le nombre de ligne et le passe en dernier paramètre à command.
-			</resume>
-			<params ref-function="applyLine"/>
-		</function>
-		<function name="applyShift">
-			<resume>
-				Applique command en bougeant le curseur ou la sélection de step lignes vers le bas. Les paramètres sont découper de taille n puis envoyer à command.
-			</resume>
-			<params>
-				<param name="[n]" type="Number|String" default="''+Math.floor(args.length / numarg)">
-					Si n est de la forme n1-n2, où '-' représente des caractères non numériques, alors n2 représente le nombre de lignes à descendre sans faire command et n1 le nombre d'appel.
-				</param>
-				<param name="shift" type="Number|String">
-					Nombre d'argument envoyer. Si de la forme n1-n2, où '-' représente des caractères non numériques, alors n1 correspond au nombre des premiers arguments qui seront toujours envoyer et n2 le nombre d'argument ajouter à chaque fois. Si le séparateur est un '-' alors les arguments toujours envoyer sont mis après ceux variables.
-				</param>
-				<param name="command" type="String"/>
-				<param name="[param]" type="mixed"/>
-			</params>
-			<examples>
-				<example>
-					<resume>bi${cursor}g
+        </example>
+      </examples>
+    </function>
+    <function name="applyLine">
+      <resume>
+        Compte le nombre de ligne de la sélection et le passe en premier paramètre à <ref>apply</ref>. S'il n'y a pas de sélection command est directement appelé.
+      </resume>
+      <params>
+        <param name="command" ref-function="apply"/>
+        <param name="[param]" ref-function="apply"/>
+      </params>
+    </function>
+    <function name="applyLeft">
+      <resume>
+        Identique à <ref>apply</ref> mais lorsque le cursor ou la sélection ce déplace, le nombre de caractères à gauche reste identique.
+      </resume>
+      <params ref-function="apply"/>
+    </function>
+    <function name="applyLineLeft">
+      <resume>
+        Compte le nombre de ligne de la sélection et le passe en premier paramètre à <ref>applyLeft</ref>. S'il n'y a pas de sélection command est directement appelé.
+      </resume>
+      <params ref-function="applyLine"/>
+    </function>
+    <function name="applyForLine">
+      <resume>
+        Compte le nombre de ligne et le passe en dernier paramètre à command.
+      </resume>
+      <params ref-function="applyLine"/>
+    </function>
+    <function name="applyShift">
+      <resume>
+        Applique command en bougeant le curseur ou la sélection de step lignes vers le bas. Les paramètres sont découper de taille n puis envoyer à command.
+      </resume>
+      <params>
+        <param name="[n]" type="Number|String" default="''+Math.floor(args.length / numarg)">
+          Si n est de la forme n1-n2, où '-' représente des caractères non numériques, alors n2 représente le nombre de lignes à descendre sans faire command et n1 le nombre d'appel.
+        </param>
+        <param name="shift" type="Number|String">
+          Nombre d'argument envoyer. Si de la forme n1-n2, où '-' représente des caractères non numériques, alors n1 correspond au nombre des premiers arguments qui seront toujours envoyer et n2 le nombre d'argument ajouter à chaque fois. Si le séparateur est un '-' alors les arguments toujours envoyer sont mis après ceux variables.
+        </param>
+        <param name="command" type="String"/>
+        <param name="[param]" type="mixed"/>
+      </params>
+      <examples>
+        <example>
+          <resume>bi${cursor}g
 bada
 boum</resume>
-					<code>applyShift 1 duplicate 3 2 1</code>
-					<result>big
+          <code>applyShift 1 duplicate 3 2 1</code>
+          <result>big
 big
 big
 big
@@ -1303,1333 +1215,1232 @@ bada
 bada
 boum
 boum</result>
-				</example>
-				<example>
-					<resume>bi${cursor}g
+        </example>
+        <example>
+          <resume>bi${cursor}g
 bada
 boum</resume>
-					<code>applyShift 1 1 duplicate 1 1</code>
-					<result>big
+          <code>applyShift 1 1 duplicate 1 1</code>
+          <result>big
 big
 bada
 boum
 boum</result>
-				</example>
-				<example>
-					<resume>bi${cursor}g
+        </example>
+        <example>
+          <resume>bi${cursor}g
 bada
 boum</resume>
-					<code>applyShift 2-1 1 duplicate</code>
-					<result>big
+          <code>applyShift 2-1 1 duplicate</code>
+          <result>big
 big
 bada
 boum
 boum</result>
-				</example>
-				<example>
-					<resume>a${cursor}
+        </example>
+        <example>
+          <resume>a${cursor}
 b
 c
 d
 e</resume>
-					<code>applyShift 1 1-1 insert 1 a b c</code>
-					<result>aa
+          <code>applyShift 1 1-1 insert 1 a b c</code>
+          <result>aa
 b
 cb
 d
 ec</result>
-				</example>
-			</examples>
-		</function>
-		<function name="applyShiftLeft">
-			<resume>
-				Identique à <ref>applyShift</ref> mais lorsque le cursor ou la sélection ce déplace, le nombre de caractères à gauche reste identique.
-			</resume>
-			<params ref-function="applyShift"/>
-		</function>
-		<function name="echap">
-			<resume>
-				Échappe la sélection ou la ligne.
-			</resume>
-			<params>
-				<param name="str" type="undefined|String" default="text[text.search(/[^\s]/)]">
-					Chaîne à protéger. Par défaut, premier caractère de sélection ou de la ligne qui n'est pas un caractère blanc.
-				</param>
-				<param name="strEscape" type="String" default="'\'">
-					Chaîne d'échappement.
-				</param>
-				<param name="force" type="Boolean" default="false">
-					Si vrai les chaînes déjà protégées seront considérées comme non protégées.
-				</param>
-			</params>
-			<examples>
-				<example>
-					<resume>"une chaîne "non" protégée !"</resume>
-					<code>echap</code>
-					<result>"une chaîne \"non\" protégée !"</result>
-				</example>
-			</examples>
-		</function>
-		<function name="join2">
-			<resume>
-				Joint les lignes sélectionnées ou le document entier par delimiter.
-			</resume>
-			<params>
-				<param name="delimiter" type="String" default="''"/>
-				<param name="…"/>
-			</params>
-			<examples>
-				<example>
-					<resume>je
+        </example>
+      </examples>
+    </function>
+    <function name="applyShiftLeft">
+      <resume>
+        Identique à <ref>applyShift</ref> mais lorsque le cursor ou la sélection ce déplace, le nombre de caractères à gauche reste identique.
+      </resume>
+      <params ref-function="applyShift"/>
+    </function>
+    <function name="echap">
+      <resume>
+        Échappe la sélection ou la ligne.
+      </resume>
+      <params>
+        <param name="str" type="undefined|String" default="text[text.search(/[^\s]/)]">
+          Chaîne à protéger. Par défaut, premier caractère de sélection ou de la ligne qui n'est pas un caractère blanc.
+        </param>
+        <param name="strEscape" type="String" default="'\'">
+          Chaîne d'échappement.
+        </param>
+        <param name="force" type="Boolean" default="false">
+          Si vrai les chaînes déjà protégées seront considérées comme non protégées.
+        </param>
+      </params>
+      <examples>
+        <example>
+          <resume>"une chaîne "non" protégée !"</resume>
+          <code>echap</code>
+          <result>"une chaîne \"non\" protégée !"</result>
+        </example>
+      </examples>
+    </function>
+    <function name="join2">
+      <resume>
+        Joint les lignes sélectionnées ou le document entier par delimiter.
+      </resume>
+      <params>
+        <param name="delimiter" type="String" default="''"/>
+        <param name="…"/>
+      </params>
+      <examples>
+        <example>
+          <resume>je
 suis
 un
 exemple
 simple</resume>
-					<code>join2 ' ' -</code>
-					<result>je suis-un exemple-simple</result>
-				</example>
-			</examples>
-		</function>
-		<function name="cursor">
-			<resume>
-				Définit la position du cursor : cursor l,c l,c.
-			</resume>
-			<params>
-				<param name="c1" type="String|Number">
-					Forme l,c : l et c sont optionnels, par défaut la position du curseur. l et c peuvent commencer par '+' ou '-', dans ce cas une opération sera effectuée avec la position actuelle. Ils peuvent également commencer par '*' ou '$' et c'est la position de fin qui sera prise pour reférence (dernière ligne ou dernière colonne de la ligne).
-					Des lettres comme wWlLnNdfspPcBbeu peuvent être ajouté et précédés de nombre (par défaut 1). S'il faut séparer les lettres d'un nombre, utilisé :.
-					w: saute les caractères \x7E-\xFFa-zA-Z0-9_.
-					W: saute les caractères -\x7E-\xFFa-zA-Z0-9_.
-					l: saute les caractères \x7E-\xFFa-zA-Z.
-					L: saute les caractères -\x7E-\xFFa-zA-Z.
-					n: saute les caractères \x7E-\xFFa-zA-Z0-9.
-					N: saute les caractères -\x7E-\xFFa-zA-Z0-9.
-					d: saute les caractères 0-9.
-					f: saute les caractères .0-9.
-					s: saute les caractères blancs.
-					p: s'arrête à la ligne de contenant pas de caractère a-zA-Z0-9_.
-					P: s'arrête à la ligne contenant uniquement des caractères d'espacement.
-					c: ce déplace de n caractères.
-					B: si utilisé dans c2 fait un <ref>getSelectionBlock</ref>, sinon ne fait rien.
-					b: <ref>Position.start</ref>
-					e: <ref>Position.end</ref>
-					u: ce positionne à la position c1 ou la position courante du curseur.
-					i: positionne le curseur à la position du prochain match.
-				</param>
-				<param name="c2" type="String|Number">
-					Si c2 définit une sélection, elle se fera avec comme intervalle les valeurs définies par c1 et c2.
-				</param>
-				<param name="pos" type="Boolean" default="false">
-					Permet d'utiliser le curseur 2 comme pointeur après la sélection.
-				</param>
-			</params>
-			<examples>
-				<example>
-					<code>cursor ,0 ,*</code>
-					<result>Sélectionne la ligne où se trouve le curseur.</result>
-				</example>
-				<example>
-					<code>cursor -1,0 b,*:,-1</code>
-					<result>Sélectionne la ligne précédente et actuelle mais sans le dernier caractère.</result>
-				</example>
-				<example>
-					<code>cursor ,0 +5,*</code>
-					<result>Sélectionne un bloc de 6 lignes commençant à la ligne actuelle.</result>
-				</example>
-				<example>
-					<code>cursor -p p</code>
-					<result>Sélectionne le paragraphe où se trouve le curseur.</result>
-				</example>
-				<example>
-					<code>cursor b,0 e,*</code>
-					<result>Fait une sélection en bloc à la manière de selectBlock.</result>
-				</example>
-                                <example>
-                                        <code>cursor -w 2w</code>
-                                        <result>Sélectionne 2 mots en partant du début du mot précédent.</result>
-                                </example>
-
-			</examples>
-		</function>
-		<function name="replace">
-			<resume>
-				Remplace le texte str ou la sélection par les remplace.
-			</resume>
-			<params>
-				<param name="str" type="String">
-					Si une sélection existe ce paramètre n'existe pas.
-				</param>
-				<param name="rgx" type="String|RegExp"/>
-				<param name="remplace" type="String"/>
-				<param name="…"/>
-			</params>
-			<examples>
-				<example>
-					<code>replace "a[i] = i; " i 0 1 2</code>
-					<result>a[0] = 0; a[1] = 1; a[2] = 2; </result>
-				</example>
-			</examples>
-		</function>
-		<function name="replacex">
-			<resume>
-				Remplace le texte str ou la sélection par les remplace.
-			</resume>
-			<params>
-				<param name="str" type="String">
-					Si une sélection existe ce paramètre n'existe pas.
-				</param>
-				<param name="n" type="Number"/>
-				<param name="rgx" type="String|RegExp"/>
-				<param name="…"/>
-				<param name="remplace" type="String"/>
-				<param name="…"/>
-			</params>
-			<examples>
-				<example>
-					<code>replace "a[i] = x; " 2 i x 0 1 2 2 3 4</code>
-					<result>a[0] = 1; a[2] = 2; a[3] = 4; </result>
-				</example>
-			</examples>
-		</function>
-		<function name="repeat">
-			<resume>
-				Identique à <ref>replace</ref> hormis le fait que le texte de la sélection ou de str est écrit.
-			</resume>
-			<params ref-function="replace"/>
-		</function>
-		<function name="repeatx">
-			<resume>
-				Identique à <ref>replacex</ref> hormis le fait que le texte de la sélection ou de str est écrit.
-			</resume>
-			<params ref-function="replacex"/>
-		</function>
-		<!--<function name="replaceLine">
-			<resume>
-				Appel <ref>replace</ref> après avoir automatiquement sélectionner la ligne. Si une sélection exister préalablement elle est mi en premier paramètre de <ref>replace</ref>().
-			</resume>
-			<params>
-				<param name="rgx" type="String|RegExp"/>
-				<param name="remplace" type="String"/>
-				<param name="…"/>
-			</params>
-		</function>
-		<function name="replacexLine">
-			<resume>
-				Appel <ref>replacex</ref> après avoir automatiquement sélectionner la ligne. Si une sélection exister préalablement elle est mi en premier paramètre de <ref>replace</ref>().
-			</resume>
-			<params>
-				<param name="n" type="Number"/>
-				<param name="rgx" type="String|RegExp"/>
-				<param name="…"/>
-				<param name="remplace" type="String"/>
-				<param name="…"/>
-			</params>
-		</function>
-		<function name="repeatLine">
-			<resume>
-				Appel <ref>repeat</ref> après avoir automatiquement sélectionner la ligne. Si une sélection exister préalablement elle est mi en premier paramètre de <ref>repeat</ref>().
-			</resume>
-			<params ref-function="replaceLine"/>
-		</function>
-		<function name="repeatxLine">
-			<resume>
-				Appel <ref>repeatx</ref> après avoir automatiquement sélectionner la ligne. Si une sélection exister préalablement elle est mi en premier paramètre de <ref>repeat</ref>().
-			</resume>
-			<params ref-function="replacexLine"/>
-		</function>-->
-		<function name="change">
-			<resume>
-				Remplace la sélection ou le 1er paramètre –via une regex représentée par le paramètre suivant– autant de fois qu'il reste de paramètres.
-			</resume>
-			<params ref-function="replace"/>
-			<examples>
-				<example>
-					<code>change "a[i] = i; b[i] = i; c[i] = i;" i 0 1</code>
-					<result>a[0] = 1; b[0] = 1; c[0] = 1;</result>
-				</example>
-			</examples>
-		</function>
-		<function name="changex">
-			<resume>
-				Remplace la sélection ou le 1er paramètre –via une regex représentée par les n paramètre suivant– autant de fois qu'il reste de paramètres.
-			</resume>
-			<params ref-function="replacex"/>
-			<examples>
-				<example>
-					<code>changex "a[i] = i; b[i] = i; c[i] = i;" 3 a b i e f</code>
-					<result>e[f] = e; f[e] = f; c[e] = f;</result>
-				</example>
-			</examples>
-		</function>
-		<!--<function name="changeLine">
-			<resume>
-				Appel <ref>change</ref> après avoir automatiquement sélectionner la ligne. Si une sélection exister préalablement elle est mi en premier paramètre de <ref>change</ref>().
-			</resume>
-			<params ref-function="change"/>
-		</function>
-		<function name="changexLine">
-			<resume>
-				Appel <ref>changex</ref> après avoir automatiquement sélectionner la ligne. Si une sélection exister préalablement elle est mi en premier paramètre de <ref>changex</ref>().
-			</resume>
-			<params ref-function="changex"/>
-		</function>-->
-		<function name="set-namespace-tag">
-			<resume>
-				Définit le namespace à ajouter pour la fonction <ref>tag</ref>.
-			</resume>
-			<params>
-				<param name="namespace" type="String" default="''"/>
-			</params>
-		</function>
-		<function name="set-always-write-namespace">
-			<resume>
-				Définit si le namespace doit être écrit pat la fonction <ref>tag</ref> même s'il est déjà indiqué dans le nom.
-			</resume>
-			<params>
-				<param name="always" type="Boolean" default="false"/>
-			</params>
-		</function>
-		<function name="set-is-block-tag">
-			<resume>
-				Définit si la balise ajouté par doit <ref>tag</ref> être écrite en ligne ou en bloc.
-			</resume>
-			<params>
-				<param name="indent" type="Boolean" default="false"/>
-			</params>
-		</function>
-		<function name="tag" action-key="Ctrl+Alt+N">
-			<resume>
-				Si aucun paramètre n'est passé transforme la sélection ou le texte en tag.
-			</resume>
-			<params>
-				<param name="name" type="String"/>
-				<param name="isBlock" type="Boolean" default="false">
-					Si vrai saut de ligne + indentation.
-				</param>
-			</params>
-		</function>
-		<function name="wrapTag">
-			<resume>
-				Si aucun paramètre n'est passé entoure la sélection ou le texte avec un tag.
-			</resume>
-			<params>
-				<param name="str" type="String">
-					Si une sélection existe ce paramètre est ignoré.
-				</param>
-				<param name="name" ref-function="tag"/>
-				<param name="isBlock" ref-function="tag"/>
-			</params>
-		</function>
-		<function name="duplicate" action-key="Ctrl+Alt+D">
-			<resume>
-				Duplique la ligne ou la sélection n fois.
-			</resume>
-			<params>
-				<param name="n" type="Number|Stepper" default="1"/>
-				<param name="down" type="Boolean" default="false">
-					Si ou que n est un nombre négatif, vrai déplace le curseur au niveau du dernier élement dupliqué.
-				</param>
-			</params>
-			<examples>
-				<example>
-					<code>duplicate ~2:5</code>
-					<result>duplique 5 fois la ligne une ligne sur 2</result>
-				</example>
-			</examples>
-		</function>
-		<function name="insert">
-			<resume>
-				Insert la sélection ou str jusqu'à ligne_courante + n
-			</resume>
-			<params>
-				<param name="str" type="String">
-					Si une sélection existe ce paramètre n'existe pas.
-				</param>
-				<param name="n" type="Stepper">
-					Seul l'option f existe, pour forcer l'insertion dans une ligne vide.
-				</param>
-				<param name="…"/>
-			</params>
-		</function>
-		<function name="insertLeft">
-			<resume>
-				Identique à <ref>insert</ref> mais le nombre de caractères à droite reste identique. S'il n'y a pas assez de caractères l'insertion n'est pas faite pour la ligne.
-			</resume>
-			<params ref-function="insert"/>
-		</function>
-		<!--<function name="insertForLine">
-			<resume>
-				Identique à <ref>insert</ref> mais le nombre de ligne sélectionner est passer en second argument. Si le second argument existe, il est ajouté précédé de ":".
-			</resume>
-			<params ref-function="insert"/>
-		</function>
-		<function name="insertLeftForLine">
-			<resume>
-				Identique à <ref>insertForLine</ref> mais le nombre de caractères à droite reste identique. S'il n'y a pas assez de caractères l'insertion n'est pas faite pour la ligne.
-			</resume>
-			<params ref-function="insertForLine"/>
-		</function>-->
-		<function name="insertx">
-			<resume>
-				Insert chaque paramètre dans une ligne en descendant.
-			</resume>
-			<params>
-				<param name="str" type="String"/>
-				<param name="…"/>
-			</params>
-		</function>
-		<function name="insertxLeft">
-			<resume>
-				Identique à <ref>insertx</ref> mais le nombre de caractères à droite reste identique.
-			</resume>
-			<params ref-function="insertx"/>
-		</function>
-		<function name="detach">
-			<resume>
-				Supprime la sélection ou str jusqu'à ligne_courante + n.
-			</resume>
-			<params>
-				<param name="str" ref-function="insert"/>
-				<param name="n" type="Stepper">
-					3 options disponibles : f pour supprimé les textes incomplet car il n'y a pas assez de caractère dans la ligne. m quand str est multiligne permet de ne pas passé à la ligne suivante. l qui permet de supprimé les caractères ce trouvant à gauche du curseur.
-				</param>
-				<param name="…"/>
-			</params>
-			<examples>
-				<example>
-					<resume>plop
+          <code>join2 ' ' -</code>
+          <result>je suis-un exemple-simple</result>
+        </example>
+      </examples>
+    </function>
+    <function name="cursor">
+      <resume>
+        Définit la position du cursor : cursor l,c l,c.
+      </resume>
+      <params>
+        <param name="c1" type="String|Number">
+          Forme l,c : l et c sont optionnels, par défaut la position du curseur. l et c peuvent commencer par '+' ou '-', dans ce cas une opération sera effectuée avec la position actuelle. Ils peuvent également commencer par '*' ou '$' et c'est la position de fin qui sera prise pour reférence (dernière ligne ou dernière colonne de la ligne).
+          Des lettres comme wWlLnNdfspPcBbeu peuvent être ajouté et précédés de nombre (par défaut 1). S'il faut séparer les lettres d'un nombre, utilisé :.
+          w: saute les caractères \x7E-\xFFa-zA-Z0-9_.
+          W: saute les caractères -\x7E-\xFFa-zA-Z0-9_.
+          l: saute les caractères \x7E-\xFFa-zA-Z.
+          L: saute les caractères -\x7E-\xFFa-zA-Z.
+          n: saute les caractères \x7E-\xFFa-zA-Z0-9.
+          N: saute les caractères -\x7E-\xFFa-zA-Z0-9.
+          d: saute les caractères 0-9.
+          f: saute les caractères .0-9.
+          s: saute les caractères blancs.
+          p: s'arrête à la ligne de contenant pas de caractère a-zA-Z0-9_.
+          P: s'arrête à la ligne contenant uniquement des caractères d'espacement.
+          c: ce déplace de n caractères.
+          B: si utilisé dans c2 fait un <ref>getSelectionBlock</ref>, sinon ne fait rien.
+          b: <ref>Position.start</ref>
+          e: <ref>Position.end</ref>
+          u: ce positionne à la position c1 ou la position courante du curseur.
+          i: positionne le curseur à la position du prochain match.
+        </param>
+        <param name="c2" type="String|Number">
+          Si c2 définit une sélection, elle se fera avec comme intervalle les valeurs définies par c1 et c2.
+        </param>
+        <param name="pos" type="Boolean" default="false">
+          Permet d'utiliser le curseur 2 comme pointeur après la sélection.
+        </param>
+      </params>
+      <examples>
+        <example>
+          <code>cursor ,0 ,*</code>
+          <result>Sélectionne la ligne où se trouve le curseur.</result>
+        </example>
+        <example>
+          <code>cursor -1,0 b,*:,-1</code>
+          <result>Sélectionne la ligne précédente et actuelle mais sans le dernier caractère.</result>
+        </example>
+        <example>
+          <code>cursor ,0 +5,*</code>
+          <result>Sélectionne un bloc de 6 lignes commençant à la ligne actuelle.</result>
+        </example>
+        <example>
+          <code>cursor -p p</code>
+          <result>Sélectionne le paragraphe où se trouve le curseur.</result>
+        </example>
+        <example>
+          <code>cursor b,0 e,*</code>
+          <result>Fait une sélection en bloc à la manière de selectBlock.</result>
+        </example>
+          <example>
+            <code>cursor -w 2w</code>
+            <result>Sélectionne 2 mots en partant du début du mot précédent.</result>
+          </example>
+      </examples>
+    </function>
+    <function name="replace">
+      <resume>
+        Remplace le texte str ou la sélection par les remplace.
+      </resume>
+      <params>
+        <param name="str" type="String">
+          Si une sélection existe ce paramètre n'existe pas.
+        </param>
+        <param name="rgx" type="String|RegExp"/>
+        <param name="remplace" type="String"/>
+        <param name="…"/>
+      </params>
+      <examples>
+        <example>
+          <code>replace "a[i] = i; " i 0 1 2</code>
+          <result>a[0] = 0; a[1] = 1; a[2] = 2; </result>
+        </example>
+      </examples>
+    </function>
+    <function name="replacex">
+      <resume>
+        Remplace le texte str ou la sélection par les remplace.
+      </resume>
+      <params>
+        <param name="str" type="String">
+          Si une sélection existe ce paramètre n'existe pas.
+        </param>
+        <param name="n" type="Number"/>
+        <param name="rgx" type="String|RegExp"/>
+        <param name="…"/>
+        <param name="remplace" type="String"/>
+        <param name="…"/>
+      </params>
+      <examples>
+        <example>
+          <code>replace "a[i] = x; " 2 i x 0 1 2 2 3 4</code>
+          <result>a[0] = 1; a[2] = 2; a[3] = 4; </result>
+        </example>
+      </examples>
+    </function>
+    <function name="repeat">
+      <resume>
+        Identique à <ref>replace</ref> hormis le fait que le texte de la sélection ou de str est écrit.
+      </resume>
+      <params ref-function="replace"/>
+    </function>
+    <function name="repeatx">
+      <resume>
+        Identique à <ref>replacex</ref> hormis le fait que le texte de la sélection ou de str est écrit.
+      </resume>
+      <params ref-function="replacex"/>
+    </function>
+    <function name="change">
+      <resume>
+        Remplace la sélection ou le 1er paramètre –via une regex représentée par le paramètre suivant– autant de fois qu'il reste de paramètres.
+      </resume>
+      <params ref-function="replace"/>
+      <examples>
+        <example>
+          <code>change "a[i] = i; b[i] = i; c[i] = i;" i 0 1</code>
+          <result>a[0] = 1; b[0] = 1; c[0] = 1;</result>
+        </example>
+      </examples>
+    </function>
+    <function name="changex">
+      <resume>
+        Remplace la sélection ou le 1er paramètre –via une regex représentée par les n paramètre suivant– autant de fois qu'il reste de paramètres.
+      </resume>
+      <params ref-function="replacex"/>
+      <examples>
+        <example>
+          <code>changex "a[i] = i; b[i] = i; c[i] = i;" 3 a b i e f</code>
+          <result>e[f] = e; f[e] = f; c[e] = f;</result>
+        </example>
+      </examples>
+    </function>
+    <function name="set-namespace-tag">
+      <resume>
+        Définit le namespace à ajouter pour la fonction <ref>tag</ref>.
+      </resume>
+      <params>
+        <param name="namespace" type="String" default="''"/>
+      </params>
+    </function>
+    <function name="set-always-write-namespace">
+      <resume>
+        Définit si le namespace doit être écrit pat la fonction <ref>tag</ref> même s'il est déjà indiqué dans le nom.
+      </resume>
+      <params>
+        <param name="always" type="Boolean" default="false"/>
+      </params>
+    </function>
+    <function name="set-is-block-tag">
+      <resume>
+        Définit si la balise ajouté par doit <ref>tag</ref> être écrite en ligne ou en bloc.
+      </resume>
+      <params>
+        <param name="indent" type="Boolean" default="false"/>
+      </params>
+    </function>
+    <function name="tag" action-key="Ctrl+Alt+N">
+      <resume>
+        Si aucun paramètre n'est passé transforme la sélection ou le texte en tag.
+      </resume>
+      <params>
+        <param name="name" type="String"/>
+        <param name="isBlock" type="Boolean" default="false">
+          Si vrai saut de ligne + indentation.
+        </param>
+      </params>
+    </function>
+    <function name="wrapTag">
+      <resume>
+        Si aucun paramètre n'est passé entoure la sélection ou le texte avec un tag.
+      </resume>
+      <params>
+        <param name="str" type="String">
+          Si une sélection existe ce paramètre est ignoré.
+        </param>
+        <param name="name" ref-function="tag"/>
+        <param name="isBlock" ref-function="tag"/>
+      </params>
+    </function>
+    <function name="duplicate" action-key="Ctrl+Alt+D">
+      <resume>
+        Duplique la ligne ou la sélection n fois.
+      </resume>
+      <params>
+        <param name="n" type="Number|Stepper" default="1"/>
+        <param name="down" type="Boolean" default="false">
+          Si ou que n est un nombre négatif, vrai déplace le curseur au niveau du dernier élement dupliqué.
+        </param>
+      </params>
+      <examples>
+        <example>
+          <code>duplicate ~2:5</code>
+          <result>duplique 5 fois la ligne une ligne sur 2</result>
+        </example>
+      </examples>
+    </function>
+    <function name="insert">
+      <resume>
+        Insert la sélection ou str jusqu'à ligne_courante + n
+      </resume>
+      <params>
+        <param name="str" type="String">
+          Si une sélection existe ce paramètre n'existe pas.
+        </param>
+        <param name="n" type="Stepper">
+          Seul l'option f existe, pour forcer l'insertion dans une ligne vide.
+        </param>
+        <param name="…"/>
+      </params>
+    </function>
+    <function name="insertLeft">
+      <resume>
+        Identique à <ref>insert</ref> mais le nombre de caractères à droite reste identique. S'il n'y a pas assez de caractères l'insertion n'est pas faite pour la ligne.
+      </resume>
+      <params ref-function="insert"/>
+    </function>
+    <function name="insertx">
+      <resume>
+        Insert chaque paramètre dans une ligne en descendant.
+      </resume>
+      <params>
+        <param name="str" type="String"/>
+        <param name="…"/>
+      </params>
+    </function>
+    <function name="insertxLeft">
+      <resume>
+        Identique à <ref>insertx</ref> mais le nombre de caractères à droite reste identique.
+      </resume>
+      <params ref-function="insertx"/>
+    </function>
+    <function name="detach">
+      <resume>
+        Supprime la sélection ou str jusqu'à ligne_courante + n.
+      </resume>
+      <params>
+        <param name="str" ref-function="insert"/>
+        <param name="n" type="Stepper">
+          3 options disponibles : f pour supprimé les textes incomplet car il n'y a pas assez de caractère dans la ligne. m quand str est multiligne permet de ne pas passé à la ligne suivante. l qui permet de supprimé les caractères ce trouvant à gauche du curseur.
+        </param>
+        <param name="…"/>
+      </params>
+      <examples>
+        <example>
+          <resume>plop
 pl[cursor]op
 plop
 plop
 plop</resume>
-					<code>detach o 3</code>
-					<result>plop
+          <code>detach o 3</code>
+          <result>plop
 pl[cursor]p
 plp
 plp
 plop</result>
-				</example>
-				<example>
-					<resume>plop
+        </example>
+        <example>
+          <resume>plop
 pl[cursor]op
 plopidou
 plop
 plop</resume>
-					<code>detach opi f3</code>
-					<result>plop
+          <code>detach opi f3</code>
+          <result>plop
 pl[cursor]
 pldou
 pl
 plop</result>
-				</example>
-			</examples>
-		</function>
-		<function name="detachLeft">
-			<resume>
-				Identique à <ref>detach</ref> mais le nombre de caractères à droite reste identique.
-			</resume>
-			<params ref-function="detach"/>
-		</function>
-		<function name="selectForCut">
-			<resume>
-				Change la sélection pour pouvoir couper un block de texte sans laisser de saut de ligne. Voir <ref>getSelectionForCut</ref>.
-			</resume>
-		</function>
-		<function name="selectBlock">
-			<resume>
-				Sélection du début de la ligne de sélection à la fin de la ligne de la sélection. Si aucune sélection, sélectionne tout le document. Voir <ref>getSelectionBlock</ref>.
-			</resume>
-			<params>
-				<param name="nonWhitespace" type="Boolean"/>
-			</params>
-		</function>
-		<function name="romanNumeral">
-			<resume>
-				Écrit un nombre dans sa forme romaine. A partir de 3999 les résultats peuvent être erronés. Si le nombre n'est pas compris entre 0 et 4999 la  fonction ne fait rien.
-			</resume>
-			<params>
-				<param name="n" type="Number"/>
-			</params>
-		</function>
-		<function name="encodeuri">
-			<resume>
-				Encode la sélection ou la ligne. Si des paramètres sont passés, alors les sépare par des espaces et l'encode.
-			</resume>
-		</function>
-		<function name="decodeuri">
-			<resume>
-				Décode la sélection ou la ligne. Si des paramètres sont passés, alors les sépare par des espaces et les décode.
-			</resume>
-		</function>
-	</functions>
-	<functions type="util">
-		<function name="log">
-			<resume>
-				Écrit les arguments passés en paramètres dans le document à la position du curseur. Chaque paramètre est séparé par une virgule et un saut de ligne est ajouté après le dernier paramètre.
-			</resume>
-			<params>
-				<param name="…" type="Object"/>
-			</params>
-		</function>
-		<!--<function name="createFunctionLine">
-			<resume>
-				Crée une function s'appellant name+"Line" et qui appel la fonction nommer name après avoir automatiquement sélectionner la ligne. Si une sélection exister préalablement elle est mi en premier paramètre.
-			</resume>
-			<params>
-				<param name="name" type="String"/>
-			</params>
-		</function>-->
-		<function name="insertTag">
-			<resume>
-				Insert un tag.
-			</resume>
-			<params>
-				<param name="cursor" type="Cursor"/>
-				<param name="name" type="String"/>
-				<param name="isBlock" type="Boolean" default="undefined">
-					Si vrai saut de ligne + indentation.
-				</param>
-				<param name="str" type="String" default="''"/>
-			</params>
-		</function>
-		<function name="parseColumns">
-			<resume>
-				Chaque colonne est séparée par une virgule. Si la colonne est de la forme "-n" alors les colonnes de 0 à n sont récupérées. Si c'est de la forme "n-" alors les colonnes de n à la dernière sont récupérées. Si c'est "-" alors toutes les colonnes sont recupérées.
-			</resume>
-			<params>
-				<param name="cols" type="String">
-					"n" ⇒ n
-					"n1-n2" ⇒ [n1, …, n2]
-					"n-" ⇒ [n, …, max]
-					"-n" ⇒ [0, n]
-					"-" ⇒ [0, …, max]
-				</param>
-				<param name="max" type="Number"/>
-			</params>
-			<return>Array</return>
-		</function>
-		<function name="organizerText">
-			<resume>
-				Remplace le texte dans l'interval de selection par array après avoir réorganiser le tableau dans l'ordre de colsArrayString.
-			</resume>
-			<params>
-				<param name="colsArrayString" type="String">
-					Paramètre envoyer à <ref>parseColumns</ref>.
-				</param>
-				<param name="selection" type="Range"/>
-				<param name="array" type="Array"/>
-				<param name="filter" type="Function" default="undefined"/>
-				<param name="pre" type="Function" default="undefined">
-					Transforme la chaîne de resultat final.
-				</param>
-			</params>
-		</function>
-		<function name="simpleLeftAlgorithme">
-			<resume>
-				Lance fn avec args en premier paramètre, une fonction qui va sauvegarder le nombre de column en second et une fonction qui réajuste la colonne vers la droite.
-			</resume>
-			<params>
-				<param name="fn" type="Function"/>
-				<param name="args" type="Array"/>
-			</params>
-		</function>
-		<!--<function name="wrapperForLineAlgorithm">
-			<resume>
-				Si aucune sélection n'existe args et retourné. Dans le cas contraire la sélection est supprimé puis retourne fn avec comme paramètre args, le nombre de ligne de la sélection en tant que chaîne de caractères et param.
-			</resume>
-			<params>
-				<param name="args" type="Array"/>
-				<param name="fn" type="Function"/>
-				<param name="param" type="mixed" default="undefined"/>
-			</params>
-			<return>args|fn(args,""+lines,param)</return>
-		</function>-->
-		<function name="extend">
-			<resume>
-				Copie les attributs des object passés en paramètre 2 et plus dans le 1er paramètre, puis le retourne.
-			</resume>
-			<params>
-				<param name="o" type="Object"/>
-				<param name="…"/>
-			</params>
-			<return>Object</return>
-		</function>
-		<function name="isWhitespaceChar">
-			<resume>
-				Retourne true si le char code de c est inférieur à 32
-			</resume>
-			<params>
-				<param name="c" type="String"/>
-			</params>
-			<return>Boolean</return>
-		</function>
-		<function name="lineSelection">
-			<resume>
-				Retourne le nombre de ligne de la sélection. Un nombre négatif est retourner si cursor == selection.end
-			</resume>
-			<params>
-				<param name="selection" type="Range" default="view.selection()"/>
-				<param name="selection" type="Cursor" default="view.cursorPosition()"/>
-			</params>
-			<return>Number</return>
-		</function>
-		<function name="getCommandOrThrowError">
-			<resume>
-				Retourne la commande du nom de name. La commande est cherchée dans le scope global puis dans le tableau de fonction créé par alias et createFunction. Si non trouvé la command est splitée avec comme séparateur '.' et la recherche se fait comme ceci global[split[0]][split[1]]. Si aucune commande n'est trouvée, alors affiche un message avec debug et une exception ReferenceError est lancée.
-			</resume>
-			<params>
-				<param name="name" type="String"/>
-			</params>
-			<return>Function</return>
-		</function>
-		<function name="Stepper">
-			<resume>
-				Type de paramètre utilisé par certaines fonctions.
-			</resume>
-			<params>
-				<param name="s" type="String" default="0~1">
-					forme : [!][[[$first]~$step]$option]$n. $first = 0, $step = 1, $n = document.lines()-1. Si '!' existe en premier caractère, alors $n = $n - position.
-				</param>
-				<param name="position" type="Number"/>
-			</params>
-			<return>{isNegative :Function:Boolean, value :Number, step: Number, onStep :Function(n:Number):Boolean, valid :Function:Boolean, next :Function:Number, options :Function(null|Array|String):Array|Boolean}</return>
-		</function>
-		<function name="toBoolean">
-			<resume>
-				true si un nombre différent de 0 et NaN, si un boolean égal true ou si une chaîne de caractères égal "true", "yes", "y", "on", "oui", "o" ou toute valeur numérique différente de 0. Dans les autres cas la valeur est false.
-			</resume>
-			<params>
-				<param name="v" type="mixed" default="undefined"/>
-			</params>
-			<examples>
-				<example>
-					<code>"plop".toBoolean()</code>
-					<result>false</result>
-				</example>
-				<example>
-					<code>"yes".toBoolean()</code>
-					<result>true</result>
-				</example>
-				<example>
-					<code>toBoolean("y")</code>
-					<result>true</result>
-				</example>
-			</examples>
-			<return>Boolean</return>
-		</function>
-		<function name="compare">
-			<resume>
-				a === b ? 0 : a &lt; b ? -1 : 1
-			</resume>
-			<params>
-				<param name="a" type="Object"/>
-				<param name="b" type="Object"/>
-			</params>
-			<return>-1|0|1</return>
-		</function>
-		<function name="stepper">
-			<params>
-				<param name="step" type="String">
-					$first~$modulo
-				</param>
-			</params>
-			<return>{first:Number, modulo:Number}|null</return>
-		</function>
-		<function name="selectionOrLine">
-			<resume>
-				Retourne un objet Range de la sélection ou représentant la ligne.
-			</resume>
-			<params>
-				<param name="lf" type="undefined|Boolean" default="undefined">
-					Si lf != undefined alors un objet {range:Range, text:String} est retourné. Si lf = true et qu'il n'y a pas de sélection, alors \n est ajouté au texte.
-				</param>
-				<param name="removeText" type="Boolean" default="false"/>
-			</params>
-			<return>{range:Range, text:String}|Range</return>
-		</function>
-		<function name="selectionOrLineNonWhitespace">
-			<resume>
-				Retourne un objet Range de la sélection ou représentant la ligne sans les espaces blancs.
-			</resume>
-			<return>Range</return>
-		</function>
-		<function name="text">
-			<resume>
-				Ajoute s'il existe le texte de la sélection en 1er paramètre à la fonction.
-			</resume>
-			<params>
-				<param name="args" type="Array|arguments"/>
-				<param name="func" type="Function"/>
-				<param name="removeSelection" type="Boolean" default="false"/>
-			</params>
-		</function>
-		<function name="rangeLength">
-			<resume>
-				Retourne le nombre de caractères dans la sélection.
-			</resume>
-			<params>
-				<param name="start" type="Range|Cursor"/>
-				<param name="end" type="Cursor" default="start.end"/>
-			</params>
-			<return>Number</return>
-		</function>
-		<function name="setCursorToEdgeTheSelection">
-			<resume>
-				Affecte la position du curseur au début de la sélection si c'est égal à cursor, sinon le positionne à la fin.
-			</resume>
-			<params>
-				<param name="selection" type="Range"/>
-				<param name="cursor" type="Cursor"/>
-				<param name="inverseCondition" type="Boolean" default="false"/>
-			</params>
-			<return>Range</return>
-		</function>
-		<function name="setSelection">
-			<resume>
-				Affecte une sélection puis utilise <ref>setCursorToEdgeTheSelection</ref>.
-			</resume>
-			<params>
-				<param name="selection" type="Range"/>
-				<param name="cursor" type="Cursor" default="view.cursorPosition()"/>
-			</params>
-			<return>Range</return>
-		</function>
-		<function name="getSelectionLines">
-			<resume>
-				Retourne une sélection de begin à end.
-			</resume>
-			<params>
-				<param name="begin" type="Number"/>
-				<param name="end" type="Number"/>
-			</params>
-			<return>Range</return>
-		</function>
-		<function name="getSelectionLine">
-			<resume>
-				Retourne une sélection de la ligne.
-			</resume>
-			<params>
-				<param name="line" type="Number"/>
-			</params>
-			<return ref-function="getSelectionLines"/>
-		</function>
-		<function name="getSelectionLineNonWhitespace">
-			<resume>
-				Retourne une sélection de la ligne sans les espaces blancs.
-			</resume>
-			<params>
-				<param name="line" type="Number"/>
-			</params>
-			<return ref-function="getSelectionLines"/>
-		</function>
-		<function name="getSelectionCountLines">
-			<resume>
-				Retourne une sélection de begin à begin + count.
-			</resume>
-			<params>
-				<param name="begin" ref-function="getSelectionLines"/>
-				<param name="count" type="Number"/>
-			</params>
-			<return ref-function="getSelectionLines"/>
-		</function>
-		<function name="getSelectionAll">
-			<resume>
-				Retourne une sélection de l'ensemble document.
-			</resume>
-			<return ref-function="getSelectionLines"/>
-		</function>
-		<function name="getSelectionForCut">
-			<resume>
-				Retourne une sélection du début de la ligne de sélection au début de ligne qui suit celle de la sélection de fin. Si on ce trouve à la fin du document alors retourne une sélection qui commence à la fin de la ligne qui précéde la sélection de début jusqu'à la sélection de fin.
-			</resume>
-			<params>
-				<param name="selection" type="Range" default="view.hasSelection() ? getSelectionBlock() : getSelectionLine(view.cursorPosition().line)"/>
-			</params>
-			<examples>
-				<example>
-				  <code>getSelectionForCut(new Range(5, 10, 9, 4))</code>
-				  <result>Range(5, 0, 10, 0)</result>
-				</example>
-				<example>
-				  <code>getSelectionForCut(new Range(5, 10, endDocumentLine, 4))</code>
-				  <result>Range(4, endColumnLine4, 10, endColumnLine10)</result>
-				</example>
-			</examples>
-			<return ref-function="getSelectionLines"/>
-		</function>
-		<function name="getSelectionBlock">
-			<resume>
-				Retourne une sélection du début de la ligne de sélection à la fin de la ligne de la sélection. Si aucune sélection, retourne documentRange.
-			</resume>
-			<params>
-				<param name="selection" type="Range" default="view.selection()"/>
-				<param name="nonWhitespace" type="Boolean"/>
-			</params>
-			<return ref-function="getSelectionLines"/>
-		</function>
-		<function name="selectionNonWhitespace">
-			<resume>
-				Sélectionne le texte en éliminant les espaces en début et fin de ligne.
-			</resume>
-			<params>
-				<param name="selection" type="Range" default="view.selection()"/>
-			</params>
-			<return ref-function="getSelectionLines"/>
-		</function>
-		<function name="each">
-			<resume>
-				Exécute func sur un tableau de lignes défait de leur "\n"
-			</resume>
-			<params>
-				<param name="func" type="Function"/>
-			</params>
-		</function>
-		<!--<function name="eachLine">
-			<resume>
-				Exécute func sur chaque ligne défait de leur "\n". Si une exception est lancée alors si c'est une StopEach, eachLine s'arrête et retourne les lignes avec les changements précédemment faits. Si c'est une StopEachLine eachLine arrête de boucler sur les lignes et continue normalement. Les autres exceptions sont relancées.
-			</resume>
-			<params>
-				<param name="func" ref-function="each"/>
-				<param name="callback" type="Function" default="null">
-					callback(lines, index d'arrêt de boucle)
-				</param>
-			</params>
-		</function>-->
-		<function name="insertText">
-			<resume>
-				Insert text la position du curseur.
-			</resume>
-			<params>
-				<param name="text" type="String"/>
-			</params>
-		</function>
-		<function name="insertTextAndSelects">
-			<resume ref-function="insertText">
-				Puis le sélectionne.
-			</resume>
-			<params>
-				<param name="text" ref-function="insertText"/>
-				<param name="cursor" type="Cursor" default="view.cursorPosition()"/>
-			</params>
-			<params/>
-		</function>
-		<function name="getRangeText">
-			<resume>
-				Donne le range de la chaîne si celle-ci était sélectionnée.
-			</resume>
-			<params ref-function="insertTextAndSelects"/>
-			<return>Range</return>
-		</function>
-		<function name="getCursorEndText">
-			<resume>
-				Donne la position du cursor de fin de la chaîne si elle était insérée.
-			</resume>
-			<params ref-function="getRangeText"/>
-			<return>Cursor</return>
-		</function>
-		<function name="edit">
-			<resume>
-				Fait un document.editBegin(), execute fn puis fait un document.editEnd(). Si une exception est lancé dans fn document.editEnd() est utilisé puis l'exception est relancé.
-			</resume>
-			<params>
-				<param name="fn" type="Function"/>
-				<param name="args" type="Array" default="undefined"/>
-				<param name="thisp" type="Object" default="undefined"/>
-			</params>
-			<return>Le resultat de fn</return>
-		</function>
-		<function name="editText">
-			<resume>
-				Utilise <ref>edit</ref> et <ref>text</ref>.
-			</resume>
-			<params ref-function="text"/>
-			<return>Le resultat de fn</return>
-		</function>
-		<function name="isDigitChar">
-			<resume>
-				Retourne true si le 1er caractère est un entier (0 à 9)
-			</resume>
-			<params>
-				<param name="s" type="String"/>
-			</params>
-			<return>Boolean</return>
-		</function>
-		<function name="natcompare">
-			<resume>
-				Comparaison par ordre naturel.
-			</resume>
-			<params>
-				<param name="a" type="String"/>
-				<param name="b" type="String"/>
-			</params>
-			<return>-1|0|1</return>
-		</function>
-		<function name="removeThenInsert">
-			<resume>
-				Supprime puis insère du texte.
-			</resume>
-			<params>
-				<param name="fnRemove" type="Function">
-					Fonction de suppression.
-				</param>
-				<param name="fnInsert" type="Function">
-					Fonction d'insertion.
-				</param>
-				<param name="param1Remove" type="mixed">
-					Paramètre pour la fonction de suppression.
-				</param>
-				<param name="param1Insert" type="mixed">
-					Paramètre pour la fonction d'insertion.
-				</param>
-				<param name="str" type="String">
-					Deuxième paramètre pour la fonction d'insertion.
-				</param>
-				<param name="noEdit" type="Boolean" default="false">
-					Si false document.editBegin + document.editEnd seront utilisés.
-				</param>
-			</params>
-		</function>
-		<function name="removeRangeThenInsertText">
-			<resume>
-				Remplace la sélection par text.
-			</resume>
-			<params>
-				<param name="selection" type="Range"/>
-				<param name="text" type="String"/>
-				<param name="noEdit" ref-function="removeThenInsert"/>
-			</params>
-		</function>
-		<function name="removeLineThenInsertLine">
-			<resume>
-				Remplace la ligne par text.
-			</resume>
-			<params>
-				<param name="line" type="Number"/>
-				<param name="text" type="String"/>
-				<param name="noEdit" ref-function="removeThenInsert"/>
-			</params>
-		</function>
-		<function name="StopEach">
-			<resume>
-				Fonction qui ne fait rien.
-			</resume>
-		</function>
-		<!--<function name="StopEachLine">
-			<resume>
-				Fonction qui ne fait rien.
-			</resume>
-		</function>-->
-		<function name="negate">
-			<resume>
-				Retourne un négatif de la fonction passée en paramètre.
-			</resume>
-			<params>
-				<param name="fn" type="Function"/>
-				<param name="thisp" type="Object"/>
-			</params>
-			<return>Function</return>
-		</function>
-		<function name="interpretStr">
-			<resume>
-				Interprête les chaînes de caractères en utilisant String.interpret() si interpretStrIsActiv vaut true
-			</resume>
-			<params>
-				<param name="fn" type="Function"/>
-				<param name="thisp" type="Object"/>
-			</params>
-			<return>Function</return>
-		</function>
-		<function name="Position.recoil">
-			<resume>
-				Déplace cursor de n caractères en arrière.
-			</resume>
-			<params>
-				<param name="cursor" type="Cursor"/>
-				<param name="n" type="Number"/>
-			</params>
-			<return>cursor|null: si null alors cursor.line = -1</return>
-		</function>
-		<function name="Position.advance">
-			<resume>
-				Déplace cursor de n caractères en avant.
-			</resume>
-			<params ref-function="Position.recoil"/>
-			<return>cursor|null: si null alors cursor.line = document.lines()</return>
-		</function>
-		<function name="Position.move">
-			<resume>
-				Déplace cursor de n caractères. Utilise <ref>Position.recoil</ref> si n &lt; 0 et <ref>Position.advance</ref> dans le cas contraire
-			</resume>
-			<params ref-function="Position.recoil"/>
-			<return>cursor|null:</return>
-		</function>
-		<function name="Position.moveIfTest">
-			<resume>
-				Bouge cursor jusqu'à ce que result ne correspond plus au test du caractère.
-			</resume>
-			<params>
-				<param name="cursor" type="Cursor"/>
-				<param name="sens" type="Function">
-					Si après cursor = sens(cursor), cursor est vrai alors la boucle continue. Utilisais par exemple <ref>Position.recoil</ref> ou <ref>Position.advance</ref>.
-				</param>
-				<param name="rgx" type="RegExp"/>
-				<param name="result" type="Boolean">
-					Valeur de retour qui correspond au test de la regex
-				</param>
-			</params>
-			<return>la valeur de cursor</return>
-		</function>
-		<function name="Position.search">
-			<resume>
-				Retourne un curseur qui c'est déplasé jusqu'au prochain fragment qui ne correspond plus au caractère de rgx.
-			</resume>
-			<params>
-				<param name="rgx" type="RegExp"/>
-				<param name="cursor" type="Cursor"/>
-				<param name="n" type="Number" default="1">
-					Nombre de fragment à chercher.
-				</param>
-				<param name="run" type="Function" default="undefined">
-					run(ret:Cursor, <ref>Position.recoil</ref>|<ref>Position.advance</ref>, rgx, n &lt; 0 ? -1 : (n||1)). Si run return une valeur fausse alors cursor est renvoyer.
-				</param>
-			</params>
-			<return>Cursor</return>
-		</function>
-		<!--<function name="Position.algofind">
-			<resume>
-				Algorithme de recherche. Utilise <ref>Position.find</ref> et <ref>Position.rfind</ref>.
-			</resume>
-			<params>
-				<param name="pattern" type="RegExp"/>
-				<param name="ignore" type="RegExp"/>
-				<param name="cursor" type="Cursor"/>
-				<param name="n" type="Number"/>
-			</params>
-			<return>Cursor</return>
-		</function>-->
-		<function name="Position.strfind">
-			<resume>
-				Cherche de cursor à la fin du document le texte str et retourne ça position.
-			</resume>
-			<params>
-				<param name="cursor" type="Cursor"/>
-				<param name="str" type="RegExp"/>
-				<param name="exclude" type="Boolean">
-					Si vrai le curseur ce positionne après le texte trouvé.
-				</param>
-			</params>
-			<return>Cursor</return>
-		</function>
-		<function name="Position.strrfind">
-			<resume>
-				Cherche du début du document à cursor le texte str et retourne ça position.
-			</resume>
-			<params ref-function="Position.strfind"/>
-			<return ref-function="Position.strfind"/>
-		</function>
-		<function name="Position.start">
-			<resume>
-				Retourne le curseur du début de sélection s'il existe, sinon celui de la position courante.
-			</resume>
-			<return>Cursor</return>
-		</function>
-		<function name="Position.end">
-			<resume>
-				Retourne le curseur de fin de sélection s'il existe, sinon celui de la position courante.
-			</resume>
-			<return>Cursor</return>
-		</function>
-		<function name="noop">
-			<resume>
-				Une fonction qui ne fait rien.
-			</resume>
-		</function>
-		<function name="$A">
-			<resume>
-				Racourcie pour Array.slice.call.
-			</resume>
-			<params>
-				<param name="args" type="Array|arguments|…"/>
-				<param name="begin" type="Number" default="0"/>
-				<param name="end" type="Number" default="undefined"/>
-			</params>
-			<return>Array</return>
-		</function>
-		<function name="stringOrRegextoRegExp">
-			<resume>
-				Voir <ref>stringOrRegex</ref>. Force str à devinir une RegExp: (RegExp(stringOrRegex === RegExp ? str : RegExp.escape(str), flag)).
-			</resume>
-			<params>
-				<param name="str" type="String|RegExp"/>
-				<param name="flag" type="String" default="undefined"/>
-			</params>
-		</function>
-	</functions>
-	<functions type="Special variables">
-		<function name="stringOrRegex">
-			<resume>
-				Voir <ref>set-string-or-regex</ref>. Par défaut String.
-			</resume>
-		</function>
-		<function name="RegexOrString">
-			<resume>
-				Voir <ref>set-regex-or-string</ref>. Par défaut RegExp.
-			</resume>
-		</function>
-		<function name="window">
-			<resume>
-				this global.
-			</resume>
-		</function>
-		<function name="functions">
-			<resume>
-				Tableau des fonctions créées par l'utilisateur. En valeur la fonction et en clef son nom.
-			</resume>
-		</function>
-		<function name="interpretStrIsActiv">
-			<resume>
-				Si true alors la fonction <ref>interpretStr</ref> va interpréter les chaînes de caractères.
-			</resume>
-		</function>
-		<function name="defaultDelimiterSwap">
-			<resume>
-				Chaîne de caractères qui représente le délimiteur par défaut pour <ref>swap</ref>.
-			</resume>
-		</function>
-		<function name="defaultIsPatternSwap">
-			<resume>
-				RegExp représentant les caractères capturable pour <ref>smartSwap</ref>.
-			</resume>
-		</function>
-		<function name="defaultPatternSwap">
-			<resume>
-				RegExp pour capturer les chaînes de caractères dans <ref>smartSwap</ref>.
-			</resume>
-		</function>
-		<function name="namespaceStr">
-			<resume>
-				Namespace pour la fonction <ref>tag</ref>.
-			</resume>
-		</function>
-		<function name="ignoreSurroundWhitespace">
-			<resume>
-				Voir <ref>set-surround-ignore-whitespace</ref>. Par défaut true.
-			</resume>
-		</function>
-		<function name="alwaysWriteNamespace">
-			<resume>
-				Voir <ref>set-always-write-namespace</ref>. Par défaut true.
-			</resume>
-		</function>
-		<function name="isBlockTag">
-			<resume>
-				Voir <ref>set-is-block-tag</ref>. Par défaut false.
-			</resume>
-		</function>
-	</functions>
-	<functions type="Object extend">
-		<function name="String.prototype.reverseWrap">
-			<resume>
-				transforme les caractères [](){}&lt;> par ][)(}{>&lt;
-			</resume>
-			<return>String</return>
-		</function>
-		<function name="String.prototype.repeat">
-			<resume>
-				Retourne la chaîne multiplier n fois.
-			</resume>
-			<params>
-				<param name="n" type="Number"/>
-			</params>
-			<return>String</return>
-		</function>
-		<function name="String.prototype.isAlphanumeric">
-			<resume>
-				Retourne true si la chaîne de caractères est alpanumérique.
-			</resume>
-			<return>Boolean</return>
-		</function>
-		<function name="String.prototype.eachLine">
-			<resume>
-				Effectue func sur chaque ligne
-			</resume>
-			<params>
-				<param name="func" type="Function"/>
-				<param name="thisp" type="Object"/>
-			</params>
-			<return>String</return>
-		</function>
-		<function name="String.prototype.interpret">
-			<resume>
-				Interprete la chaîne comme le ferrait javascript.
-			</resume>
-			<params/>
-			<return>String</return>
-			<examples>
-				<example>
-				  <resume>plop\\n\th</resume>
-				  <code>"plop\\n\\th".interpret()</code>
-				  <result>plop
+        </example>
+      </examples>
+    </function>
+    <function name="detachLeft">
+      <resume>
+        Identique à <ref>detach</ref> mais le nombre de caractères à droite reste identique.
+      </resume>
+      <params ref-function="detach"/>
+    </function>
+    <function name="selectForCut">
+      <resume>
+        Change la sélection pour pouvoir couper un block de texte sans laisser de saut de ligne. Voir <ref>getSelectionForCut</ref>.
+      </resume>
+    </function>
+    <function name="selectBlock">
+      <resume>
+        Sélection du début de la ligne de sélection à la fin de la ligne de la sélection. Si aucune sélection, sélectionne tout le document. Voir <ref>getSelectionBlock</ref>.
+      </resume>
+      <params>
+        <param name="nonWhitespace" type="Boolean"/>
+      </params>
+    </function>
+    <function name="romanNumeral">
+      <resume>
+        Écrit un nombre dans sa forme romaine. A partir de 3999 les résultats peuvent être erronés. Si le nombre n'est pas compris entre 0 et 4999 la  fonction ne fait rien.
+      </resume>
+      <params>
+        <param name="n" type="Number"/>
+      </params>
+    </function>
+    <function name="encodeuri">
+      <resume>
+        Encode la sélection ou la ligne. Si des paramètres sont passés, alors les sépare par des espaces et l'encode.
+      </resume>
+    </function>
+    <function name="decodeuri">
+      <resume>
+        Décode la sélection ou la ligne. Si des paramètres sont passés, alors les sépare par des espaces et les décode.
+      </resume>
+    </function>
+  </functions>
+  <functions type="util">
+    <function name="log">
+      <resume>
+        Écrit les arguments passés en paramètres dans le document à la position du curseur. Chaque paramètre est séparé par une virgule et un saut de ligne est ajouté après le dernier paramètre.
+      </resume>
+      <params>
+        <param name="…" type="Object"/>
+      </params>
+    </function>
+    <function name="insertTag">
+      <resume>
+        Insert un tag.
+      </resume>
+      <params>
+        <param name="cursor" type="Cursor"/>
+        <param name="name" type="String"/>
+        <param name="isBlock" type="Boolean" default="undefined">
+          Si vrai saut de ligne + indentation.
+        </param>
+        <param name="str" type="String" default="''"/>
+      </params>
+    </function>
+    <function name="parseColumns">
+      <resume>
+        Chaque colonne est séparée par une virgule. Si la colonne est de la forme "-n" alors les colonnes de 0 à n sont récupérées. Si c'est de la forme "n-" alors les colonnes de n à la dernière sont récupérées. Si c'est "-" alors toutes les colonnes sont recupérées.
+      </resume>
+      <params>
+        <param name="cols" type="String">
+          "n" ⇒ n
+          "n1-n2" ⇒ [n1, …, n2]
+          "n-" ⇒ [n, …, max]
+          "-n" ⇒ [0, n]
+          "-" ⇒ [0, …, max]
+        </param>
+        <param name="max" type="Number"/>
+      </params>
+      <return>Array</return>
+    </function>
+    <function name="organizerText">
+      <resume>
+        Remplace le texte dans l'interval de selection par array après avoir réorganiser le tableau dans l'ordre de colsArrayString.
+      </resume>
+      <params>
+        <param name="colsArrayString" type="String">
+          Paramètre envoyer à <ref>parseColumns</ref>.
+        </param>
+        <param name="selection" type="Range"/>
+        <param name="array" type="Array"/>
+        <param name="filter" type="Function" default="undefined"/>
+        <param name="pre" type="Function" default="undefined">
+          Transforme la chaîne de resultat final.
+        </param>
+      </params>
+    </function>
+    <function name="simpleLeftAlgorithme">
+      <resume>
+        Lance fn avec args en premier paramètre, une fonction qui va sauvegarder le nombre de column en second et une fonction qui réajuste la colonne vers la droite.
+      </resume>
+      <params>
+        <param name="fn" type="Function"/>
+        <param name="args" type="Array"/>
+      </params>
+    </function>
+    <function name="extend">
+      <resume>
+        Copie les attributs des object passés en paramètre 2 et plus dans le 1er paramètre, puis le retourne.
+      </resume>
+      <params>
+        <param name="o" type="Object"/>
+        <param name="…"/>
+      </params>
+      <return>Object</return>
+    </function>
+    <function name="isWhitespaceChar">
+      <resume>
+        Retourne true si le char code de c est inférieur à 32
+      </resume>
+      <params>
+        <param name="c" type="String"/>
+      </params>
+      <return>Boolean</return>
+    </function>
+    <function name="lineSelection">
+      <resume>
+        Retourne le nombre de ligne de la sélection. Un nombre négatif est retourner si cursor == selection.end
+      </resume>
+      <params>
+        <param name="selection" type="Range" default="view.selection()"/>
+        <param name="selection" type="Cursor" default="view.cursorPosition()"/>
+      </params>
+      <return>Number</return>
+    </function>
+    <function name="getCommandOrThrowError">
+      <resume>
+        Retourne la commande du nom de name. La commande est cherchée dans le scope global puis dans le tableau de fonction créé par alias et createFunction. Si non trouvé la command est splitée avec comme séparateur '.' et la recherche se fait comme ceci global[split[0]][split[1]]. Si aucune commande n'est trouvée, alors affiche un message avec debug et une exception ReferenceError est lancée.
+      </resume>
+      <params>
+        <param name="name" type="String"/>
+      </params>
+      <return>Function</return>
+    </function>
+    <function name="Stepper">
+      <resume>
+        Type de paramètre utilisé par certaines fonctions.
+      </resume>
+      <params>
+        <param name="s" type="String" default="0~1">
+          forme : [!][[[$first]~$step]$option]$n. $first = 0, $step = 1, $n = document.lines()-1. Si '!' existe en premier caractère, alors $n = $n - position.
+        </param>
+        <param name="position" type="Number"/>
+      </params>
+      <return>{isNegative :Function:Boolean, value :Number, step: Number, onStep :Function(n:Number):Boolean, valid :Function:Boolean, next :Function:Number, options :Function(null|Array|String):Array|Boolean}</return>
+    </function>
+    <function name="toBoolean">
+      <resume>
+        true si un nombre différent de 0 et NaN, si un boolean égal true ou si une chaîne de caractères égal "true", "yes", "y", "on", "oui", "o" ou toute valeur numérique différente de 0. Dans les autres cas la valeur est false.
+      </resume>
+      <params>
+        <param name="v" type="mixed" default="undefined"/>
+      </params>
+      <examples>
+        <example>
+          <code>"plop".toBoolean()</code>
+          <result>false</result>
+        </example>
+        <example>
+          <code>"yes".toBoolean()</code>
+          <result>true</result>
+        </example>
+        <example>
+          <code>toBoolean("y")</code>
+          <result>true</result>
+        </example>
+      </examples>
+      <return>Boolean</return>
+    </function>
+    <function name="compare">
+      <resume>
+        a === b ? 0 : a &lt; b ? -1 : 1
+      </resume>
+      <params>
+        <param name="a" type="Object"/>
+        <param name="b" type="Object"/>
+      </params>
+      <return>-1|0|1</return>
+    </function>
+    <function name="stepper">
+      <params>
+        <param name="step" type="String">
+          $first~$modulo
+        </param>
+      </params>
+      <return>{first:Number, modulo:Number}|null</return>
+    </function>
+    <function name="selectionOrLine">
+      <resume>
+        Retourne un objet Range de la sélection ou représentant la ligne.
+      </resume>
+      <params>
+        <param name="lf" type="undefined|Boolean" default="undefined">
+          Si lf != undefined alors un objet {range:Range, text:String} est retourné. Si lf = true et qu'il n'y a pas de sélection, alors \n est ajouté au texte.
+        </param>
+        <param name="removeText" type="Boolean" default="false"/>
+      </params>
+      <return>{range:Range, text:String}|Range</return>
+    </function>
+    <function name="selectionOrLineNonWhitespace">
+      <resume>
+        Retourne un objet Range de la sélection ou représentant la ligne sans les espaces blancs.
+      </resume>
+      <return>Range</return>
+    </function>
+    <function name="text">
+      <resume>
+        Ajoute s'il existe le texte de la sélection en 1er paramètre à la fonction.
+      </resume>
+      <params>
+        <param name="args" type="Array|arguments"/>
+        <param name="func" type="Function"/>
+        <param name="removeSelection" type="Boolean" default="false"/>
+      </params>
+    </function>
+    <function name="rangeLength">
+      <resume>
+        Retourne le nombre de caractères dans la sélection.
+      </resume>
+      <params>
+        <param name="start" type="Range|Cursor"/>
+        <param name="end" type="Cursor" default="start.end"/>
+      </params>
+      <return>Number</return>
+    </function>
+    <function name="setCursorToEdgeTheSelection">
+      <resume>
+        Affecte la position du curseur au début de la sélection si c'est égal à cursor, sinon le positionne à la fin.
+      </resume>
+      <params>
+        <param name="selection" type="Range"/>
+        <param name="cursor" type="Cursor"/>
+        <param name="inverseCondition" type="Boolean" default="false"/>
+      </params>
+      <return>Range</return>
+    </function>
+    <function name="setSelection">
+      <resume>
+        Affecte une sélection puis utilise <ref>setCursorToEdgeTheSelection</ref>.
+      </resume>
+      <params>
+        <param name="selection" type="Range"/>
+        <param name="cursor" type="Cursor" default="view.cursorPosition()"/>
+      </params>
+      <return>Range</return>
+    </function>
+    <function name="getSelectionLines">
+      <resume>
+        Retourne une sélection de begin à end.
+      </resume>
+      <params>
+        <param name="begin" type="Number"/>
+        <param name="end" type="Number"/>
+      </params>
+      <return>Range</return>
+    </function>
+    <function name="getSelectionLine">
+      <resume>
+        Retourne une sélection de la ligne.
+      </resume>
+      <params>
+        <param name="line" type="Number"/>
+      </params>
+      <return ref-function="getSelectionLines"/>
+    </function>
+    <function name="getSelectionLineNonWhitespace">
+      <resume>
+        Retourne une sélection de la ligne sans les espaces blancs.
+      </resume>
+      <params>
+        <param name="line" type="Number"/>
+      </params>
+      <return ref-function="getSelectionLines"/>
+    </function>
+    <function name="getSelectionCountLines">
+      <resume>
+        Retourne une sélection de begin à begin + count.
+      </resume>
+      <params>
+        <param name="begin" ref-function="getSelectionLines"/>
+        <param name="count" type="Number"/>
+      </params>
+      <return ref-function="getSelectionLines"/>
+    </function>
+    <function name="getSelectionAll">
+      <resume>
+        Retourne une sélection de l'ensemble document.
+      </resume>
+      <return ref-function="getSelectionLines"/>
+    </function>
+    <function name="getSelectionForCut">
+      <resume>
+        Retourne une sélection du début de la ligne de sélection au début de ligne qui suit celle de la sélection de fin. Si on ce trouve à la fin du document alors retourne une sélection qui commence à la fin de la ligne qui précéde la sélection de début jusqu'à la sélection de fin.
+      </resume>
+      <params>
+        <param name="selection" type="Range" default="view.hasSelection() ? getSelectionBlock() : getSelectionLine(view.cursorPosition().line)"/>
+      </params>
+      <examples>
+        <example>
+          <code>getSelectionForCut(new Range(5, 10, 9, 4))</code>
+          <result>Range(5, 0, 10, 0)</result>
+        </example>
+        <example>
+          <code>getSelectionForCut(new Range(5, 10, endDocumentLine, 4))</code>
+          <result>Range(4, endColumnLine4, 10, endColumnLine10)</result>
+        </example>
+      </examples>
+      <return ref-function="getSelectionLines"/>
+    </function>
+    <function name="getSelectionBlock">
+      <resume>
+        Retourne une sélection du début de la ligne de sélection à la fin de la ligne de la sélection. Si aucune sélection, retourne documentRange.
+      </resume>
+      <params>
+        <param name="selection" type="Range" default="view.selection()"/>
+        <param name="nonWhitespace" type="Boolean"/>
+      </params>
+      <return ref-function="getSelectionLines"/>
+    </function>
+    <function name="selectionNonWhitespace">
+      <resume>
+        Sélectionne le texte en éliminant les espaces en début et fin de ligne.
+      </resume>
+      <params>
+        <param name="selection" type="Range" default="view.selection()"/>
+      </params>
+      <return ref-function="getSelectionLines"/>
+    </function>
+    <function name="each">
+      <resume>
+        Exécute func sur un tableau de lignes défait de leur "\n"
+      </resume>
+      <params>
+        <param name="func" type="Function"/>
+      </params>
+    </function>
+    <function name="insertText">
+      <resume>
+        Insert text la position du curseur.
+      </resume>
+      <params>
+        <param name="text" type="String"/>
+      </params>
+    </function>
+    <function name="insertTextAndSelects">
+      <resume ref-function="insertText">
+        Puis le sélectionne.
+      </resume>
+      <params>
+        <param name="text" ref-function="insertText"/>
+        <param name="cursor" type="Cursor" default="view.cursorPosition()"/>
+      </params>
+      <params/>
+    </function>
+    <function name="getRangeText">
+      <resume>
+        Donne le range de la chaîne si celle-ci était sélectionnée.
+      </resume>
+      <params ref-function="insertTextAndSelects"/>
+      <return>Range</return>
+    </function>
+    <function name="getCursorEndText">
+      <resume>
+        Donne la position du cursor de fin de la chaîne si elle était insérée.
+      </resume>
+      <params ref-function="getRangeText"/>
+      <return>Cursor</return>
+    </function>
+    <function name="edit">
+      <resume>
+        Fait un document.editBegin(), execute fn puis fait un document.editEnd(). Si une exception est lancé dans fn document.editEnd() est utilisé puis l'exception est relancé.
+      </resume>
+      <params>
+        <param name="fn" type="Function"/>
+        <param name="args" type="Array" default="undefined"/>
+        <param name="thisp" type="Object" default="undefined"/>
+      </params>
+      <return>Le resultat de fn</return>
+    </function>
+    <function name="editText">
+      <resume>
+        Utilise <ref>edit</ref> et <ref>text</ref>.
+      </resume>
+      <params ref-function="text"/>
+      <return>Le resultat de fn</return>
+    </function>
+    <function name="isDigitChar">
+      <resume>
+        Retourne true si le 1er caractère est un entier (0 à 9)
+      </resume>
+      <params>
+        <param name="s" type="String"/>
+      </params>
+      <return>Boolean</return>
+    </function>
+    <function name="natcompare">
+      <resume>
+        Comparaison par ordre naturel.
+      </resume>
+      <params>
+        <param name="a" type="String"/>
+        <param name="b" type="String"/>
+      </params>
+      <return>-1|0|1</return>
+    </function>
+    <function name="removeThenInsert">
+      <resume>
+        Supprime puis insère du texte.
+      </resume>
+      <params>
+        <param name="fnRemove" type="Function">
+          Fonction de suppression.
+        </param>
+        <param name="fnInsert" type="Function">
+          Fonction d'insertion.
+        </param>
+        <param name="param1Remove" type="mixed">
+          Paramètre pour la fonction de suppression.
+        </param>
+        <param name="param1Insert" type="mixed">
+          Paramètre pour la fonction d'insertion.
+        </param>
+        <param name="str" type="String">
+          Deuxième paramètre pour la fonction d'insertion.
+        </param>
+        <param name="noEdit" type="Boolean" default="false">
+          Si false document.editBegin + document.editEnd seront utilisés.
+        </param>
+      </params>
+    </function>
+    <function name="removeRangeThenInsertText">
+      <resume>
+        Remplace la sélection par text.
+      </resume>
+      <params>
+        <param name="selection" type="Range"/>
+        <param name="text" type="String"/>
+        <param name="noEdit" ref-function="removeThenInsert"/>
+      </params>
+    </function>
+    <function name="removeLineThenInsertLine">
+      <resume>
+        Remplace la ligne par text.
+      </resume>
+      <params>
+        <param name="line" type="Number"/>
+        <param name="text" type="String"/>
+        <param name="noEdit" ref-function="removeThenInsert"/>
+      </params>
+    </function>
+    <function name="StopEach">
+      <resume>
+        Fonction qui ne fait rien.
+      </resume>
+    </function>
+    <!--<function name="StopEachLine">
+      <resume>
+        Fonction qui ne fait rien.
+      </resume>
+    </function>-->
+    <function name="negate">
+      <resume>
+        Retourne un négatif de la fonction passée en paramètre.
+      </resume>
+      <params>
+        <param name="fn" type="Function"/>
+        <param name="thisp" type="Object"/>
+      </params>
+      <return>Function</return>
+    </function>
+    <function name="interpretStr">
+      <resume>
+        Interprête les chaînes de caractères en utilisant String.interpret() si interpretStrIsActiv vaut true
+      </resume>
+      <params>
+        <param name="fn" type="Function"/>
+        <param name="thisp" type="Object"/>
+      </params>
+      <return>Function</return>
+    </function>
+    <function name="Position.recoil">
+      <resume>
+        Déplace cursor de n caractères en arrière.
+      </resume>
+      <params>
+        <param name="cursor" type="Cursor"/>
+        <param name="n" type="Number"/>
+      </params>
+      <return>cursor|null: si null alors cursor.line = -1</return>
+    </function>
+    <function name="Position.advance">
+      <resume>
+        Déplace cursor de n caractères en avant.
+      </resume>
+      <params ref-function="Position.recoil"/>
+      <return>cursor|null: si null alors cursor.line = document.lines()</return>
+    </function>
+    <function name="Position.move">
+      <resume>
+        Déplace cursor de n caractères. Utilise <ref>Position.recoil</ref> si n &lt; 0 et <ref>Position.advance</ref> dans le cas contraire
+      </resume>
+      <params ref-function="Position.recoil"/>
+      <return>cursor|null:</return>
+    </function>
+    <function name="Position.moveIfTest">
+      <resume>
+        Bouge cursor jusqu'à ce que result ne correspond plus au test du caractère.
+      </resume>
+      <params>
+        <param name="cursor" type="Cursor"/>
+        <param name="sens" type="Function">
+          Si après cursor = sens(cursor), cursor est vrai alors la boucle continue. Utilisais par exemple <ref>Position.recoil</ref> ou <ref>Position.advance</ref>.
+        </param>
+        <param name="rgx" type="RegExp"/>
+        <param name="result" type="Boolean">
+          Valeur de retour qui correspond au test de la regex
+        </param>
+      </params>
+      <return>la valeur de cursor</return>
+    </function>
+    <function name="Position.search">
+      <resume>
+        Retourne un curseur qui c'est déplasé jusqu'au prochain fragment qui ne correspond plus au caractère de rgx.
+      </resume>
+      <params>
+        <param name="rgx" type="RegExp"/>
+        <param name="cursor" type="Cursor"/>
+        <param name="n" type="Number" default="1">
+          Nombre de fragment à chercher.
+        </param>
+        <param name="run" type="Function" default="undefined">
+          run(ret:Cursor, <ref>Position.recoil</ref>|<ref>Position.advance</ref>, rgx, n &lt; 0 ? -1 : (n||1)). Si run return une valeur fausse alors cursor est renvoyer.
+        </param>
+      </params>
+      <return>Cursor</return>
+    </function>
+    <function name="Position.strfind">
+      <resume>
+        Cherche de cursor à la fin du document le texte str et retourne ça position.
+      </resume>
+      <params>
+        <param name="cursor" type="Cursor"/>
+        <param name="str" type="RegExp"/>
+        <param name="exclude" type="Boolean">
+          Si vrai le curseur ce positionne après le texte trouvé.
+        </param>
+      </params>
+      <return>Cursor</return>
+    </function>
+    <function name="Position.strrfind">
+      <resume>
+        Cherche du début du document à cursor le texte str et retourne ça position.
+      </resume>
+      <params ref-function="Position.strfind"/>
+      <return ref-function="Position.strfind"/>
+    </function>
+    <function name="Position.start">
+      <resume>
+        Retourne le curseur du début de sélection s'il existe, sinon celui de la position courante.
+      </resume>
+      <return>Cursor</return>
+    </function>
+    <function name="Position.end">
+      <resume>
+        Retourne le curseur de fin de sélection s'il existe, sinon celui de la position courante.
+      </resume>
+      <return>Cursor</return>
+    </function>
+    <function name="noop">
+      <resume>
+        Une fonction qui ne fait rien.
+      </resume>
+    </function>
+    <function name="$A">
+      <resume>
+        Racourcie pour Array.slice.call.
+      </resume>
+      <params>
+        <param name="args" type="Array|arguments|…"/>
+        <param name="begin" type="Number" default="0"/>
+        <param name="end" type="Number" default="undefined"/>
+      </params>
+      <return>Array</return>
+    </function>
+    <function name="stringOrRegextoRegExp">
+      <resume>
+        Voir <ref>stringOrRegex</ref>. Force str à devinir une RegExp: (RegExp(stringOrRegex === RegExp ? str : RegExp.escape(str), flag)).
+      </resume>
+      <params>
+        <param name="str" type="String|RegExp"/>
+        <param name="flag" type="String" default="undefined"/>
+      </params>
+    </function>
+  </functions>
+  <functions type="Special variables">
+    <function name="stringOrRegex">
+      <resume>
+        Voir <ref>set-string-or-regex</ref>. Par défaut String.
+      </resume>
+    </function>
+    <function name="RegexOrString">
+      <resume>
+        Voir <ref>set-regex-or-string</ref>. Par défaut RegExp.
+      </resume>
+    </function>
+    <function name="window">
+      <resume>
+        this global.
+      </resume>
+    </function>
+    <function name="functions">
+      <resume>
+        Tableau des fonctions créées par l'utilisateur. En valeur la fonction et en clef son nom.
+      </resume>
+    </function>
+    <function name="interpretStrIsActiv">
+      <resume>
+        Si true alors la fonction <ref>interpretStr</ref> va interpréter les chaînes de caractères.
+      </resume>
+    </function>
+    <function name="defaultDelimiterSwap">
+      <resume>
+        Chaîne de caractères qui représente le délimiteur par défaut pour <ref>swap</ref>.
+      </resume>
+    </function>
+    <function name="defaultIsPatternSwap">
+      <resume>
+        RegExp représentant les caractères capturable pour <ref>smartSwap</ref>.
+      </resume>
+    </function>
+    <function name="defaultPatternSwap">
+      <resume>
+        RegExp pour capturer les chaînes de caractères dans <ref>smartSwap</ref>.
+      </resume>
+    </function>
+    <function name="namespaceStr">
+      <resume>
+        Namespace pour la fonction <ref>tag</ref>.
+      </resume>
+    </function>
+    <function name="ignoreSurroundWhitespace">
+      <resume>
+        Voir <ref>set-surround-ignore-whitespace</ref>. Par défaut true.
+      </resume>
+    </function>
+    <function name="alwaysWriteNamespace">
+      <resume>
+        Voir <ref>set-always-write-namespace</ref>. Par défaut true.
+      </resume>
+    </function>
+    <function name="isBlockTag">
+      <resume>
+        Voir <ref>set-is-block-tag</ref>. Par défaut false.
+      </resume>
+    </function>
+  </functions>
+  <functions type="Object extend">
+    <function name="String.prototype.reverseWrap">
+      <resume>
+        transforme les caractères [](){}&lt;> par ][)(}{>&lt;
+      </resume>
+      <return>String</return>
+    </function>
+    <function name="String.prototype.repeat">
+      <resume>
+        Retourne la chaîne multiplier n fois.
+      </resume>
+      <params>
+        <param name="n" type="Number"/>
+      </params>
+      <return>String</return>
+    </function>
+    <function name="String.prototype.isAlphanumeric">
+      <resume>
+        Retourne true si la chaîne de caractères est alpanumérique.
+      </resume>
+      <return>Boolean</return>
+    </function>
+    <function name="String.prototype.eachLine">
+      <resume>
+        Effectue func sur chaque ligne
+      </resume>
+      <params>
+        <param name="func" type="Function"/>
+        <param name="thisp" type="Object"/>
+      </params>
+      <return>String</return>
+    </function>
+    <function name="String.prototype.interpret">
+      <resume>
+        Interprete la chaîne comme le ferrait javascript.
+      </resume>
+      <params/>
+      <return>String</return>
+      <examples>
+        <example>
+          <resume>plop\\n\th</resume>
+          <code>"plop\\n\\th".interpret()</code>
+          <result>plop
   h</result>
-				</example>
-			</examples>
-		</function>
-		<function name="String.prototype.countLine">
-			<resume>
-				Retourne le nombre de ligne.
-			</resume>
-			<return>Number</return>
-		</function>
-		<function name="String.prototype.allIndexOf">
-			<resume>
-				Retourne un tableau de tout les index où trouvé str.
-			</resume>
-			<params>
-				<param name="str" type="String"/>
-			</params>
-			<return>Array</return>
-		</function>
-		<function name="String.prototype.reverse">
-			<resume>
-				Retourne la chaîne avec ces caractères inversés.
-			</resume>
-			<return>String</return>
-		</function>
-		<function name="String.prototype.firstIndexNonSpace">
-			<resume>
-				Retourne la position du premier espace ou -1.
-			</resume>
-			<return>Number</return>
-		</function>
-		<function name="String.prototype.lastIndexNonSpace">
-			<resume>
-				Retourne la position du desnier espace ou -1.
-			</resume>
-			<return>Number</return>
-		</function>
-		<function name="String.prototype.firstSpace">
-			<resume>
-				Retourne une chaîne contenant les espaces de début.
-			</resume>
-			<return>String</return>
-		</function>
-		<function name="String.prototype.lastSpace">
-			<resume>
-				Retourne une chaîne contenant les espaces de fin.
-			</resume>
-			<return>String</return>
-		</function>
-		<function name="Array.map">
-			<resume>Array.prototype.map</resume>
-		</function>
-		<function name="Array.join">
-			<resume>Array.prototype.join</resume>
-		</function>
-		<function name="Array.slice">
-			<resume>Array.prototype.slice</resume>
-		</function>
-		<function name="Array.reduce">
-			<resume>Array.prototype.reduce</resume>
-		</function>
-		<function name="Array.uniq">
-			<resume>
-				Supprime les élements identique
-			</resume>
-			<params>
-				<param name="array" type="Array"/>
-			</params>
-			<return>Array</return>
-		</function>
-		<!--<function name="Array.make">
-			<resume>
-				Construit un tableau.
-			</resume>
-			<params>
-				<param name="array" type="Array"/>
-				<param name="range" type="Array|Number"/>
-				<param name="accu" type="Array" default="[]"/>
-				<param name="fn" type="Function" default="undefined"/>
-				<param name="thisp" type="Object" default="undefined"/>
-			</params>
-			<return>Array</return>
-		</function>-->
-		<function name="Array.concatEnd">
-			<resume>
-				Ajoute o à la fin de a. Retourne l'index.
-			</resume>
-			<params>
-				<param name="a" type="Array"/>
-				<param name="o" type="Object"/>
-			</params>
-			<return>Number</return>
-		</function>
-		<function name="Array.linear">
-			<resume>
-				Transforme un tableau imbriquer en un tableau à une dimension.
-			</resume>
-			<params>
-				<param name="array" type="Array"/>
-				<param name="accu" type="Array|undefined"/>
-			</params>
-			<return>Array</return>
-		</function>
-		<function name="RegExp.escape">
-			<resume>
-				Échaps tous les jetons de str.
-			</resume>
-			<params>
-				<param name="str" type="String"/>
-			</params>
-			<return>String</return>
-		</function>
-		<function name="String.yesWords">
-			<resume>
-				["true", "yes", "y", "on", "oui", "o"]
-			</resume>
-		</function>
-		<function name="Boolean.prototype.toBoolean">
-			<resume>
-				Retourne lui même.
-			</resume>
-			<return>Boolean</return>
-		</function>
-		<function name="String.prototype.isYes">
-			<resume>
-				Vérifie que le mot fait parti du tableau <ref>String.yesWords</ref>
-			</resume>
-			<return>Boolean</return>
-		</function>
-		<function name="String.prototype.toBoolean">
-			<resume>
-				Retourne Boolean(+this) ou <ref>String.prototype.isYes</ref>()
-			</resume>
-			<return>Boolean</return>
-		</function>
-		<function name="Number.prototype.toBoolean">
-			<resume>
-				Retourne vrai si différent de 0.
-			</resume>
-			<return>Boolean</return>
-		</function>
-		<function name="forEach">
-			<resume>
-				Boucle sur chaque élements.
-			</resume>
-			<params>
-				<param name="object" type="Object"/>
-				<param name="callback" type="Function"/>
-				<param name="thisp" type="Object"/>
-			</params>
-			<return>object</return>
-		</function>
-		<function name="Object.firstValue">
-			<resume>
-				Retourne la première valeur.
-			</resume>
-			<params>
-				<param name="object" type="Object"/>
-			</params>
-			<return>Object</return>
-		</function>
-	</functions>
+        </example>
+      </examples>
+    </function>
+    <function name="String.prototype.countLine">
+      <resume>
+        Retourne le nombre de ligne.
+      </resume>
+      <return>Number</return>
+    </function>
+    <function name="String.prototype.allIndexOf">
+      <resume>
+        Retourne un tableau de tout les index où trouvé str.
+      </resume>
+      <params>
+        <param name="str" type="String"/>
+      </params>
+      <return>Array</return>
+    </function>
+    <function name="String.prototype.reverse">
+      <resume>
+        Retourne la chaîne avec ces caractères inversés.
+      </resume>
+      <return>String</return>
+    </function>
+    <function name="String.prototype.firstIndexNonSpace">
+      <resume>
+        Retourne la position du premier espace ou -1.
+      </resume>
+      <return>Number</return>
+    </function>
+    <function name="String.prototype.lastIndexNonSpace">
+      <resume>
+        Retourne la position du desnier espace ou -1.
+      </resume>
+      <return>Number</return>
+    </function>
+    <function name="String.prototype.firstSpace">
+      <resume>
+        Retourne une chaîne contenant les espaces de début.
+      </resume>
+      <return>String</return>
+    </function>
+    <function name="String.prototype.lastSpace">
+      <resume>
+        Retourne une chaîne contenant les espaces de fin.
+      </resume>
+      <return>String</return>
+    </function>
+    <function name="Array.map">
+      <resume>Array.prototype.map</resume>
+    </function>
+    <function name="Array.join">
+      <resume>Array.prototype.join</resume>
+    </function>
+    <function name="Array.slice">
+      <resume>Array.prototype.slice</resume>
+    </function>
+    <function name="Array.reduce">
+      <resume>Array.prototype.reduce</resume>
+    </function>
+    <function name="Array.uniq">
+      <resume>
+        Supprime les élements identique
+      </resume>
+      <params>
+        <param name="array" type="Array"/>
+      </params>
+      <return>Array</return>
+    </function>
+    <!--<function name="Array.make">
+      <resume>
+        Construit un tableau.
+      </resume>
+      <params>
+        <param name="array" type="Array"/>
+        <param name="range" type="Array|Number"/>
+        <param name="accu" type="Array" default="[]"/>
+        <param name="fn" type="Function" default="undefined"/>
+        <param name="thisp" type="Object" default="undefined"/>
+      </params>
+      <return>Array</return>
+    </function>-->
+    <function name="Array.concatEnd">
+      <resume>
+        Ajoute o à la fin de a. Retourne l'index.
+      </resume>
+      <params>
+        <param name="a" type="Array"/>
+        <param name="o" type="Object"/>
+      </params>
+      <return>Number</return>
+    </function>
+    <function name="Array.linear">
+      <resume>
+        Transforme un tableau imbriquer en un tableau à une dimension.
+      </resume>
+      <params>
+        <param name="array" type="Array"/>
+        <param name="accu" type="Array|undefined"/>
+      </params>
+      <return>Array</return>
+    </function>
+    <function name="RegExp.escape">
+      <resume>
+        Échaps tous les jetons de str.
+      </resume>
+      <params>
+        <param name="str" type="String"/>
+      </params>
+      <return>String</return>
+    </function>
+    <function name="String.yesWords">
+      <resume>
+        ["true", "yes", "y", "on", "oui", "o"]
+      </resume>
+    </function>
+    <function name="Boolean.prototype.toBoolean">
+      <resume>
+        Retourne lui même.
+      </resume>
+      <return>Boolean</return>
+    </function>
+    <function name="String.prototype.isYes">
+      <resume>
+        Vérifie que le mot fait parti du tableau <ref>String.yesWords</ref>
+      </resume>
+      <return>Boolean</return>
+    </function>
+    <function name="String.prototype.toBoolean">
+      <resume>
+        Retourne Boolean(+this) ou <ref>String.prototype.isYes</ref>()
+      </resume>
+      <return>Boolean</return>
+    </function>
+    <function name="Number.prototype.toBoolean">
+      <resume>
+        Retourne vrai si différent de 0.
+      </resume>
+      <return>Boolean</return>
+    </function>
+    <function name="forEach">
+      <resume>
+        Boucle sur chaque élements.
+      </resume>
+      <params>
+        <param name="object" type="Object"/>
+        <param name="callback" type="Function"/>
+        <param name="thisp" type="Object"/>
+      </params>
+      <return>object</return>
+    </function>
+    <function name="Object.firstValue">
+      <resume>
+        Retourne la première valeur.
+      </resume>
+      <params>
+        <param name="object" type="Object"/>
+      </params>
+      <return>Object</return>
+    </function>
+  </functions>
 </root>
