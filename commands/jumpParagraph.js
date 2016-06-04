@@ -11,7 +11,7 @@
  * Move cursor to next/previous text paragraph
  */
 
-require ("range.js");
+require("range.js");
 
 function jumpParagraphDown() {
   var cursor = view.cursorPosition();

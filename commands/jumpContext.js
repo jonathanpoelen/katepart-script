@@ -8,10 +8,10 @@
  */
 
 /**
- * Move the cursor to the next/previous highlight context
+ * Move cursor to next/previous highlight context
  */
 
-require ("range.js");
+require("range.js");
 
 function contextNext()
 {
@@ -69,9 +69,9 @@ function contextPrev()
 
 function help(cmd) {
   if (cmd === 'contextNext') {
-    return i18n("Move the cursor to the next highlighting context");
+    return i18n("Move cursor to next highlighting context");
   }
   if (cmd === 'contextNext') {
-    return i18n("Move the cursor to the previous highlighting context");
+    return i18n("Move cursor to previous highlighting context");
   }
 }
