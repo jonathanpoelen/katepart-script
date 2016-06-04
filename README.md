@@ -1,22 +1,25 @@
 katepart-script
 ===============
 
-KTextEditor additional command line. Compatible with Kate, KWrite, KDevelop, etc.
+These scripts adds more than one hundred new commands to the Kate Editor and derivatives (KWrite, KDevelop, Kile, etc).
+
+By default, the shortcut to command line is `f7`.
+
 
 Documentation
 -------------
 
-See `./doc-script/doc.html` (fr with examples)
+Open `./doc-script/doc.html` with a browser (fr with examples) or `help a_command` in the command line.
+
 
 Install
 -------
 
 ## KDE 5:
 
+/!\ _ATTENTION_: headers files are incompatible. Use `build5.js` or see `help:/katepart/dev-scripting.html#dev-scripting-command-line`.
+
 Copy `libraries/` and `commands/` in the local home folder $XDG_DATA_HOME/katepart5/script/. Therein, the environment variable XDG_DATA_HOME typically expands to either ~/.local or ~/.local/share
-
-ATTENTION: headers files are incompatible. See `help:/katepart/dev-scripting.html#dev-scripting-command-line`.
-
 
 Or merge commands into one file with `build5.sh`:
 
