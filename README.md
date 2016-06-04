@@ -17,7 +17,7 @@ Install
 
 ## KDE 5:
 
-/!\ _ATTENTION_: headers files are incompatible. Use `build5.js` or see `help:/katepart/dev-scripting.html#dev-scripting-command-line`.
+/!\ _ATTENTION_: headers files are incompatible. Use `build5.sh` or see `help:/katepart/dev-scripting.html#dev-scripting-command-line`.
 
 Copy `libraries/` and `commands/` in the local home folder $XDG_DATA_HOME/katepart5/script/. Therein, the environment variable XDG_DATA_HOME typically expands to either ~/.local or ~/.local/share
 
