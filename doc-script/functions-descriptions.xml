@@ -5,6 +5,12 @@
     <function name="markSelection" action-key="Ctrl+3">
       <resume>Enregistre la position du curseur, le second appel effectue une sélection.</resume>
     </function>
+    <function name="markJump">
+      <resume>Se positionne sur le curseur enregistré.</resume>
+    </function>
+    <function name="markClean">
+      <resume>Supprime le curseur enregistré.</resume>
+    </function>
     <function name="jumpParagraphDown" action-key="Alt+Shift+PgDown">
       <resume>Déplace le curseur sur le prochain paragraphe de texte.</resume>
     </function>

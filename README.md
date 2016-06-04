@@ -9,7 +9,7 @@ By default, the shortcut to command line is `f7`.
 Documentation
 -------------
 
-Open `./doc-script/doc.html` with a browser (fr with examples) or `help a_command` in the command line.
+Open `./doc-script/functions-descriptions.xml` or `./doc-script/doc.html` with a browser (fr with examples) or used `help a_command` in the command line.
 
 
 Install
