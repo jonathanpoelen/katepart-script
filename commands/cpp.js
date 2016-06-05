@@ -57,7 +57,6 @@ this["cpp_noexcept2"] = function(){
 function action(cmd) {
   if ("cpp_noexcept" === cmd)
     return {
-      icon: "",
       category: "cpp",
       interactive: false,
       text: i18n('insert "noexcept "'),
@@ -65,7 +64,6 @@ function action(cmd) {
     };
   if ("cpp_const_ref" === cmd)
     return {
-      icon: "",
       category: "cpp",
       interactive: false,
       text: i18n('insert "const \\& "'),
@@ -73,7 +71,6 @@ function action(cmd) {
     };
   if ("cpp_constexpr" === cmd)
     return {
-      icon: "",
       category: "cpp",
       interactive: false,
       text: i18n('insert "constexpr "'),
@@ -81,7 +78,6 @@ function action(cmd) {
     };
   if ("cpp_noexcept2" === cmd)
     return {
-      icon: "",
       category: "cpp",
       interactive: false,
       text: i18n('insert "noexcept(noexcept())"'),
@@ -89,7 +85,6 @@ function action(cmd) {
     };
   if ("cpp_const" === cmd)
     return {
-      icon: "",
       category: "cpp",
       interactive: false,
       text: i18n('insert "const "'),
@@ -97,7 +92,6 @@ function action(cmd) {
     };
   if ("cpp_template" === cmd)
     return {
-      icon: "",
       category: "cpp",
       interactive: false,
       text: i18n('insert "template<class >"'),
@@ -105,7 +99,6 @@ function action(cmd) {
     };
   if ("cpp_struct" === cmd)
     return {
-      icon: "",
       category: "cpp",
       interactive: false,
       text: i18n('insert "struct "'),
@@ -113,7 +106,6 @@ function action(cmd) {
     };
   if ("cpp_class" === cmd)
     return {
-      icon: "",
       category: "cpp",
       interactive: false,
       text: i18n('insert "class "'),
@@ -121,7 +113,6 @@ function action(cmd) {
     };
   if ("cpp_ref" === cmd)
     return {
-      icon: "",
       category: "cpp",
       interactive: false,
       text: i18n('insert " \\& "'),
@@ -129,7 +120,6 @@ function action(cmd) {
     };
   if ("cpp_this" === cmd)
     return {
-      icon: "",
       category: "cpp",
       interactive: false,
       text: i18n('insert "this->"'),

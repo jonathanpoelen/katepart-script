@@ -48,7 +48,6 @@ function action(cmd)
 {
   if ('markSelection' === cmd)
     return {
-      icon: "",
       category: "Selection",
       interactive: false,
       text: i18n("Records position or makes a selection."),

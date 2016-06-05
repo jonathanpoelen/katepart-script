@@ -24,8 +24,7 @@ function action(cmd)
 {
   if ("rewindSelection" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Selection",
       interactive: false,
       text: i18n("Reset selection"),
       shortcut: "Ctrl+Alt+J"

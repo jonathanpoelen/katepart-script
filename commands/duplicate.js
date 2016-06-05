@@ -72,8 +72,7 @@ function action(cmd)
 {
   if ("duplicate" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Editing",
       interactive: false,
       text: i18n("Duplicate the selected text or line"),
       shortcut: "Ctrl+Alt+D"

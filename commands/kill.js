@@ -56,16 +56,14 @@ function action(cmd)
 {
   if ("killRight" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Editing",
       interactive: false,
       text: i18n("Delete characters to the right of the cursor"),
       shortcut: "Ctrl+;"
     };
   if ("killLeft" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Editing",
       interactive: false,
       text: i18n("Delete characters to the left of the cursor"),
       shortcut: "Ctrl+L"

@@ -174,16 +174,14 @@ function action(cmd)
 {
   if ("swapCharacter" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Editing",
       interactive: false,
       text: i18n("Advanced Transpose Characters"),
       shortcut: "Ctrl+Alt+T"
     };
   if ("preventSwapCharacter" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Editing",
       interactive: false,
       text: i18n("Advanced Transpose Prevent Characters"),
       shortcut: "Ctrl+Shift+Alt+T"

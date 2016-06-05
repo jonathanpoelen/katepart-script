@@ -58,32 +58,28 @@ function action(cmd)
 {
   if ("newline" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Editing",
       interactive: false,
       text: i18n("Create Newline"),
       shortcut: "Ctrl+Return"
     };
   if ("smartNewline" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Editing",
       interactive: false,
       text: i18n("Create Smart Newline"),
       shortcut: "Ctrl+Alt+Return"
     };
   if ("newlineOfCCode" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Editing",
       interactive: false,
       text: i18n("Semicolon at end of line and new line"),
       shortcut: "Ctrl+Shift+Return"
     };
   if ("smartNewlineOfCCode" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Editing",
       interactive: false,
       text: i18n("Semicolon at end of line and new line"),
       shortcut: "Ctrl+Shift+Alt+Return"

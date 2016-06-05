@@ -104,8 +104,7 @@ function action(cmd)
 {
   if ("tag" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Editing",
       interactive: false,
       text: i18n("Create a new XML tag"),
       shortcut: "Ctrl+Alt+N"

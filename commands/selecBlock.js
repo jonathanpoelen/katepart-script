@@ -28,8 +28,7 @@ function action(cmd)
 {
   if ("selectForCut" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Selection",
       interactive: false,
       text: i18n("Selection for cut"),
       shortcut: "Ctrl+Alt+E"

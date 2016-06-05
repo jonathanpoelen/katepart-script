@@ -13,8 +13,7 @@ function action(cmd)
 {
   if ("cursor" === cmd)
     return {
-      icon: "",
-      category: "",
+      category: "Navigation",
       interactive: false,
       text: i18n("Move cursor or create selection"),
       shortcut: "Ctrl+Alt+M",

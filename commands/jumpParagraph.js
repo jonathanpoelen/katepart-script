@@ -59,7 +59,6 @@ function action(cmd)
 {
   if ('jumpParagraphDown' === cmd)
     return {
-      icon: "",
       category: "Navigation",
       interactive: false,
       text: i18n("Move cursor to next text paragraph"),
@@ -67,7 +66,6 @@ function action(cmd)
     };
   if ('jumpParagraphUp' === cmd)
     return {
-      icon: "",
       category: "Navigation",
       interactive: false,
       text: i18n("Move cursor to previous text paragraph"),
