@@ -14,7 +14,6 @@ function action(cmd)
   if ("cursor" === cmd)
     return {
       category: "Navigation",
-      interactive: false,
       text: i18n("Move cursor or create selection"),
       shortcut: "Ctrl+Alt+M",
       interactive: true

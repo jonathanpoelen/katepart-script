@@ -9,7 +9,6 @@
 
 require("cursor.js")
 
-///*
 /*var inserted = [
   ['ñ', 'noexcept', 'noexcept '],
   ['ë', 'const_ref', 'const & '],

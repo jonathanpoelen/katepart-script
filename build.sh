@@ -6,7 +6,7 @@ p=`dirname $0`
 
 libs=`sed -E '/^require/!d;/"range.js"|"cursor.js"/d;s/^require\("(.*)"\);?/\1/' "$@" | sort -u`
 
-functions=`sed -E '/^ \* functions:/!d;s/^ \* functions:(.*)/\1/' "$@" | sed :a';/$/N;s/\n/, /;ta'`
+functions=`sed -E '/^ \* functions:/!d;s/^ \* functions:(.*)/\1/' "$@" | sed ':a;N;s/\n/, /;ta'`
 
 if [ ! -z "$libs" ] ; then
   cd "$p"/libraries
@@ -36,7 +36,7 @@ if [ ! -z "$libs" ] ; then
   grep -vh '^require' $libs ;
   cd - > /dev/null ;
 fi
-sed '/^\/\*/d;/^ \*/d;/^require/d;/^function action/,/^}/d;/^function help/,/^}/d' "$@" ;
+sed -s '1,/\*\//d;/^require/d;/^function action/,/^}/d;/^function help/,/^}/d' "$@" ;
 echo 'function help(cmd){' ;
 sed '/^function help/,/^}/!d;/^function/d;/^}/d;/^{/d' "$@" ;
 echo '}
