@@ -8,7 +8,7 @@ var katescript = {
     { "function": "comment2"
     , "category": "Editing"
     , "name": "Comment"
-    , "shortcut": "Ctrl+D"
+    , "shortcut": "Ctrl+ð"
     }
   ]
 };
