@@ -1,7 +1,7 @@
 var katescript = {
   "author": "Jonathan Poelen <jonathan.poelen+katescript@gmail.com>",
   "license": "BSD",
-  "revision": 1,
+  "revision": 2,
   "kate-version": "5.1",
   "functions": ["comment2"],
   "actions": [
@@ -25,9 +25,8 @@ function singleBlocComment (s, attr, startCol, endCol)
   var line = s.start.line
   var lineEnd = s.end.line
 
-  if (endCol === 0)
+  if (endCol === -1)
   {
-    endCol = -1
     --lineEnd
   }
 
@@ -39,7 +38,7 @@ function singleBlocComment (s, attr, startCol, endCol)
     : (endCol < 0 ? startCol : (startCol < endCol ? startCol : endCol))
   var curCol
 
-  while (++line < lineEnd)
+  while (++line <= lineEnd)
   {
     curCol = document.firstColumn(line)
     if (curCol < minCol && curCol !== -1)
@@ -53,7 +52,8 @@ function singleBlocComment (s, attr, startCol, endCol)
     document.insertText(sline, minCol, comment)
   }
 
-  s.start.column = minCol
+  s.start.column = Math.min(s.start.column, minCol)
+  s.end.column = document.lineLength(lineEnd)
   view.setSelection(s)
 
   return true
