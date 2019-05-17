@@ -15,44 +15,44 @@ function stepper(step)
 
 function Stepper(s, position)
 {
-  var options = [], first = 0, step = 1, n = +s, isRelative = false, d;
+  var options = '', first = 0, step_ = 1, n = +s, isRelative = false, d;
   if (isNaN(n) && ((isRelative = s[0] === '!')
     ? isNaN(n = +(s = s.substr(('+' === (d = s[1]) || '-' === d) ? 2 : 1))) : 1))
   {
-    step = s.indexOf("~");
-    if (step !== -1)
+    step_ = s.indexOf("~");
+    if (step_ !== -1)
     {
-      first = Math.abs(s.substring(0, step)) || 0;
-      s = s.substr(step + 1);
-      step = s.match(/\d+/);
-      s = s.substr(step.length);
+      first = Math.abs(s.substring(0, step_)) || 0;
+      s = s.substr(step_ + 1);
+      step_ = s.match(/\d+/);
+      s = s.substr(step_.length);
       if (s)
       {
-        step = +step || 1;
-        first %= step;
+        step_ = +step_ || 1;
+        first %= step_;
         n = +s;
       }
       else
       {
-        n = step;
-        step = first || 1;
+        n = step_;
+        step_ = first || 1;
         first = 0;
       }
     }
     else
     {
       var indexOfNonDigit = s.search(/[^-\d]/);
-      step = +s.substr(0, indexOfNonDigit);
+      step_ = +s.substr(0, indexOfNonDigit);
       s = s.substr(indexOfNonDigit);
       if (!s)
       {
-        n = step;
-        step = 1;
+        n = step_;
+        step_ = 1;
       }
       else
       {
-        if (!step)
-          step = 1;
+        if (!step_)
+          step_ = 1;
         n = NaN;
       }
     }
@@ -67,31 +67,32 @@ function Stepper(s, position)
           break;
         }
         else
-          options.push(s[i]);
+          options += s[i];
       }
-      options = Array.uniq(options);
       n = +s || (document.lines() - 1);
     }
   }
   if (isRelative)
     n = '+' === d ? n + position : '-' === d ? n - position : n < position ? -(position - n + 2) : (n - position);
 
-  var isNegative = n < 0;
-  if (isNegative)
+  var isNegative_ = n < 0;
+  if (isNegative_)
     n = -n;
 
   return {
     isNegative: function(){
-      return isNegative;
+      // QTBUG-75880: can not be the name of the key
+      return isNegative_;
     },
     get value(){
       return n;
     },
     get step(){
-      return step;
+      // QTBUG-75880: can not be the name of the key
+      return step_;
     },
     onStep: function(n){
-      return n % step === first;
+      return n % step_ === first;
     },
     valid: function(){
       return n > 0;
@@ -99,14 +100,8 @@ function Stepper(s, position)
     next: function(){
       --n;
     },
-    options: function(option){
-      return !option ?
-        options :
-        Array.isArray(option) ?
-          option.every(function(op){
-            return -1 !== options.indexOf(op);
-          }) :
-          -1 !== options.indexOf(option.toString());
+    hasOption: function(option){
+      return -1 !== options.indexOf(option)
     }
   };
 }

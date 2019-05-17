@@ -39,7 +39,7 @@ function _rmNCharacter(args_, begin, fn)
       continue;
     var stepper = Stepper(args[i+1] || args[i-1] || 1, cursorLine),
       isNegative = stepper.isNegative(),
-      force = stepper.options("f"),
+      force = stepper.hasOption("f"),
       lineStep = -1,
       nIsPositif = n > 0,
       addLine = stepper.isNegative() ? -1 : 1,

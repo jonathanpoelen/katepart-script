@@ -31,9 +31,9 @@ function _detach(args, beginFn, fn)
       var stepper = Stepper(arguments[i] || (document.lines() - cursorLine), cursorLine),
         line = 1,
         lines = (document.lines()||1) - 1,
-        force = stepper.options("f"),
-        move = newline && stepper.options("m"),
-        removeLeft = stepper.options("l"),
+        force = stepper.hasOption("f"),
+        move = newline && stepper.hasOption("m"),
+        removeLeft = stepper.hasOption("l"),
         from, to;
       addLine = stepper.isNegative() ? -1 : 1;
 
@@ -103,7 +103,7 @@ function help(cmd)
   if (cmd === "detach")
     return i18n("Supprime la sélection ou str jusqu'à ligne_courante + n.\
 <br/><br/>detach(str: String, n: Stepper, …)\
-  <br/>n: 3 options disponibles : f pour supprimé les textes incomplet car il n'y a pas assez de caractère dans la ligne. m quand str est multiligne permet de ne pas passé à la ligne suivante. l qui permet de supprimé les caractères ce trouvant à gauche du curseur.\
+  <br/>n: 3 options disponibles : 'f' pour supprimer les textes incomplet car il n'y a pas assez de caractère dans la ligne. 'm' quand str est multiligne permet de ne pas passer à la ligne suivante. 'l' qui permet de supprimer les caractères ce trouvant à gauche du curseur.\
 <br/><br/>exemple:\
 <br/>plop<br/>\
 pl[cursor]op<br/>\
@@ -130,6 +130,6 @@ pl<br/>\
 plop");
 
   if (cmd === "detachLeft")
-    return i18n("Identique à detach mais le nombre de caractères à droite reste identique.\
+    return i18n("Identique à detach, mais le nombre de caractères à droite reste identique.\
 <br/><br/>detachLeft(str: String, n: Stepper, …)");
 }

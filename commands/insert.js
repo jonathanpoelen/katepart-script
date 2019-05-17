@@ -43,7 +43,7 @@ function _insert(args, beginFn, fn)
 
       var line = 1,
         lines = (document.lines()||1) - 1,
-        force = stepper.options("f");
+        force = stepper.hasOption("f");
       while (stepper.valid() && lines >= cursor.line)
       {
         if (stepper.onStep(line))
