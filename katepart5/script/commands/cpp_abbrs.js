@@ -26,7 +26,7 @@ var katescript = {
     {"function": "cpp_value", "category": "cpp", "interactive": false, "name": "insert \"::value\"", "shortcut": "Shift+®"},
     {"function": "cpp_for_range", "category": "cpp", "interactive": false, "name": "insert \"for (auto \&\& )\"", "shortcut": "å"},
     {"function": "cpp_dec_type", "category": "cpp", "interactive": false, "name": "insert \"using type = typename ;\"", "shortcut": "Ctrl+®"},
-    {"function": "cpp_dec_value", "category": "cpp", "interactive": false, "name": "insert \"static constexpr  value = ;\"", "shortcut": "Ctrl+Shift+®"},
+    {"function": "cpp_dec_value", "category": "cpp", "interactive": false, "name": "insert \"static constexpr  value = ;\"", "shortcut": "Ctrl+Shift+®"}
   ]
 };
 
