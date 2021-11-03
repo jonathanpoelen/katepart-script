@@ -8,7 +8,7 @@ var katescript = {
     { "function": "nextArg"
     , "category": "Editing"
     , "name": "Next Argument"
-    , "shortcut": "Ctrl+ð"
+    , "shortcut": "Ctrl+ø"
     },
     { "function": "prevArg"
     , "category": "Editing"
