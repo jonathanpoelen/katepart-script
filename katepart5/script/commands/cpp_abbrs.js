@@ -1,4 +1,4 @@
-var katescript = {
+let katescript = {
   "author": "Jonathan Poelen <jonathan.poelen+katescript@gmail.com>",
   "license": "BSD",
   "revision": 2,
@@ -10,7 +10,7 @@ var katescript = {
     {"function": "cpp_const_ref", "category": "cpp", "interactive": false, "name": "insert \" const \& \"", "shortcut": "ë"},
     {"function": "cpp_constexpr", "category": "cpp", "interactive": false, "name": "insert \"constexpr \"", "shortcut": "¢"},
     {"function": "cpp_const", "category": "cpp", "interactive": false, "name": "insert \" const \"", "shortcut": "©"},
-    {"function": "cpp_template", "category": "cpp", "interactive": false, "name": "insert \"template<class >\"", "shortcut": "þ"},
+    {"function": "cpp_template", "category": "cpp", "interactive": false, "name": "insert \"template<class >\"", "shortcut": "Shift+þ"},
     {"function": "cpp_struct", "category": "cpp", "interactive": false, "name": "insert \"struct \"", "shortcut": "§"},
     {"function": "cpp_class", "category": "cpp", "interactive": false, "name": "insert \"class \"", "shortcut": "ß"},
     {"function": "cpp_ref", "category": "cpp", "interactive": false, "name": "insert \" \& \"", "shortcut": "Shift+Ë"},
@@ -21,7 +21,7 @@ var katescript = {
     {"function": "cpp_set_default", "category": "cpp", "interactive": false, "name": "insert \" = default;\"", "shortcut": "×"},
     {"function": "cpp_set_delete", "category": "cpp", "interactive": false, "name": "insert \" = delete;\"", "shortcut": "ð"},
     {"function": "cpp_static", "category": "cpp", "interactive": false, "name": "insert \"static \"", "shortcut": "á"},
-    {"function": "cpp_typename", "category": "cpp", "interactive": false, "name": "insert \"typename \"", "shortcut": "Shift+þ"},
+    {"function": "cpp_typename", "category": "cpp", "interactive": false, "name": "insert \"typename \"", "shortcut": "þ"},
     {"function": "cpp_type", "category": "cpp", "interactive": false, "name": "insert \"::type\"", "shortcut": "®"},
     {"function": "cpp_value", "category": "cpp", "interactive": false, "name": "insert \"::value\"", "shortcut": "Shift+®"},
     {"function": "cpp_for_range", "category": "cpp", "interactive": false, "name": "insert \"for (auto \&\& )\"", "shortcut": "å"},
@@ -33,20 +33,20 @@ var katescript = {
 require('cursor.js')
 
 function cpp_noexcept() {
-  var c = view.cursorPosition();
+  const c = view.cursorPosition();
   document.insertText(c, document.charAt(c) == ' ' ? 'noexcept' : ' noexcept')
 }
 
 function cpp_noexcept2() {
-  var c = view.cursorPosition();
-  var t = document.charAt(c) == ' ' ? 'noexcept(noexcept())' : ' noexcept(noexcept())'
+  const c = view.cursorPosition();
+  const t = document.charAt(c) == ' ' ? 'noexcept(noexcept())' : ' noexcept(noexcept())'
   document.insertText(c, t)
   c.column += t.length - 2
   view.setCursorPosition(c)
 }
 
 function cpp_const_ref() {
-  var c = view.cursorPosition();
+  const c = view.cursorPosition();
   document.insertText(c, document.charAt(c) == ' ' ? 'const & ' : ' const & ')
 }
 
@@ -55,12 +55,12 @@ function cpp_constexpr() {
 }
 
 function cpp_const() {
-  var c = view.cursorPosition();
+  const c = view.cursorPosition();
   document.insertText(c, document.charAt(c) == ' ' ? 'const ' : ' const ')
 }
 
 function cpp_template() {
-  var c = view.cursorPosition();
+  const c = view.cursorPosition();
   document.insertText(c, 'template<class >')
   c.column += 15
   view.setCursorPosition(c)
@@ -75,7 +75,7 @@ function cpp_class() {
 }
 
 function cpp_ref() {
-  var c = view.cursorPosition();
+  const c = view.cursorPosition();
   document.insertText(c, document.charAt(c) == ' ' ? '& ' : ' & ')
 }
 
@@ -84,14 +84,14 @@ function cpp_this() {
 }
 
 function cpp_move() {
-  var c = view.cursorPosition();
+  const c = view.cursorPosition();
   document.insertText(c, 'std::move()')
   c.column += 10
   view.setCursorPosition(c)
 }
 
 function cpp_forward() {
-  var c = view.cursorPosition();
+  const c = view.cursorPosition();
   document.insertText(c, 'std::forward<>()')
   c.column += 13
   view.setCursorPosition(c)
@@ -102,12 +102,12 @@ function cpp_nullptr() {
 }
 
 function cpp_set_default() {
-  var c = view.cursorPosition();
+  const c = view.cursorPosition();
   document.insertText(c, document.charAt(c) == ' ' ? '= default;' : ' = default;')
 }
 
 function cpp_set_delete() {
-  var c = view.cursorPosition();
+  const c = view.cursorPosition();
   document.insertText(c, document.charAt(c) == ' ' ? '= delete;' : ' = delete;')
 }
 
@@ -128,22 +128,22 @@ function cpp_value() {
 }
 
 function cpp_for_range() {
-  var c = view.cursorPosition();
+  const c = view.cursorPosition();
   document.insertText(c, 'for (auto && )')
   c.column += 13
   view.setCursorPosition(c)
 }
 
 function cpp_dec_type() {
-  var c = view.cursorPosition();
+  const c = view.cursorPosition();
   document.insertText(c, 'using type = typename ;')
   c.column += 22
   view.setCursorPosition(c)
 }
 
 function cpp_dec_value() {
-  var c = view.cursorPosition();
-  var t = 'static constexpr '+document.line(c.line).trim()+' value = ;'
+  const c = view.cursorPosition();
+  const t = 'static constexpr '+document.line(c.line).trim()+' value = ;'
   document.insertText(c, t)
   c.column += t.length - 1
   view.setCursorPosition(c)
