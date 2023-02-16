@@ -3,7 +3,7 @@ let katescript = {
   "license": "BSD",
   "revision": 2,
   "kate-version": "5.1",
-  "functions": ["cpp_noexcept", "cpp_noexcept2", "cpp_const_ref", "cpp_constexpr", "cpp_const", "cpp_template", "cpp_struct", "cpp_class", "cpp_ref", "cpp_this", "cpp_move", "cpp_forward", "cpp_nullptr", "cpp_set_default", "cpp_set_delete", "cpp_static", "cpp_typename", "cpp_type", "cpp_value", "cpp_for_range", "cpp_dec_type", "cpp_dec_value"],
+  "functions": ["cpp_noexcept", "cpp_noexcept2", "cpp_const_ref", "cpp_constexpr", "cpp_const", "cpp_template", "cpp_template2", "cpp_struct", "cpp_class", "cpp_ref", "cpp_this", "cpp_move", "cpp_forward", "cpp_nullptr", "cpp_set_default", "cpp_set_delete", "cpp_static", "cpp_typename", "cpp_type", "cpp_value", "cpp_for_range", "cpp_dec_type", "cpp_dec_value"],
   "actions": [
     {"function": "cpp_noexcept", "category": "cpp", "interactive": false, "name": "insert \" noexcept\"", "shortcut": "ñ"},
     {"function": "cpp_noexcept2", "category": "cpp", "interactive": false, "name": "insert \" noexcept(noexcept())\"", "shortcut": "Shift+Ñ"},
@@ -11,6 +11,7 @@ let katescript = {
     {"function": "cpp_constexpr", "category": "cpp", "interactive": false, "name": "insert \"constexpr \"", "shortcut": "¢"},
     {"function": "cpp_const", "category": "cpp", "interactive": false, "name": "insert \" const \"", "shortcut": "©"},
     {"function": "cpp_template", "category": "cpp", "interactive": false, "name": "insert \"template<class >\"", "shortcut": "Shift+þ"},
+    {"function": "cpp_template2", "category": "cpp", "interactive": false, "name": "insert \"template ", "shortcut": "ä"},
     {"function": "cpp_struct", "category": "cpp", "interactive": false, "name": "insert \"struct \"", "shortcut": "§"},
     {"function": "cpp_class", "category": "cpp", "interactive": false, "name": "insert \"class \"", "shortcut": "ß"},
     {"function": "cpp_ref", "category": "cpp", "interactive": false, "name": "insert \" \& \"", "shortcut": "Shift+Ë"},
@@ -63,6 +64,13 @@ function cpp_template() {
   const c = view.cursorPosition();
   document.insertText(c, 'template<class >')
   c.column += 15
+  view.setCursorPosition(c)
+}
+
+function cpp_template2() {
+  const c = view.cursorPosition();
+  document.insertText(c, 'template ')
+  c.column += 9
   view.setCursorPosition(c)
 }
 
@@ -156,6 +164,7 @@ function help(cmd) {
   if (cmd === 'cpp_constexpr') return i18n('insert "constexpr "')
   if (cmd === 'cpp_const') return i18n('insert " const "')
   if (cmd === 'cpp_template') return i18n('insert "template<class >"')
+  if (cmd === 'cpp_template2') return i18n('insert "template "')
   if (cmd === 'cpp_struct') return i18n('insert "struct "')
   if (cmd === 'cpp_class') return i18n('insert "class "')
   if (cmd === 'cpp_ref') return i18n('insert " & "')
