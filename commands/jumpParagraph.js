@@ -48,10 +48,10 @@ function jumpParagraphUp() {
 
 function help(cmd) {
   if (cmd === 'jumpParagraphtUp') {
-    return i18n("Move cursor to previous text paragraph");
+    return i18n("Move cursor to previous paragraph");
   }
   if (cmd === 'jumpParagraphDown') {
-    return i18n("Move cursor to next text paragraph");
+    return i18n("Move cursor to next paragraph");
   }
 }
 
@@ -61,14 +61,14 @@ function action(cmd)
     return {
       category: "Navigation",
       interactive: false,
-      text: i18n("Move cursor to next text paragraph"),
+      text: i18n("Move cursor to next paragraph"),
       shortcut: "Alt+Shift+PgDown"
     };
   if ('jumpParagraphUp' === cmd)
     return {
       category: "Navigation",
       interactive: false,
-      text: i18n("Move cursor to previous text paragraph"),
+      text: i18n("Move cursor to previous paragraph"),
       shortcut: "Alt+Shift+PgUp"
     };
 }
