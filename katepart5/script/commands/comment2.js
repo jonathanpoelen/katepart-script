@@ -15,7 +15,7 @@ var katescript = {
 
 require('range.js')
 
-function singleBlocComment (s, attr, startCol, endCol)
+function singleBlocComment(s, attr, startCol, endCol)
 {
   var comment = document.commentMarker(attr)
   if (!comment) {
@@ -59,7 +59,7 @@ function singleBlocComment (s, attr, startCol, endCol)
   return true
 }
 
-function comment2 ()
+function comment2()
 {
   if (view.hasSelection())
   {
@@ -121,7 +121,7 @@ function comment2 ()
   }
 }
 
-function help (cmd)
+function help(cmd)
 {
   if (cmd === 'comment2') return "Inserts comment"
 }

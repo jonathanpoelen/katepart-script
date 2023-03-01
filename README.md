@@ -1,21 +1,18 @@
-katepart-script
-===============
+# Katepart-Script
 
 These scripts adds more than one hundred new commands to the Kate Editor and derivatives (KWrite, KDevelop, Kile, etc).
 
-By default, the shortcut to command line is `f7`.
+By default, the shortcut to command line is `F7`.
 
 
-Documentation
--------------
+## Documentation
 
 Open `./doc-script/functions-descriptions.xml` or `./doc-script/doc.html` with a browser (fr with examples) or used `help a_command` in the command line.
 
 
-Install
--------
+## Install
 
-## KDE 5:
+### KDE 5:
 
 ```sh
 scriptdir="${XDG_DATA_HOME=~/.local/share}/katepart5/script/"
@@ -35,7 +32,7 @@ jsfile="${TMPDIR=/tmp}"/katepartscript.kfs4.js
 ../4to5.sh "$jsfile" > "${XDG_DATA_HOME=~/.local/share}"/katepart5/script/commands/katepartscript.kfs5.js
 ```
 
-## KDE 4:
+### KDE 4:
 
 ```sh
 cp -ri libraries/ commands/ "${KDEHOME=~}"/.kde/share/apps/katepart/script/
