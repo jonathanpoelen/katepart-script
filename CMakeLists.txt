@@ -12,6 +12,7 @@ add_executable(autotest
   tests/transposeCharacter.cpp
   tests/transposeAtSeparator.cpp
   tests/tr.cpp
+  tests/count.cpp
 )
 target_link_libraries(autotest KF5::TextEditor)
 
