@@ -5,18 +5,20 @@ const katescript = {
   "kate-version": "5.1",
   "functions": [ "transposeAtSeparator"
                , "transposeAtRegexSeparator"
-               , "smartTransposeAtSeparator"
-               , "smartTransposeAtRegexSeparator"
-               , "smartTransposeAtSeparator/b"
-               , "smartTransposeAtRegexSeparator/b"
+               , "transposeAtSeparator/s"
+               , "transposeAtRegexSeparator/s"
+               , "transposeAtSeparator/sb"
+               , "transposeAtSeparator/bs"
+               , "transposeAtRegexSeparator/sb"
+               , "transposeAtRegexSeparator/bs"
                ],
   "actions": [
-    { "function": "smartTransposeAtSeparator"
+    { "function": "transposeAtSeparator/s"
     , "name": "Transpose At Separator"
     , "category": "Editing"
     , "interactive": true
     },
-    { "function": "smartTransposeAtRegexSeparator"
+    { "function": "transposeAtRegexSeparator/s"
     , "name": "Transpose At Regex Separator"
     , "category": "Editing"
     , "interactive": true
@@ -163,22 +165,24 @@ const _transposeRange = function(text, ignoreSpaces, range, startDelim, endDelim
   document.editEnd();
 }
 
-function smartTransposeAtSeparator(delimiter, extraEnclosing, ignoreSpaces, enclosing, barrierDelimiter)
+this['transposeAtSeparator/s'] = function(delimiter, extraEnclosing, ignoreSpaces, enclosing, barrierDelimiter)
 {
   _smartTransposeAt(delimiter, false, extraEnclosing, ignoreSpaces, enclosing, barrierDelimiter)
 }
 
-function smartTransposeAtRegexSeparator(delimiter, extraEnclosing, ignoreSpaces, enclosing, barrierDelimiter)
+this['transposeAtRegexSeparator/s'] = function(delimiter, extraEnclosing, ignoreSpaces, enclosing, barrierDelimiter)
 {
   _smartTransposeAt(delimiter, true, extraEnclosing, ignoreSpaces, enclosing, barrierDelimiter)
 }
 
-this['smartTransposeAtSeparator/b'] = function(delimiter, barrierDelimiter, extraEnclosing, ignoreSpaces, enclosing)
+this['transposeAtSeparator/sb'] =
+this['transposeAtSeparator/sb'] = function(delimiter, barrierDelimiter, extraEnclosing, ignoreSpaces, enclosing)
 {
   _smartTransposeAt(delimiter, false, extraEnclosing, ignoreSpaces, enclosing, barrierDelimiter)
 }
 
-this['smartTransposeAtRegexSeparator/b'] = function(delimiter, barrierDelimiter, extraEnclosing, ignoreSpaces, enclosing)
+this['transposeAtRegexSeparator/sb'] =
+this['transposeAtRegexSeparator/sb'] = function(delimiter, barrierDelimiter, extraEnclosing, ignoreSpaces, enclosing)
 {
   _smartTransposeAt(delimiter, true, extraEnclosing, ignoreSpaces, enclosing, barrierDelimiter)
 }
@@ -467,24 +471,24 @@ const _findColumnDelimiter = function(regex, text, bracketMap, factor)
 
 function help(cmd)
 {
-  if (cmd === "smartTransposeAtSeparator")
+  if (cmd === "transposeAtSeparator/s")
     return i18n("Transpose the strings left and right from the delimiter under current cursor position\
  and move the cursor one position to the right.\
 <br/>The borders of the transposition stop at the next delimiter found or\
  at the next opening bracket for the left, closing for the right.\
-<br/><br/>smartTransposeAtSeparator(delimiter: String = '', ignoreSpaces: bool = true, extraEnclosing: String = '', enclosing: String = '([{}])', barrierDelimiter: String = '')\
+<br/><br/>transposeAtSeparator/s(delimiter: String = '', ignoreSpaces: bool = true, extraEnclosing: String = '', enclosing: String = '([{}])', barrierDelimiter: String = '')\
 <br/>When `delimiter` is empty, the symbols under the cursor are considered to be the delimiter.\
 <br/>Ignore delimiter between (), [], {} and <> pairs or between 2 characters.\
 <br/>When characters in `barrierDelimiter` are found, the search stops even if it is inside brackets.");
 
-  if (cmd === "smartTransposeAtSeparator/b")
-    return i18n("Same as smartTransposeAtSeparator, but `barrierDelimiter` is in second parameter.");
+  if (cmd === "transposeAtSeparator/sb" || cmd === "transposeAtSeparator/bs")
+    return i18n("Same as transposeAtSeparator/s, but `barrierDelimiter` is in second parameter.");
 
-  if (cmd === "smartTransposeAtRegexSeparator")
-    return i18n("Same as smartTransposeAtSeparator, but `delimiter` is a regular expression.");
+  if (cmd === "transposeAtRegexSeparator/s")
+    return i18n("Same as transposeAtSeparator/s, but `delimiter` is a regular expression.");
 
-  if (cmd === "smartTransposeAtRegexSeparator/b")
-    return i18n("Same as smartTransposeAtRegexSeparator, but `barrierDelimiter` is in second parameter.");
+  if (cmd === "transposeAtRegexSeparator/sb" || cmd === "transposeAtRegexSeparator/bs")
+    return i18n("Same as transposeAtRegexSeparator/s, but `barrierDelimiter` is in second parameter.");
 
   if (cmd === "transposeAtSeparator")
     return i18n("Transpose the strings left and right to delimiter\

@@ -38,57 +38,57 @@ TEST("transposeAtRegexSeparator")
   CHECKRNG("transposeAtRegexSeparator '\\n'", "ab - [cd - ef\nEF - GH]x", "ab - EF - GH\ncd - ef|x");
 }
 
-TEST("smartTransposeAtSeparator")
+TEST("transposeAtSeparator/s")
 {
-  CHECK("smartTransposeAtSeparator", "foo(,|, b)", "foo(,b, |)");
-  CHECK("smartTransposeAtSeparator", "foo(, |, b)", "foo(, b, |)");
-  CHECK("smartTransposeAtSeparator", "foo(a|,b)", "foo(b,a|)");
-  CHECK("smartTransposeAtSeparator", "foo(a|, b)", "foo(b, a|)");
-  CHECK("smartTransposeAtSeparator", "foo(a,| b)", "foo(b, a|)");
-  CHECK("smartTransposeAtSeparator", "foo(a, |b)", "foo(b, a|)");
-  CHECK("smartTransposeAtSeparator", "foo(a|, b, c)", "foo(b, a|, c)");
-  CHECK("smartTransposeAtSeparator", "foo(a, b|, c)", "foo(a, c, b|)");
-  CHECK("smartTransposeAtSeparator", "foo(a[1]|, b)", "foo(b, a[1]|)");
-  CHECK("smartTransposeAtSeparator", "foo(a <=|> b)", "foo(b> a <=|)");
-  CHECK("smartTransposeAtSeparator <=>", "foo(a <=|> b)", "foo(b <=> a|)");
-  CHECK("smartTransposeAtSeparator =>", "foo(a <=|> b)", "foo(b=> a <|)");
-  CHECK("smartTransposeAtSeparator , ~", "foo(~a, b~|, ~c, d~)", "foo(~c, d~, ~a, b~|)");
+  CHECK("transposeAtSeparator/s", "foo(,|, b)", "foo(,b, |)");
+  CHECK("transposeAtSeparator/s", "foo(, |, b)", "foo(, b, |)");
+  CHECK("transposeAtSeparator/s", "foo(a|,b)", "foo(b,a|)");
+  CHECK("transposeAtSeparator/s", "foo(a|, b)", "foo(b, a|)");
+  CHECK("transposeAtSeparator/s", "foo(a,| b)", "foo(b, a|)");
+  CHECK("transposeAtSeparator/s", "foo(a, |b)", "foo(b, a|)");
+  CHECK("transposeAtSeparator/s", "foo(a|, b, c)", "foo(b, a|, c)");
+  CHECK("transposeAtSeparator/s", "foo(a, b|, c)", "foo(a, c, b|)");
+  CHECK("transposeAtSeparator/s", "foo(a[1]|, b)", "foo(b, a[1]|)");
+  CHECK("transposeAtSeparator/s", "foo(a <=|> b)", "foo(b> a <=|)");
+  CHECK("transposeAtSeparator/s <=>", "foo(a <=|> b)", "foo(b <=> a|)");
+  CHECK("transposeAtSeparator/s =>", "foo(a <=|> b)", "foo(b=> a <|)");
+  CHECK("transposeAtSeparator/s , ~", "foo(~a, b~|, ~c, d~)", "foo(~c, d~, ~a, b~|)");
 
   // don't capture enclosing char who is not a pair
 
-  CHECK("smartTransposeAtSeparator = ;", "a |= b;", "b = a|;");
+  CHECK("transposeAtSeparator/s = ;", "a |= b;", "b = a|;");
 
-  CHECK("smartTransposeAtSeparator = ;", "a = |b;", "b = a|;");
+  CHECK("transposeAtSeparator/s = ;", "a = |b;", "b = a|;");
   // equivalent to
-  CHECK("smartTransposeAtSeparator = '' 1 '' ;", "a = |b;", "b = a|;");
+  CHECK("transposeAtSeparator/s = '' 1 '' ;", "a = |b;", "b = a|;");
 
-  CHECK("smartTransposeAtSeparator - '=;'", "n = first |- last;", "n = last - first|;");
+  CHECK("transposeAtSeparator/s - '=;'", "n = first |- last;", "n = last - first|;");
   // equivalent to
-  CHECK("smartTransposeAtSeparator - '' 1 '' =;", "n = first |- last;", "n = last - first|;");
+  CHECK("transposeAtSeparator/s - '' 1 '' =;", "n = first |- last;", "n = last - first|;");
 }
 
-TEST("smartTransposeAtRegexSeparator")
+TEST("transposeAtRegexSeparator/s")
 {
-  CHECK("smartTransposeAtRegexSeparator <=>", "foo(a <=|> b)", "foo(b <=> a|)");
+  CHECK("transposeAtRegexSeparator/s <=>", "foo(a <=|> b)", "foo(b <=> a|)");
 }
 
-TEST("smartTransposeAtSeparatorWithRange")
+TEST("transposeAtSeparator/sWithRange")
 {
-  CHECKRNG("smartTransposeAtSeparator", "[foo(,, b)]", "[foo(b,, )]|");
-  CHECKRNG("smartTransposeAtSeparator", "[foo(, , b)]", "[foo(, b, )]|");
-  CHECKRNG("smartTransposeAtSeparator", "[foo(a,b)]", "[foo(b,a)]|");
-  CHECKRNG("smartTransposeAtSeparator", "[foo(a, b)]", "[foo(b, a)]|");
-  CHECKRNG("smartTransposeAtSeparator", "[foo(a, b, c)]", "[foo(b, a, c)]|");
-  CHECKRNG("smartTransposeAtSeparator", "[foo(a{1}, b)]", "[foo(b, a{1})]|");
-  CHECKRNG("smartTransposeAtSeparator", "[foo(a <=> b)]", "[foo(b <=> a)]|");
-  CHECKRNG("smartTransposeAtSeparator <=>", "[foo(a <=> b)]", "[foo(b <=> a)]|");
-  CHECKRNG("smartTransposeAtSeparator =>", "[foo(a <=> b)]", "[foo(b=> a <)]|");
-  CHECKRNG("smartTransposeAtSeparator , ~", "[foo(~a, b~, ~c, d~)]", "[foo(~c, d~, ~a, b~)]|");
-  CHECKRNG("smartTransposeAtSeparator", "[ab cd\n --- \nef gh]", "ef gh\n --- \nab cd|");
-  CHECKRNG("smartTransposeAtSeparator", "[ab cd\n(xxx - yyy)\nef gh]", "[ab cd\n(yyy - xxx)\nef gh]|");
+  CHECKRNG("transposeAtSeparator/s", "[foo(,, b)]", "[foo(b,, )]|");
+  CHECKRNG("transposeAtSeparator/s", "[foo(, , b)]", "[foo(, b, )]|");
+  CHECKRNG("transposeAtSeparator/s", "[foo(a,b)]", "[foo(b,a)]|");
+  CHECKRNG("transposeAtSeparator/s", "[foo(a, b)]", "[foo(b, a)]|");
+  CHECKRNG("transposeAtSeparator/s", "[foo(a, b, c)]", "[foo(b, a, c)]|");
+  CHECKRNG("transposeAtSeparator/s", "[foo(a{1}, b)]", "[foo(b, a{1})]|");
+  CHECKRNG("transposeAtSeparator/s", "[foo(a <=> b)]", "[foo(b <=> a)]|");
+  CHECKRNG("transposeAtSeparator/s <=>", "[foo(a <=> b)]", "[foo(b <=> a)]|");
+  CHECKRNG("transposeAtSeparator/s =>", "[foo(a <=> b)]", "[foo(b=> a <)]|");
+  CHECKRNG("transposeAtSeparator/s , ~", "[foo(~a, b~, ~c, d~)]", "[foo(~c, d~, ~a, b~)]|");
+  CHECKRNG("transposeAtSeparator/s", "[ab cd\n --- \nef gh]", "ef gh\n --- \nab cd|");
+  CHECKRNG("transposeAtSeparator/s", "[ab cd\n(xxx - yyy)\nef gh]", "[ab cd\n(yyy - xxx)\nef gh]|");
 }
 
-TEST("smartTransposeAtRegexSeparatorWithRange")
+TEST("transposeAtRegexSeparatorWithRange/s")
 {
-  CHECKRNG("smartTransposeAtRegexSeparator <=>", "[foo(a <=> b)]", "[foo(b <=> a)]|");
+  CHECKRNG("transposeAtRegexSeparator/s <=>", "[foo(a <=> b)]", "[foo(b <=> a)]|");
 }
