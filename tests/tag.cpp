@@ -30,7 +30,12 @@ TEST("wrapTag")
   CHECK("wrapTag abc", "xxx|yyy", "<abc>xxx|yyy</abc>");
   CHECK("wrapTag abc 1", "xxx|yyy", "<abc>\n  xxx|yyy\n</abc>");
   CHECK("wrapTag abc 1", " xxx|yyy", " <abc>\n  xxx|yyy\n </abc>");
+  CHECK("wrapTag abc 0 'class=\"x\" id=\"y\"'", "xxx|yyy", "<abc class=\"x\" id=\"y\">xxx|yyy</abc>");
+  CHECK("wrapTag abc 1 'class=\"x\" id=\"y\"'", " xxx|yyy", " <abc class=\"x\" id=\"y\">\n  xxx|yyy\n </abc>");
 
   CHECKRNG("wrapTag abc", " xx[xy]yy ", " xx[<abc>xy</abc>]|yy ");
   CHECKRNG("wrapTag abc 1", " xx[xy]yy ", " xx\n [<abc>\n  xy\n </abc>]\n |yy ");
+  CHECKRNG("wrapTag abc 0 'class=\"x\" id=\"y\"'", " xx[xy]yy ", " xx[<abc class=\"x\" id=\"y\">xy</abc>]|yy ");
+  CHECKRNG("wrapTag abc 1 'class=\"x\" id=\"y\"'", " xx[xy]yy ", " xx\n [<abc class=\"x\" id=\"y\">\n  xy\n </abc>]\n |yy ");
+
 }

@@ -8,12 +8,14 @@ find_package(KF5TextEditor REQUIRED)
 set(CMAKE_COLOR_DIAGNOSTICS ON)
 
 add_executable(autotest
-  tests/main.cpp
-  tests/transposeCharacter.cpp
-  tests/transposeAtSeparator.cpp
-  tests/tr.cpp
-  tests/tag.cpp
-  tests/count.cpp
+tests/count.cpp
+tests/duplicate.cpp
+tests/main.cpp
+tests/tag.cpp
+tests/test.hpp
+tests/transposeAtSeparator.cpp
+tests/transposeCharacter.cpp
+tests/tr.cpp
 )
 target_link_libraries(autotest KF5::TextEditor)
 
