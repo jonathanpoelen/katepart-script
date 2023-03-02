@@ -12,11 +12,11 @@ const katescript = {
   ]
 };
 
-require("jln-selectionOrLineProcess.js")
-require("jln-interpretStr.js")
-require("jln-toBoolean.js")
-require("jln-regex-utils.js")
-require("jln-string-utils.js")
+require("jln/selectionOrLineProcess.js")
+require("jln/interpretStr.js")
+require("jln/toBoolean.js")
+require("jln/regex-utils.js")
+require("jln/string-utils.js")
 
 
 function tr(findTo, replaceTo, empty, rgxFlags)

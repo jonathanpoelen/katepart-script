@@ -19,8 +19,8 @@ const katescript = {
   ]
 };
 
-require("jln-indentationText.js")
-require("jln-toBoolean.js")
+require("jln/indentationText.js")
+require("jln/toBoolean.js")
 require("range.js")
 
 let namespaceStr = "";

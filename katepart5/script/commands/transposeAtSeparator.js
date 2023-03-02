@@ -27,11 +27,11 @@ const katescript = {
 };
 
 require("range.js")
-require("jln-interpretStr.js")
-require("jln-toBoolean.js")
-require("jln-regex-utils.js")
-require("jln-string-utils.js")
-require("jln-bracketMap.js")
+require("jln/interpretStr.js")
+require("jln/toBoolean.js")
+require("jln/regex-utils.js")
+require("jln/string-utils.js")
+require("jln/bracketMap.js")
 
 
 function transposeAtSeparator(delimiter, ignoreSpaces, idx)
