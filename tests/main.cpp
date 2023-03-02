@@ -63,6 +63,11 @@ struct TestManager
     editor = Editor::instance();
     doc = editor->createDocument(nullptr);
     view = doc->createView(nullptr);
+
+    auto* command = editor->queryCommand("set-indent-width");
+    command->exec(view, "set-indent-width 2", msg);
+    command->exec(view, "setset-replace-tabs 1", msg);
+    command->exec(view, "set-indent-mode cstyle", msg);
   }
 
   void check(TestCase test);
