@@ -8,6 +8,7 @@ find_package(KF5TextEditor REQUIRED)
 set(CMAKE_COLOR_DIAGNOSTICS ON)
 
 add_executable(autotest
+tests/alias.cpp
 tests/count.cpp
 tests/duplicate.cpp
 tests/main.cpp
