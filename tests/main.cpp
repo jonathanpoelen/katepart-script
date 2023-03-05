@@ -104,10 +104,10 @@ struct PosInfo {
 
 PosInfo getCursorInfo(QStringView str)
 {
+  int pos;
   int n = 0;
-  int pos = -1;
   int lastIndex = 0;
-  while ((pos = str.indexOf('\n', pos + 1)) != -1) {
+  while ((pos = str.indexOf('\n', lastIndex)) != -1) {
     ++n;
     lastIndex = pos + 1;
   }
@@ -126,9 +126,9 @@ void TestManager::check(TestCase test)
     int pos2 = (pos1 != -1) ? input.indexOf(test.range.close, pos1 + 1) : -1;
     if (pos2 != -1) {
       auto info1 = getCursorInfo(QStringView(input).left(pos1));
-      auto info2 = getCursorInfo(QStringView(input).mid(pos1 + info1.lastIndex, pos2));
+      auto info2 = getCursorInfo(QStringView(input).mid(pos1 + 1, pos2 - pos1 - 1));
       info2.countLine += info1.countLine;
-      info2.lastIndex += (info2.countLine != info1.countLine) ? pos1 - info1.lastIndex : 1;
+      info2.lastIndex += (info2.countLine != info1.countLine) ? pos1 + 1 : info1.lastIndex + 1;
       range = Range(
         info1.countLine, pos1 - info1.lastIndex,
         info2.countLine, pos2 - info2.lastIndex
