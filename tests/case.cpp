@@ -289,3 +289,11 @@ TEST("dashedCaseToSnakeCase")
 
   CHECK("dashedCaseToSnakeCase", "xxx aaa-bbb|-ccc yyy", "xxx aaa_bbb_ccc| yyy");
 }
+
+TEST("reverseCase")
+{
+  CHECKRNG("reverseCase", "[aaa_BBB_ccc]", "[AAA_bbb_CCC]|");
+  CHECKRNG("reverseCase", "[aaa_BBB_ccc\n_aaa_BBB_ccc]", "[AAA_bbb_CCC\n_AAA_bbb_CCC]|");
+
+  CHECK("reverseCase", "xxx AAA_bbb|_CCC yyy", "xxx aaa_BBB_ccc| yyy");
+}
