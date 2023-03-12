@@ -66,7 +66,7 @@ struct TestManager
 
     auto* command = editor->queryCommand("set-indent-width");
     command->exec(view, "set-indent-width 2", msg);
-    command->exec(view, "setset-replace-tabs 1", msg);
+    command->exec(view, "set-replace-tabs 1", msg);
     command->exec(view, "set-indent-mode cstyle", msg);
   }
 

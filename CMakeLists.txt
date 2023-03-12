@@ -10,6 +10,8 @@ set(CMAKE_COLOR_DIAGNOSTICS ON)
 add_executable(autotest
 tests/alias.cpp
 tests/align.cpp
+tests/calln.cpp
+tests/case.cpp
 tests/count.cpp
 tests/duplicate.cpp
 tests/main.cpp

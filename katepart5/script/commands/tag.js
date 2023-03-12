@@ -19,6 +19,7 @@ const katescript = {
   ]
 };
 
+require("jln/boundsSearchRegex.js")
 require("jln/indentationText.js")
 require("jln/toBoolean.js")
 require("range.js")
@@ -74,19 +75,13 @@ function tag(tagName, isBlock)
     if (tagName === undefined || !isNaN(+tagName))
     {
       isBlock = tagName;
-      let rc1 = cursor.column;
-      tagName = document.line(line);
+      const m = boundsSearchRegex(document.line(line), /[\w-:_]+/g, cursor.column);
+      if (!m)
+        return;
 
-      while (tagName[--rc1] && (/[\w-:_]/).test(tagName[rc1]));
-      ++rc1;
-      const re = /[\w-:_]+/g;
-      re.lastIndex = rc1;
-
-      if (!(tagName = re.exec(tagName)[0]))
-        return ;
-      rc1 = re.lastIndex - tagName.length;
-      cursor.column = rc1;
-      document.removeText(line, rc1, line, re.lastIndex);
+      tagName = m.match;
+      cursor.column = m.index;
+      document.removeText(line, m.index, line, m.index + tagName.length);
     }
   }
 
