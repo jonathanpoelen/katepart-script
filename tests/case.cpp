@@ -46,6 +46,14 @@ TEST("camelCase")
   CHECK("camelCase", "xxx | aaa_bbb_ccc", "xxx  aaaBbbCcc|");
 }
 
+TEST("camelCase-")
+{
+  CHECKRNG("camelCase-", "[aaa_bbb-ccc]", "[aaaBbbCcc]|");
+  CHECKRNG("camelCase-", "[aaa_bbb_ccc\n_aaa-bbb_ccc]", "[aaaBbbCcc\n_aaaBbbCcc]|");
+
+  CHECK("camelCase-", "aaa_bbb-ccc|", "aaaBbbCcc|");
+}
+
 TEST("camelUpperCase")
 {
   CHECKRNG("camelUpperCase", "[aaa_bbb_ccc]", "[AaaBbbCcc]|");
@@ -87,6 +95,15 @@ TEST("camelUpperCase")
   CHECK("camelUpperCase", "xxx | aaa_bbb_ccc", "xxx  AaaBbbCcc|");
 }
 
+TEST("camelUpperCase-")
+{
+  CHECKRNG("camelUpperCase-", "[aaa_bbb-ccc]", "[AaaBbbCcc]|");
+  CHECKRNG("camelUpperCase-", "[aaaBbbCcc]", "[AaaBbbCcc]|");
+  CHECKRNG("camelUpperCase-", "[aaa_bbb-ccc\n_aaa-bbb_ccc]", "[AaaBbbCcc\n_AaaBbbCcc]|");
+
+  CHECK("camelUpperCase-", "aaa_bbb-ccc|", "AaaBbbCcc|");
+}
+
 TEST("snakeCase")
 {
   CHECKRNG("snakeCase", "[AaaBbbCcc]", "[aaa_bbb_ccc]|");
@@ -110,6 +127,15 @@ TEST("snakeCase")
     "[12aaa_bbb_ccc _12aaa_bbb_ccc aaa12bbb_ccc _aaa12bbb_ccc]|");
 
   CHECK("snakeCase", "xxx AaaBbb|Ccc yyy", "xxx aaa_bbb_ccc| yyy");
+}
+
+TEST("snakeCase-")
+{
+  CHECKRNG("snakeCase-", "[AaaBbb-ccc]", "[aaa_bbb_ccc]|");
+  CHECKRNG("snakeCase- /", "[AaaBbb-ccc]", "[aaa/bbb/ccc]|");
+  CHECKRNG("snakeCase-", "[AaaBbb-Ccc\n_Aaa-BbbCcc]", "[aaa_bbb_ccc\n_aaa_bbb_ccc]|");
+
+  CHECK("snakeCase-", "xxx Aaa-Bbb|Ccc yyy", "xxx aaa_bbb_ccc| yyy");
 }
 
 TEST("snakeCase/_d")
@@ -137,6 +163,13 @@ TEST("snakeCase/_d")
   CHECK("snakeCase/_d", "xxx AaaBbb|Ccc yyy", "xxx aaa_bbb_ccc| yyy");
 }
 
+TEST("snakeCase-/_d")
+{
+  CHECKRNG("snakeCase-/_d", "[AaaBbb-Ccc]", "[aaa_bbb_ccc]|");
+
+  CHECK("snakeCase-/_d", "xxx Aaa-Bbb|Ccc yyy", "xxx aaa_bbb_ccc| yyy");
+}
+
 TEST("snakeCase/d_")
 {
   CHECKRNG("snakeCase/d_", "[AaaBbbCcc]", "[aaa_bbb_ccc]|");
@@ -162,6 +195,13 @@ TEST("snakeCase/d_")
   CHECK("snakeCase/d_", "xxx AaaBbb|Ccc yyy", "xxx aaa_bbb_ccc| yyy");
 }
 
+TEST("snakeCase-/d_")
+{
+  CHECKRNG("snakeCase-/d_", "[AaaBbb-Ccc]", "[aaa_bbb_ccc]|");
+
+  CHECK("snakeCase-/d_", "xxx Aaa-Bbb|Ccc yyy", "xxx aaa_bbb_ccc| yyy");
+}
+
 TEST("snakeCase/_d_")
 {
   CHECKRNG("snakeCase/_d_", "[AaaBbbCcc]", "[aaa_bbb_ccc]|");
@@ -185,6 +225,18 @@ TEST("snakeCase/_d_")
     "[12_aaa_bbb_ccc _12_aaa_bbb_ccc aaa_12_bbb_ccc _aaa_12_bbb_ccc]|");
 
   CHECK("snakeCase/_d_", "xxx AaaBbb|Ccc yyy", "xxx aaa_bbb_ccc| yyy");
+}
+
+TEST("snakeCase-/_d_")
+{
+  CHECKRNG("snakeCase-/_d_", "[AaaBbb-Ccc]", "[aaa_bbb_ccc]|");
+
+  CHECK("snakeCase-/_d_", "xxx Aaa-Bbb|Ccc yyy", "xxx aaa_bbb_ccc| yyy");
+}
+
+TEST("dashedCase")
+{
+  CHECKRNG("dashedCase", "[aaa_bbb_ccc]", "[aaa-bbb-ccc]|");
 }
 
 TEST("dashedCaseToCamelCase")
@@ -296,4 +348,11 @@ TEST("reverseCase")
   CHECKRNG("reverseCase", "[aaa_BBB_ccc\n_aaa_BBB_ccc]", "[AAA_bbb_CCC\n_AAA_bbb_CCC]|");
 
   CHECK("reverseCase", "xxx AAA_bbb|_CCC yyy", "xxx aaa_BBB_ccc| yyy");
+}
+
+TEST("reverseCase-")
+{
+  CHECKRNG("reverseCase-", "[aaa_BBB-ccc]", "[AAA_bbb-CCC]|");
+
+  CHECK("reverseCase-", "xxx AAA-bbb|_CCC yyy", "xxx aaa-BBB_ccc| yyy");
 }
