@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <chrono>
 #include <vector>
 
 #include "test.hpp"
@@ -289,6 +290,8 @@ int main(int argc, char** argv)
 
   std::ostream out{std::cerr.rdbuf(&testManager.debugbuf)};
 
+  auto startTime = std::chrono::high_resolution_clock::now();
+
   for (auto* ut = g_firstUnitTest; ut; ut = ut->next) {
     if (hasStatus) {
       out << "\x1b[90m" << ut->name;
@@ -321,9 +324,12 @@ int main(int argc, char** argv)
     }
   }
 
+  auto endTime = std::chrono::high_resolution_clock::now();
+
   out <<
     "Success: \x1b[32m" << testManager.successCounter << "\x1b[m  "
-    "Failure: \x1b[31m" << testManager.failureCounter << "\x1b[m\n"
+    "Failure: \x1b[31m" << testManager.failureCounter << "\x1b[m  "
+    "Duration: " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms\n"
   ;
   out.flush();
 
