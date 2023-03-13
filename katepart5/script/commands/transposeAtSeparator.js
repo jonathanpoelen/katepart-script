@@ -447,7 +447,6 @@ const _findColumnDelimiter = function(regex, text, bracketMap, factor)
         }
       }
       else {
-        debug(c)
         enclosingTriggered[c] = !enclosingTriggered[c];
         const inc = enclosingTriggered[c] * 2 - 1;
         enclosingTriggeredCounter += inc;
