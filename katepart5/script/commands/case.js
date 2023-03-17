@@ -6,8 +6,8 @@ const katescript = {
   "functions": [
     "camelCase",
     "camelCase-",
-    "camelUpperCase",
-    "camelUpperCase-",
+    "pascalCase",
+    "pascalCase-",
     "snakeCase",
     "snakeCase/d_",
     "snakeCase/_d",
@@ -18,7 +18,7 @@ const katescript = {
     "snakeCase-/_d_",
     "dashedCase",
     "dashedCaseToCamelCase",
-    "dashedCaseToCamelUpperCase",
+    "dashedCaseToPascalCase",
     "dashedCaseToSnakeCase",
     "reverseCase",
     "reverseCase-"
@@ -74,7 +74,7 @@ const _camelCaseWordReplace = function(word, pattern) {
   });
 };
 
-const _camelUpperCaseWordReplace = function(word, pattern) {
+const _pascalCaseWordReplace = function(word, pattern) {
   return word.replace(pattern, function(match, c1, c2) {
     return (c1 !== undefined ? c1
           : c2 !== undefined ? c2
@@ -111,9 +111,9 @@ function camelCase()
   _camelCase(_camelCaseWordReplace);
 }
 
-function camelUpperCase()
+function pascalCase()
 {
-  _camelCase(_camelUpperCaseWordReplace);
+  _camelCase(_pascalCaseWordReplace);
 }
 
 
@@ -140,9 +140,9 @@ this['camelCase-'] = function()
   _camelCase2(_camelCaseWordReplace);
 }
 
-this['camelUpperCase-'] = function()
+this['pascalCase-'] = function()
 {
-  _camelCase2(_camelUpperCaseWordReplace);
+  _camelCase2(_pascalCaseWordReplace);
 }
 
 
@@ -373,11 +373,11 @@ function dashedCaseToCamelCase()
   _dashedCaseToCamelCase(_camelCaseWordReplace);
 }
 
-function dashedCaseToCamelUpperCase()
+function dashedCaseToPascalCase()
 {
   // xxx-yyy -> XxxYyy
   // --xxx-yyy -> __XxxYyy
-  _dashedCaseToCamelCase(_camelUpperCaseWordReplace);
+  _dashedCaseToCamelCase(_pascalCaseWordReplace);
 }
 
 
@@ -438,12 +438,12 @@ function help(cmd)
     return i18n("Converts the selection or the identifier under the cursor to camelCase.\
 <br/>An identifier is a sequence of letters, digits, _ and -");
 
-  if (cmd === "camelUpperCase")
-    return i18n("Converts the selection or the identifier under the cursor to CamelUpperCase.\
+  if (cmd === "pascalCase")
+    return i18n("Converts the selection or the identifier under the cursor to PascalCase.\
 <br/>An identifier is a sequence of letters, digits and _");
 
-  if (cmd === "camelUpperCase-")
-    return i18n("Converts the selection or the identifier under the cursor to CamelUpperCase.\
+  if (cmd === "pascalCase-")
+    return i18n("Converts the selection or the identifier under the cursor to PascalCase.\
 <br/>An identifier is a sequence of letters, digits, _ and -");
 
   if (cmd === "snakeCase")
@@ -490,8 +490,8 @@ function help(cmd)
     return i18n("Converts the selection or the identifier under the cursor from dashed-case to camelCase.\
 <br/>An identifier is a sequence of letters, digits, _ and -");
 
-  if (cmd === "dashedCaseToCamelUpperCase")
-    return i18n("Converts the selection or the identifier under the cursor from dashed-case to camelUpperCase.\
+  if (cmd === "dashedCaseToPascalCase")
+    return i18n("Converts the selection or the identifier under the cursor from dashed-case to pascalCase.\
 <br/>An identifier is a sequence of letters, digits, _ and -");
 
   if (cmd === "dashedCaseToSnakeCase")

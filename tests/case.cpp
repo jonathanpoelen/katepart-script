@@ -54,54 +54,54 @@ TEST("camelCase-")
   CHECK("camelCase-", "aaa_bbb-ccc|", "aaaBbbCcc|");
 }
 
-TEST("camelUpperCase")
+TEST("pascalCase")
 {
-  CHECKRNG("camelUpperCase", "[aaa_bbb_ccc]", "[AaaBbbCcc]|");
-  CHECKRNG("camelUpperCase", "[aaaBbbCcc]", "[AaaBbbCcc]|");
-  CHECKRNG("camelUpperCase", "[aaa_bbb_ccc\n_aaa_bbb_ccc]", "[AaaBbbCcc\n_AaaBbbCcc]|");
+  CHECKRNG("pascalCase", "[aaa_bbb_ccc]", "[AaaBbbCcc]|");
+  CHECKRNG("pascalCase", "[aaaBbbCcc]", "[AaaBbbCcc]|");
+  CHECKRNG("pascalCase", "[aaa_bbb_ccc\n_aaa_bbb_ccc]", "[AaaBbbCcc\n_AaaBbbCcc]|");
 
-  CHECKRNG("camelUpperCase",
+  CHECKRNG("pascalCase",
     "[aaa_bbb_ccc Aaa_bbb_ccc _aaa_bbb_ccc _Aaa_bbb_ccc __aaa_bbb_ccc __Aaa_bbb_ccc]",
     "[AaaBbbCcc AaaBbbCcc _AaaBbbCcc _AaaBbbCcc __AaaBbbCcc __AaaBbbCcc]|");
 
-  CHECKRNG("camelUpperCase",
+  CHECKRNG("pascalCase",
     "[aaa_bbb_ccc_ Aaa_bbb_ccc_ aaa_bbb_ccc__ Aaa_bbb_ccc__]",
     "[AaaBbbCcc_ AaaBbbCcc_ AaaBbbCcc__ AaaBbbCcc__]|");
 
-  CHECKRNG("camelUpperCase",
+  CHECKRNG("pascalCase",
     "[1aaa_bbb_ccc 1Aaa_bbb_ccc _1aaa_bbb_ccc _1Aaa_bbb_ccc __1aaa_bbb_ccc __1Aaa_bbb_ccc]",
     "[1AaaBbbCcc 1AaaBbbCcc _1AaaBbbCcc _1AaaBbbCcc __1AaaBbbCcc __1AaaBbbCcc]|");
 
-  CHECKRNG("camelUpperCase",
+  CHECKRNG("pascalCase",
     "[12aaa_bbb_ccc 12Aaa_bbb_ccc _12aaa_bbb_ccc _12Aaa_bbb_ccc __12aaa_bbb_ccc __12Aaa_bbb_ccc]",
     "[12AaaBbbCcc 12AaaBbbCcc _12AaaBbbCcc _12AaaBbbCcc __12AaaBbbCcc __12AaaBbbCcc]|");
 
-  CHECKRNG("camelUpperCase",
+  CHECKRNG("pascalCase",
     "[aaa_1bbb_ccc aaa_12bbb_ccc aaa1bbb aaa12bbb]",
     "[Aaa1BbbCcc Aaa12BbbCcc Aaa1Bbb Aaa12Bbb]|");
 
-  CHECK("camelUpperCase", "aaa_bbb_ccc|", "AaaBbbCcc|");
-  CHECK("camelUpperCase", "aaa_bbb_|ccc", "AaaBbbCcc|");
-  CHECK("camelUpperCase", "|aaa_bbb_ccc", "AaaBbbCcc|");
+  CHECK("pascalCase", "aaa_bbb_ccc|", "AaaBbbCcc|");
+  CHECK("pascalCase", "aaa_bbb_|ccc", "AaaBbbCcc|");
+  CHECK("pascalCase", "|aaa_bbb_ccc", "AaaBbbCcc|");
 
-  CHECK("camelUpperCase", " aaa_bbb_ccc| ", " AaaBbbCcc| ");
-  CHECK("camelUpperCase", " aaa_bbb_|ccc ", " AaaBbbCcc| ");
-  CHECK("camelUpperCase", " |aaa_bbb_ccc ", " AaaBbbCcc| ");
+  CHECK("pascalCase", " aaa_bbb_ccc| ", " AaaBbbCcc| ");
+  CHECK("pascalCase", " aaa_bbb_|ccc ", " AaaBbbCcc| ");
+  CHECK("pascalCase", " |aaa_bbb_ccc ", " AaaBbbCcc| ");
 
-  CHECK("camelUpperCase", "xxx aaa_bbb_ccc| yyy", "xxx AaaBbbCcc| yyy");
-  CHECK("camelUpperCase", "xxx aaa_bbb_|ccc yyy", "xxx AaaBbbCcc| yyy");
-  CHECK("camelUpperCase", "xxx |aaa_bbb_ccc yyy", "xxx AaaBbbCcc| yyy");
+  CHECK("pascalCase", "xxx aaa_bbb_ccc| yyy", "xxx AaaBbbCcc| yyy");
+  CHECK("pascalCase", "xxx aaa_bbb_|ccc yyy", "xxx AaaBbbCcc| yyy");
+  CHECK("pascalCase", "xxx |aaa_bbb_ccc yyy", "xxx AaaBbbCcc| yyy");
 
-  CHECK("camelUpperCase", "xxx | aaa_bbb_ccc", "xxx  AaaBbbCcc|");
+  CHECK("pascalCase", "xxx | aaa_bbb_ccc", "xxx  AaaBbbCcc|");
 }
 
-TEST("camelUpperCase-")
+TEST("pascalCase-")
 {
-  CHECKRNG("camelUpperCase-", "[aaa_bbb-ccc]", "[AaaBbbCcc]|");
-  CHECKRNG("camelUpperCase-", "[aaaBbbCcc]", "[AaaBbbCcc]|");
-  CHECKRNG("camelUpperCase-", "[aaa_bbb-ccc\n_aaa-bbb_ccc]", "[AaaBbbCcc\n_AaaBbbCcc]|");
+  CHECKRNG("pascalCase-", "[aaa_bbb-ccc]", "[AaaBbbCcc]|");
+  CHECKRNG("pascalCase-", "[aaaBbbCcc]", "[AaaBbbCcc]|");
+  CHECKRNG("pascalCase-", "[aaa_bbb-ccc\n_aaa-bbb_ccc]", "[AaaBbbCcc\n_AaaBbbCcc]|");
 
-  CHECK("camelUpperCase-", "aaa_bbb-ccc|", "AaaBbbCcc|");
+  CHECK("pascalCase-", "aaa_bbb-ccc|", "AaaBbbCcc|");
 }
 
 TEST("snakeCase")
@@ -280,45 +280,45 @@ TEST("dashedCaseToCamelCase")
   CHECK("dashedCaseToCamelCase", "xxx | aaa-bbb-ccc", "xxx  aaaBbbCcc|");
 }
 
-TEST("dashedCaseToCamelUpperCase")
+TEST("dashedCaseToPascalCase")
 {
-  CHECKRNG("dashedCaseToCamelUpperCase", "[aaa-bbb-ccc]", "[AaaBbbCcc]|");
-  CHECKRNG("dashedCaseToCamelUpperCase", "[aaaBbbCcc]", "[AaaBbbCcc]|");
-  CHECKRNG("dashedCaseToCamelUpperCase", "[aaa-bbb-ccc\n-aaa_bbb_ccc]", "[AaaBbbCcc\n_AaaBbbCcc]|");
+  CHECKRNG("dashedCaseToPascalCase", "[aaa-bbb-ccc]", "[AaaBbbCcc]|");
+  CHECKRNG("dashedCaseToPascalCase", "[aaaBbbCcc]", "[AaaBbbCcc]|");
+  CHECKRNG("dashedCaseToPascalCase", "[aaa-bbb-ccc\n-aaa_bbb_ccc]", "[AaaBbbCcc\n_AaaBbbCcc]|");
 
-  CHECKRNG("dashedCaseToCamelUpperCase",
+  CHECKRNG("dashedCaseToPascalCase",
     "[aaa-bbb-ccc Aaa-bbb-ccc -aaa-bbb-ccc -Aaa-bbb-ccc --aaa-bbb-ccc --Aaa-bbb-ccc]",
     "[AaaBbbCcc AaaBbbCcc _AaaBbbCcc _AaaBbbCcc __AaaBbbCcc __AaaBbbCcc]|");
 
-  CHECKRNG("dashedCaseToCamelUpperCase",
+  CHECKRNG("dashedCaseToPascalCase",
     "[aaa-bbb-ccc- Aaa-bbb-ccc- aaa-bbb-ccc-- Aaa-bbb-ccc--]",
     "[AaaBbbCcc_ AaaBbbCcc_ AaaBbbCcc__ AaaBbbCcc__]|");
 
-  CHECKRNG("dashedCaseToCamelUpperCase",
+  CHECKRNG("dashedCaseToPascalCase",
     "[1aaa-bbb-ccc 1Aaa-bbb-ccc -1aaa-bbb-ccc -1Aaa-bbb-ccc --1aaa-bbb-ccc --1Aaa-bbb-ccc]",
     "[1AaaBbbCcc 1AaaBbbCcc _1AaaBbbCcc _1AaaBbbCcc __1AaaBbbCcc __1AaaBbbCcc]|");
 
-  CHECKRNG("dashedCaseToCamelUpperCase",
+  CHECKRNG("dashedCaseToPascalCase",
     "[12aaa-bbb-ccc 12Aaa-bbb-ccc -12aaa-bbb-ccc -12Aaa-bbb-ccc --12aaa-bbb-ccc --12Aaa-bbb-ccc]",
     "[12AaaBbbCcc 12AaaBbbCcc _12AaaBbbCcc _12AaaBbbCcc __12AaaBbbCcc __12AaaBbbCcc]|");
 
-  CHECKRNG("dashedCaseToCamelUpperCase",
+  CHECKRNG("dashedCaseToPascalCase",
     "[aaa-1bbb-ccc aaa-12bbb-ccc aaa1bbb aaa12bbb - -_- --_]",
     "[Aaa1BbbCcc Aaa12BbbCcc Aaa1Bbb Aaa12Bbb - -_- --_]|");
 
-  CHECK("dashedCaseToCamelUpperCase", "aaa-bbb-ccc|", "AaaBbbCcc|");
-  CHECK("dashedCaseToCamelUpperCase", "aaa-bbb-|ccc", "AaaBbbCcc|");
-  CHECK("dashedCaseToCamelUpperCase", "|aaa-bbb-ccc", "AaaBbbCcc|");
+  CHECK("dashedCaseToPascalCase", "aaa-bbb-ccc|", "AaaBbbCcc|");
+  CHECK("dashedCaseToPascalCase", "aaa-bbb-|ccc", "AaaBbbCcc|");
+  CHECK("dashedCaseToPascalCase", "|aaa-bbb-ccc", "AaaBbbCcc|");
 
-  CHECK("dashedCaseToCamelUpperCase", " aaa-bbb-ccc| ", " AaaBbbCcc| ");
-  CHECK("dashedCaseToCamelUpperCase", " aaa-bbb-|ccc ", " AaaBbbCcc| ");
-  CHECK("dashedCaseToCamelUpperCase", " |aaa-bbb-ccc ", " AaaBbbCcc| ");
+  CHECK("dashedCaseToPascalCase", " aaa-bbb-ccc| ", " AaaBbbCcc| ");
+  CHECK("dashedCaseToPascalCase", " aaa-bbb-|ccc ", " AaaBbbCcc| ");
+  CHECK("dashedCaseToPascalCase", " |aaa-bbb-ccc ", " AaaBbbCcc| ");
 
-  CHECK("dashedCaseToCamelUpperCase", "xxx aaa-bbb-ccc| yyy", "xxx AaaBbbCcc| yyy");
-  CHECK("dashedCaseToCamelUpperCase", "xxx aaa-bbb-|ccc yyy", "xxx AaaBbbCcc| yyy");
-  CHECK("dashedCaseToCamelUpperCase", "xxx |aaa_bbb_ccc yyy", "xxx AaaBbbCcc| yyy");
+  CHECK("dashedCaseToPascalCase", "xxx aaa-bbb-ccc| yyy", "xxx AaaBbbCcc| yyy");
+  CHECK("dashedCaseToPascalCase", "xxx aaa-bbb-|ccc yyy", "xxx AaaBbbCcc| yyy");
+  CHECK("dashedCaseToPascalCase", "xxx |aaa_bbb_ccc yyy", "xxx AaaBbbCcc| yyy");
 
-  CHECK("dashedCaseToCamelUpperCase", "xxx | aaa-bbb-ccc", "xxx  AaaBbbCcc|");
+  CHECK("dashedCaseToPascalCase", "xxx | aaa-bbb-ccc", "xxx  AaaBbbCcc|");
 }
 
 TEST("dashedCaseToSnakeCase")
