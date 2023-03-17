@@ -63,7 +63,7 @@ const _transposeAtSeparator = function(delimiter, delimiterAsRegex, ignoreSpaces
 
   const text = (hasSelection || ignoreSpaces) ? document.text(range) : document.line(line);
 
-  idx = parseInt(idx) || 0;
+  idx = idx | 0;
 
   if (delimiterAsRegex)
   {

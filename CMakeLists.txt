@@ -12,6 +12,7 @@ tests/alias.cpp
 tests/align.cpp
 tests/calln.cpp
 tests/case.cpp
+tests/change.cpp
 tests/count.cpp
 tests/duplicate.cpp
 tests/main.cpp

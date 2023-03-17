@@ -31,13 +31,13 @@ function selectionProcess(restoreSelection, fn)
   document.editEnd();
 }
 
-// fn: (String): String|undefined
+// fn: (String, Cursor): String|undefined
 // When fn returns undefined, do nothing
 function lineProcess(restoreCursor, fn)
 {
   const cursor = view.cursorPosition();
   const line = cursor.line;
-  const text = fn(document.line(line));
+  const text = fn(document.line(line), cursor);
 
   if (text === undefined)
     return;
