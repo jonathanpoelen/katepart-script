@@ -149,6 +149,10 @@ void TestManager::check(TestCase test)
     }
   }
 
+  bool const hasInputNewLine = !input.isEmpty() && std::as_const(input).back() == QChar('\n');
+  if (!hasInputNewLine) {
+    input += QChar('\n');
+  }
   doc->setText(input);
   view->setSelection(range);
   view->setCursorPosition(cursor);
@@ -204,19 +208,25 @@ void TestManager::check(TestCase test)
     doc->insertText(range.start(), QString::fromRawData(&open, 1));
   }
   doc->insertText(cursor, "|");
-  auto result = doc->text();
+  const auto result = doc->text();
 
-  if (result != test.expected) {
+  std::string_view expected = test.expected;
+  if (QStringView(result.data(), result.size() - (!hasInputNewLine && result.back() == QChar('\n')))
+    != QLatin1String(expected.data(), expected.size())
+  ) {
     ++failureCounter;
     writeLocation();
     stream << "\x1b[31mResult differ\n";
     writeCmd();
     stream << ":\n";
     writeDebug();
+    std::string routput = result.toStdString();
+    std::string_view routput_sv = routput;
+    routput_sv.remove_suffix(!hasInputNewLine && !routput.empty() && routput.back() == '\n');
     stream <<
         "  input:    \x1b[40m" << test.input << "\x1b[0m\n"
-        "  output:   \x1b[40m" << result.toStdString() << "\x1b[0m\n"
-        "  expected: \x1b[40m" << test.expected << "\x1b[0m\n"
+        "  output:   \x1b[40m" << routput_sv << "\x1b[0m\n"
+        "  expected: \x1b[40m" << expected << "\x1b[0m\n"
         ;
     return ;
   }
