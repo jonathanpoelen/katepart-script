@@ -15,6 +15,7 @@ tests/case.cpp
 tests/change.cpp
 tests/count.cpp
 tests/duplicate.cpp
+tests/escape.cpp
 tests/main.cpp
 tests/tag.cpp
 tests/test.hpp
