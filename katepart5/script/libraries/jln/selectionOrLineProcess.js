@@ -45,8 +45,7 @@ function lineProcess(restoreCursor, fn)
   document.editBegin();
 
   document.removeLine(line);
-  // insertText instead of insertLine to prevent adding a newline if text contains a newline
-  document.insertText(line, 0, text);
+  document.insertLine(line, text);
 
   if (restoreCursor)
   {

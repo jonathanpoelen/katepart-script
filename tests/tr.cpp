@@ -22,8 +22,7 @@ TEST("tr")
   CHECK("tr ab", "aabb|", "bbaa|");
   CHECK("tr ab ''", "aabbx|", "x|");
 
-  // incorrect cursor position, but too complicated to manage
-  CHECK("tr ' ' '\n'", " abc|", "|\nabc");
+  CHECK("tr ' ' '\n'", " abc|", "\nabc|");
 
   CHECKRNG("tr a b", "[a]a", "[b]|a");
   CHECKRNG("tr a b", "a[ab]b", "a[bb]|b");
