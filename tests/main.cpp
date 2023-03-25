@@ -83,6 +83,36 @@ struct TestManager
     }
   }
 
+  std::string_view normalize(std::string_view str)
+  {
+    if (!replaceNewLineAndTab) {
+      return str;
+    }
+
+    std::string_view newLine = "\x1b[7;36m\\n\x1b[;40m";
+    std::string_view tab     = "\x1b[7;36m\\t\x1b[;40m";
+
+    tmp.resize(str.size() * std::max(newLine.size(), tab.size()));
+    auto* it = tmp.data();
+
+    for (char c : str) {
+      if (c == '\n') {
+        memcpy(it, newLine.data(), newLine.size());
+        it += newLine.size();
+      }
+      else if (c == '\t') {
+        memcpy(it, tab.data(), tab.size());
+        it += tab.size();
+      }
+      else
+        *it++ = c;
+    }
+
+    tmp.resize(it - tmp.data());
+
+    return tmp;
+  }
+
   Editor* editor;
   Document* doc;
   View* view;
@@ -94,8 +124,10 @@ struct TestManager
   Stream stream;
   // debug() catcher
   StringBuf debugbuf{std::ios_base::out};
-  bool verbose = true;
+  bool verbose = false;
+  bool replaceNewLineAndTab = true;
   char const* testName = nullptr;
+  std::string tmp;
 };
 
 struct PosInfo {
@@ -162,7 +194,7 @@ void TestManager::check(TestCase test)
   };
 
   auto writeCmd = [&]{
-    stream << "`\x1b[32m" << test.cmd << "\x1b[31m`\x1b[0m";
+    stream << "\x1b[31m`\x1b[32m" << test.cmd << "\x1b[31m`\x1b[0m";
   };
 
   cmd = test.cmd;
@@ -186,7 +218,7 @@ void TestManager::check(TestCase test)
     stream << ":\n";
     writeDebug();
     stream << "\x1b[31m  msg: " << msg.toStdString()
-        << "\x1b[m  input: \x1b[40m" << test.input
+        << "\x1b[m  input: \x1b[40m" << normalize(test.input)
         << "\x1b[m\n";
     return ;
   }
@@ -216,7 +248,7 @@ void TestManager::check(TestCase test)
   ) {
     ++failureCounter;
     writeLocation();
-    stream << "\x1b[31mResult differ\n";
+    stream << "\x1b[31mResult differ\x1b[m\n";
     writeCmd();
     stream << ":\n";
     writeDebug();
@@ -224,9 +256,9 @@ void TestManager::check(TestCase test)
     std::string_view routput_sv = routput;
     routput_sv.remove_suffix(!hasInputNewLine && !routput.empty() && routput.back() == '\n');
     stream <<
-        "  input:    \x1b[40m" << test.input << "\x1b[0m\n"
-        "  output:   \x1b[40m" << routput_sv << "\x1b[0m\n"
-        "  expected: \x1b[40m" << expected << "\x1b[0m\n"
+        "  input:    \x1b[40m" << normalize(test.input) << "\x1b[0m\n"
+        "  output:   \x1b[40m" << normalize(routput_sv) << "\x1b[0m\n"
+        "  expected: \x1b[40m" << normalize(expected) << "\x1b[0m\n"
         ;
     return ;
   }
@@ -278,21 +310,48 @@ int main(int argc, char** argv)
 
   TestManager testManager;
   g_testManager = &testManager;
-  bool hasStatus = true;
+  bool hasStatus = false;
 
   int iparam = 1;
-  while (argv[iparam] && argv[iparam][0] == '-' && argv[iparam][2] == '\0') {
-    if (argv[iparam][1] == 's') {
-      hasStatus = false;
+  while (argv[iparam] && argv[iparam][0] == '-') {
+    auto arg = argv[iparam];
+
+    // --
+    if (arg[1] == '-' && arg[2] == '\0') {
       ++iparam;
-    }
-    else if (argv[iparam][1] == 'S') {
-      testManager.verbose = false;
-      ++iparam;
-    }
-    else {
       break;
     }
+
+    bool ps = false;
+    bool pS = false;
+    bool pn = false;
+    bool unknown = false;
+    while (*++arg != '\0') {
+      if (*arg == 's')
+        ps = true;
+      else if (*arg == 'S')
+        pS = true;
+      else if (*arg == 'n')
+        pn = true;
+      else {
+        unknown = true;
+        break;
+      }
+    }
+
+    if (unknown)
+      break;
+
+    if (ps) hasStatus = true;
+    if (pS) testManager.verbose = true;
+    if (pn) testManager.replaceNewLineAndTab = false;
+
+    ++iparam;
+  }
+
+  if (argv[iparam] && argv[iparam + 1]) {
+    std::cerr << "\x1b[31mToo many arguments\x1b[m\n";
+    return 1;
   }
 
   char const* patternFilter = argv[iparam];

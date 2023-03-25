@@ -17,6 +17,7 @@ tests/count.cpp
 tests/duplicate.cpp
 tests/encodeUri.cpp
 tests/escape.cpp
+tests/insert.cpp
 tests/main.cpp
 tests/tag.cpp
 tests/test.hpp
