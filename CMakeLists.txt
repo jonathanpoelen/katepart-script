@@ -18,6 +18,7 @@ tests/duplicate.cpp
 tests/encodeUri.cpp
 tests/escape.cpp
 tests/insert.cpp
+tests/ints.cpp
 tests/main.cpp
 tests/tag.cpp
 tests/test.hpp

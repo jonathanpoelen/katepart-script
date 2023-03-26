@@ -9,10 +9,10 @@ const katescript = {
 require("jln/command.js")
 
 
-const _executeCommands = function(repeat, commands, icommand)
+const _executeNCommands = function(repeat, commands, icommand)
 {
   document.editBegin();
-  repeat = parseInt(repeat) & 0xffff;
+  repeat = repeat & 0xffff;
   for (let i = 0; i < repeat; ++i) {
     for (let j = icommand; j < commands.length; ++j) {
       executeCommand(commands[j]);
@@ -23,7 +23,7 @@ const _executeCommands = function(repeat, commands, icommand)
 
 function calln(repeat/*, cmd...*/)
 {
-  _executeCommands(repeat, arguments, 1);
+  _executeNCommands(repeat, arguments, 1);
 }
 
 function callns(repeat, delim/*, cmdname, args...*/)
@@ -45,7 +45,7 @@ function callns(repeat, delim/*, cmdname, args...*/)
   if (start < arguments.length)
     commands.push(prepareCommand(arguments[start], arguments, i - (start + 1), start + 1));
 
-  _executeCommands(repeat, commands, 0);
+  _executeNCommands(repeat, commands, 0);
 }
 
 

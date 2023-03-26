@@ -12,17 +12,28 @@ function executeCommand(cmd)
   }
 }
 
+function copyPreparedArguments(output, len, idxOut, input, idxIn)
+{
+  len += idxOut;
+  for (; idxOut < len; ++idxOut, ++idxIn) {
+    output[idxOut] = "'" + input[idxIn].replace('\'', '\\\'') + "'";
+  }
+}
+
+function copyPreparedAnyArguments(output, len, idxOut, input, idxIn)
+{
+  len += idxOut;
+  for (; idxOut < len; ++idxOut, ++idxIn) {
+    output[idxOut] = "'" + input[idxIn].toString().replace('\'', '\\\'') + "'";
+  }
+}
+
 /// args and iargs are optional
 /// \return String
 function prepareArguments(array, len, index, args, iargs)
 {
   args = args || new Array(len);
-  let j = index | 0;
-  let i = iargs | 0;
-  len += i;
-  for (; i < len; ++i, ++j) {
-    args[i] = "'" + array[j].replace('\'', '\\\'') + "'";
-  }
+  copyPreparedArguments(args, len, iargs | 0, array, index | 0);
   return args.join(' ');
 }
 
@@ -30,5 +41,6 @@ function prepareCommand(cmd, array, len, index)
 {
   const args = new Array(len + 1);
   args[0] = cmd;
-  return prepareArguments(array, len, index, args, 1);
+  copyPreparedArguments(args, len, 1, array, index | 0);
+  return args.join(' ');
 }
