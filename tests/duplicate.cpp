@@ -14,7 +14,7 @@ TEST("duplicate")
   CHECK("duplicate 2", "a|bc", "abc\nabc\na|bc");
   CHECK("duplicate 3", "a|bc", "abc\nabc\nabc\na|bc");
   CHECK("duplicate -1", "a|bc", "a|bc\nabc");
-  CHECK("duplicate -2", "a|bc", "a|bc\nabc\nabc");
+  CHECK("duplicate -2", "a|bc", "a|bc\nabc\nabc ");
   CHECK("duplicate -3", "a|bc", "a|bc\nabc\nabc\nabc");
 
   CHECK("duplicate", "|", "\n|");
@@ -27,7 +27,7 @@ TEST("duplicate")
   CHECKRNG("duplicate 2", "a[bc]d", "abcbc[bc]|d");
   CHECKRNG("duplicate 3", "a[bc]d", "abcbcbc[bc]|d");
   CHECKRNG("duplicate -1", "a[bc]d", "a[bc]|bcd");
-  CHECKRNG("duplicate -2", "a[bc]d", "a[bc]|bcbcd");
+  CHECKRNG("duplicate -2", "a[bc]d", "a[bc]|bc bcd");
   CHECKRNG("duplicate -3", "a[bc]d", "a[bc]|bcbcbcd");
   CHECKRNGL("duplicate -3", "a[bc]d", "a[|bc]bcbcbcd");
 }
