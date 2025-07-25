@@ -4,7 +4,7 @@
  * revision: 1
  * kate-version: 4
  * type: commands
- * functions: capitalize, reverseCase, dashedCase, underscoreCase, camelCase
+ * functions: capitalize, reverseCase, dashedCase, underscoreCase, camelCase, toggleCaseUnderCursor
  */
 
 require("selectionOrLine.js")
@@ -56,6 +56,19 @@ function reverseCase()
 }
 
 
+function toggleCaseUnderCursor()
+{
+  var cursor1 = view.cursorPosition();
+  var c = document.charAt(cursor1);
+  if (c) {
+    var upper = c.toUpperCase();
+    c = (c === upper) ? c.toLowerCase() : upper;
+    var cursor2 = new Cursor(cursor1.line, cursor1.column + 1);
+    removeRangeThenInsertText(new Range(cursor1, cursor2), c);
+    view.setCursorPosition(cursor1);
+  }
+}
+
 function help(cmd)
 {
   if (cmd === "camelCase")
@@ -80,4 +93,8 @@ function help(cmd)
   if (cmd === "underscoreCase")
     return i18n("Met les lettre de la ligne ou de la sélection en minuscule précédé d'un underscore.\
 <br/><br/>underscoreCase()");
+
+  if (cmd === "toggleCaseUnderCursor")
+    return i18n("Toggles the case of character under cursor: lowercase becomes uppercase and vice versa.\
+<br/><br/>toggleCaseUnderCursor()");
 }
